@@ -1,6 +1,6 @@
 <?php
     $dbserver = "localhost";
-    $dbname = "oto-fu_mydb";
+    $dbname = "otofu_mydb";
     $dbuser = "";
     $dbpasswd = "";
 
