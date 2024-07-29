@@ -14,8 +14,9 @@
     <div class="talk">
         <h3 class="talk_t">トークルーム予定</h3>
     </div>
-    <!-- <h3 class="tag">タグ追加・更新</h3> -->
-    <button class="tag">タグ追加・更新予定</button>
+
+    <!-- #のところに遷移するところのパス入れてください -->
+    <button class="tag"  onclick="location.href='#'">タグ追加・更新予定</button>
 </body>
 
 </html>
