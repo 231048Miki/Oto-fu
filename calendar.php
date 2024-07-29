@@ -3,13 +3,9 @@
 date_default_timezone_set('Asia/Tokyo');
 session_start();
 $day=0;
-if(isset($_GET['day'])&& isset($_GET['task'])){ 
-    $getDays= explode("-",$_GET['day']);
-    $getDays[2]=preg_replace('/^0/','',$getDays[2]);
-    echo $getDays[2];
-    $getDay = $getDays[0]."-".$getDays[1]."-".$getDays[2];
-    echo $getDay;
-    $_SESSION[$getDay]=$_GET['task'];
+
+if(isset($_GET['event'])){
+    $_SESSION[$_GET['event']]="!";
 }
 
 //前月・次月リンクが選択された場合は、GETパラメーターから年月を取得
@@ -17,12 +13,12 @@ if(isset($_GET['ym'])){
     $ym = $_GET['ym'];
 }else{
     //今月の年月を表示
-    $ym = date('Y-m');
+    $ym = date('Y-m'); //"YYYY-mm" で現在時間を取得
 }
 
 //タイムスタンプ（どの時刻を基準にするか）を作成し、フォーマットをチェックする
 //strtotime('Y-m-01')
-$timestamp = strtotime($ym . '-01'); 
+$timestamp = strtotime($ym . '-01'); //今月の一日をタイムスタンプで取得
 if($timestamp === false){//エラー対策として形式チェックを追加
     //falseが返ってきた時は、現在の年月・タイムスタンプを取得
     $ym = date('Y-m');
@@ -30,7 +26,7 @@ if($timestamp === false){//エラー対策として形式チェックを追加
 }
 
 //今月の日付　フォーマット　例）2020-10-2
-$today = date('Y-m-j');
+$today = date('Y-m-j');//YYYY-mm-j(0抜きの日)
 
 //カレンダーのタイトルを作成　例）2020年10月
 $html_title = date('Y年n月', $timestamp);//date(表示する内容,基準)
@@ -41,10 +37,10 @@ $prev = date('Y-m', strtotime('-1 month', $timestamp));
 $next = date('Y-m', strtotime('+1 month', $timestamp));
 
 //該当月の日数を取得
-$day_count = date('t', $timestamp);
+$day_count = date('t', $timestamp);//その月の日数
 
 //１日が何曜日か
-$youbi = date('w', $timestamp);
+$youbi = date('w', $timestamp);//曜日番号0[日曜]-6[土曜]
 
 //カレンダー作成の準備
 $weeks = [];
@@ -54,20 +50,28 @@ $week = '';
 //str_repeat(文字列, 反復回数)
 $week .= str_repeat('<td></td>', $youbi);
 
-for($day = 1; $day <= $day_count; $day++, $youbi++){
-    
-    $date = $ym . '-' . $day; //2020-00-00
-    var_dump($date);
+for($day = 1; $day <= $day_count; $day++, $youbi++){//1から、その月の日数まで
+
+    $date = $ym . '-' . $day; //年年年年-月月-日日
+    // var_dump($date);
+    if(isset($_SESSION[$date])){
+        $week .= '<td class="event"';
+    }else{
+        $week .= '<td';
+    }
     if($today == $date){
         
-        $week .= '<td class="today">' . $day;//今日の場合はclassにtodayをつける
-    } else {
-        $week .= '<td>' . $day;
+        $week .= 'class="today"><a href="top.php?event='.$date.'">' . $day;//今日の場合はclassにtodayをつける
         if(isset($_SESSION[$date])){
-            $week .= "<br>「".$_SESSION[$date]."」";
+            $week .= "!";
+        }
+    } else {
+        $week .= '><a href="top.php?event='.$date.'">'.$day;
+        if(isset($_SESSION[$date])){
+            $week .= "!";
         }
     }
-    $week .= '</td>';
+    $week .= '</a></td>';
     
     if($youbi % 7 == 6 || $day == $day_count){//週終わり、月終わりの場合
         //%は余りを求める、||はまたは
@@ -96,19 +100,22 @@ for($day = 1; $day <= $day_count; $day++, $youbi++){
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
     <style>
       .container {
-        font-family: 'Noto Sans', sans-serif;/*--GoogleFontsを使用--*/
-          margin-top: 80px;
+        font-family: 'Noto Sans', sans-serif;
+        /*--GoogleFontsを使用--*/
+          /* margin-top: 80px; */
+          height: 600px;
+          width: 300px;
       }
         h3 {
-            margin-bottom: 30px;
+            /* margin-bottom: 30px; */
         }
         th {
-            height: 30px;
+            height: 3px;
             text-align: center;
         }
         td {
-            height: 100px;
-            width: 100px;
+            height: 10px;
+            width: 10px;
         }
         .today {
             background: orange;/*--日付が今日の場合は背景オレンジ--*/
@@ -119,16 +126,14 @@ for($day = 1; $day <= $day_count; $day++, $youbi++){
         th:nth-of-type(7), td:nth-of-type(7) {/*--土曜日は青--*/
             color: blue;
         }
+        .event {
+            background: yellow;/*--いべんとの場合は背景黄色--*/
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <form method="get">
-            やること<input type="text" name="task">
-            日付<input type="date" name="day">
-            <input type=submit value="追加テスト">
-        </form>
-        <h3><a href="?ym=<?php echo $prev; ?>">&lt;</a><?php echo $html_title; ?><a href="?ym=<?php echo $next; ?>">&gt;</a></h3>
+        <h4><a href="?ym=<?php echo $prev; ?>">&lt;</a><?php echo $html_title; ?><a href="?ym=<?php echo $next; ?>">&gt;</a></h4>
         <table class="table table-bordered">
 
             <tr>
@@ -147,5 +152,6 @@ for($day = 1; $day <= $day_count; $day++, $youbi++){
             ?>
         </table>
     </div>
+
 </body>
 </html>
