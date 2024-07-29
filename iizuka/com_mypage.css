@@ -1,6 +1,11 @@
 @charset "UTF-8";
 
-.admin_button{
+h3{
+    margin-left: 30px;
+    color: #181818;
+}
+
+.cmypage_button{
     box-shadow: 0 5px #8e9fea;
     border-radius: 5px;
     width: 200px;
@@ -11,19 +16,16 @@
     text-decoration: none;
     text-align: center;
     margin: 10px 0;
+
     margin-left: 20px;
     color: #181818;
 }
 
-.brock_word{
-    margin-left: 50px;
-}
-
-h3{
+h2{
     margin-left: 30px;
     color: #181818;
 }
 
-.user_con{
+.mypage_boo{
     margin-left: 50px;
 }
