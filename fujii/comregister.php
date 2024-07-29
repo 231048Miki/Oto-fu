@@ -1,5 +1,5 @@
 <?php
-//この辺にセッションでこの直接ファイルを開けないようにする
+//この辺にセッションでこのファイルを開けないようにする
 
 if($_POST['pass'] != $_POST['repass']){
     //パスワードのあってるかの判定
@@ -11,18 +11,14 @@ if($_POST['pass'] != $_POST['repass']){
 //パスワードがあっているときの判定
 $name = $_POST['name'];
 $mail = $_POST['mail'];
-$date = $_POST['date'];
 $address = $_POST['address'];
 $tell = $_POST['tell'];
-$school = $_POST['school'];
 $pass = $_POST['pass'];
 $re = $_POST['repass'];
 
-$pattern="#^\d{4}([/-]?)\d{2}\\1\d{2}$#";
-
 if(strlen($name) > 100 && strlen($name) != 0){
     //文字数の判定
-    echo "名前が不適切な形式です";
+    echo "企業名が不適切な形式です";
     echo "<div class='back'>";
     echo "<a onclick='history.back(-1)'>戻る</a>";
     echo "</div>";
@@ -32,12 +28,7 @@ if(strlen($name) > 100 && strlen($name) != 0){
     echo "<a onclick='history.back(-1)'>戻る</a>";
     echo "</div>";
 }elseif(strlen($address) > 100 && strlen($address) != 0){
-    echo "住所が不適切な形式です";
-    echo "<div class='back'>";
-    echo "<a onclick='history.back(-1)'>戻る</a>";
-    echo "</div>";
-}elseif(strlen($school) > 100 && strlen($school) != 0){
-    echo "学校名が不適切な形式です";
+    echo "所在地が不適切な形式です";
     echo "<div class='back'>";
     echo "<a onclick='history.back(-1)'>戻る</a>";
     echo "</div>";
@@ -47,23 +38,18 @@ if(strlen($name) > 100 && strlen($name) != 0){
     echo "<a onclick='history.back(-1)'>戻る</a>";
     echo "</div>";
 }else{
-    //生年月日の判定
-    if(preg_match($pattern,$date,$match)){
-    //正しい時の処理
-    // echo "$name $mail $date $address $tell $school $pass $re";//取り出せているかの確認
+   
     include 'db_open.php';
-    $sql = "INSERT INTO student_table (stu_name, stu_address, stu_school, stu_tell, stu_mail, stu_pass, stu_birth) 
-            VALUES (:name, :address, :school, :tell, :mail, :pass, :date)";
+    $sql = "INSERT INTO company_table (com_name, com_address, com_tell, com_mail, com_pass) 
+            VALUES (:name, :address, :tell, :mail, :pass)";
     $stmt = $dbh->prepare($sql);
 
     // プレースホルダーに値をバインド
     $stmt->bindParam(':name', $name);
     $stmt->bindParam(':address', $address);
-    $stmt->bindParam(':school', $school);
     $stmt->bindParam(':tell', $tell);
     $stmt->bindParam(':mail', $mail);
     $stmt->bindParam(':pass', $pass);
-    $stmt->bindParam(':date', $date);
 
     // SQLを実行
     if ($stmt->execute()) {
@@ -72,21 +58,7 @@ if(strlen($name) > 100 && strlen($name) != 0){
         echo "Error inserting record";
     }
 
-    }else{
-        //不適切な時の処理
-        echo "生年月日が不適切な形式です";
-        echo "<div class='back'>";
-        echo "<a onclick='history.back(-1)'>戻る</a>";
-        echo "</div>";
-    }
+   
    
 }
 }
-
-
-
-
-
-
-
-

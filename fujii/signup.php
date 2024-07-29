@@ -8,7 +8,7 @@ $HTML_HEADER = <<<___EOF___
         <html>
         <head>
             <meta charset="UTF-8">
-            <title>新規登録</title>     
+            <title>学生用新規登録</title>     
         </head>
         <body>
     ___EOF___;
@@ -31,7 +31,7 @@ $HTML_BODY = <<<___EOF___
         
     </div>
     <div>
-    <h1>新規登録</h1>
+    <h1>学生用新規登録</h1>
     </div>
     <div>
         <form action="register.php" method="post">
