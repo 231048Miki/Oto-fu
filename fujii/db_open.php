@@ -10,6 +10,7 @@
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // エラーモードを例外に設定
         PDO::ATTR_EMULATE_PREPARES => false, // プリペアドステートメントのエミュレーションを無効化
         PDO::MYSQL_ATTR_MULTI_STATEMENTS => false, // 複数のステートメントを無効化
+        // PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
     ];
 
     // データソースネーム (DSN)
@@ -19,7 +20,7 @@
     try {
         $pdo = new PDO($dsn, $dbuser, $dbpasswd, $opt);
         $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC); // デフォルトのフェッチモードを連想配列に設定
-        echo "データベース接続が正常に確立されました。";
+        // echo "データベース接続が正常に確立されました。";
     } catch (PDOException $e) {
         echo "接続に失敗しました: " . $e->getMessage();
     }
