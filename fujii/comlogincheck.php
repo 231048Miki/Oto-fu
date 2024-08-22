@@ -12,17 +12,17 @@ $mail = $_POST['mail'];
 $pass = $_POST['pass'];
 
 // ユーザーの認証
-$sql = "SELECT * FROM student_table WHERE stu_mail = :mail";
+$sql = "SELECT * FROM company_table WHERE com_mail = :mail";
 $stmt = $dbh->prepare($sql);
 $stmt->bindParam(':mail', $mail);
 $stmt->execute();
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 // パスワード検証
-if ($user && password_verify($pass, $user['stu_pass'])) {
+if ($user && password_verify($pass, $user['com_pass'])) {
     // ログイン成功
-    $_SESSION['user_id'] = $user['stu_id'];
-    $_SESSION['user_name'] = $user['stu_name'];
+    $_SESSION['user_id'] = $user['com_id'];
+    $_SESSION['user_name'] = $user['com_name'];
     echo "ログイン成功！";
     // 必要に応じてリダイレクト
     // header('Location: welcome.php');

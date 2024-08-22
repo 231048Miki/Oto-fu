@@ -38,6 +38,9 @@ if(strlen($name) > 100 && strlen($name) != 0){
     echo "<a onclick='history.back(-1)'>戻る</a>";
     echo "</div>";
 }else{
+    //正しい時の処理
+    // パスワードをハッシュ化
+    $hashedPassword = password_hash($pass, PASSWORD_DEFAULT);
    
     include 'db_open.php';
     $sql = "INSERT INTO company_table (com_name, com_address, com_tell, com_mail, com_pass) 
@@ -49,7 +52,7 @@ if(strlen($name) > 100 && strlen($name) != 0){
     $stmt->bindParam(':address', $address);
     $stmt->bindParam(':tell', $tell);
     $stmt->bindParam(':mail', $mail);
-    $stmt->bindParam(':pass', $pass);
+    $stmt->bindParam(':pass', $hashedPassword);
 
     // SQLを実行
     if ($stmt->execute()) {
