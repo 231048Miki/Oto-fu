@@ -19,9 +19,9 @@ $HTML_FOOTER = <<<___EOF___
 
 $HTML_BODY = <<<___EOF___
     <a href="">就活アプリ</a>
-    <a href="comrogin.php">企業の方はこちら</a>
+    <a href="comlogin.php">企業の方はこちら</a>
     <h1>学生ログイン</h1>
-    <form method="POST" action="rogincheck.php">
+    <form method="POST" action="logincheck.php">
         <p class="text">メールアドレス：<input type='text' name='mail'  value='' required></p>
         <p class="text">パスワード：<input type='password' name='pass'  value='' required></p>
         <p><input type="submit" class="submit" name="rogin"></p>

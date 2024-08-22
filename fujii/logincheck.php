@@ -4,7 +4,7 @@ include 'db_open.php';
 // POSTメソッドでメールアドレスとパスワードを受け取る
 if (!isset($_POST['mail']) || !isset($_POST['pass'])) {
     echo "<center><h1 class='log'>不正なアクセスです。</h1>";
-    echo "<a href='rogin.php'>ログイン画面へ</a></center>";
+    echo "<a href='login.php'>ログイン画面へ</a></center>";
     exit();
 }
 
