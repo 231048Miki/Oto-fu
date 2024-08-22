@@ -24,9 +24,10 @@ $HTML_BODY = <<<___EOF___
     <form method="POST" action="logincheck.php">
         <p class="text">メールアドレス：<input type='text' name='mail'  value='' required></p>
         <p class="text">パスワード：<input type='password' name='pass'  value='' required></p>
-        <p><input type="submit" class="submit" name="login"></p>
-
+        
         <a href="signup.php">新規登録はこちら</a>
+
+        <p><input type="submit" class="submit" name="login"></p>
 
     </form>
     </div>
