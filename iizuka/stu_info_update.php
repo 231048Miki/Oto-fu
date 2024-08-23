@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" , href="com_mypage.css">
+    <link rel="stylesheet" , href="stu_info_update.css">
     <link rel="stylesheet" , href="header.css">
 </head>
 
@@ -38,11 +38,12 @@
         echo <<<___EOF___
             <form method="POST" enctype="multipart/form-data">
             <input type="hidden" name="MAX_FILE_SIZE" value="1500000" /> 
-            <h3>企業名：<input type="text" name="com_name" value={$rec2['com_name']} required></h3>
-            <h3>採用担当者名：<input type="text" name="cmanager" value={$rec2['manager']} required></h3>
-            <h3>メールアドレス：<input type="text" name="mail" value={$rec2['mail']} required></h3>
-            <h3>電話番号：<input type="text" name="tell" value={$rec2['tell']} required></h3>
-            <h3>所在地：<input type="text" name="address" value={$rec2['address']} required></h3>
+            <h3>名前：<input type="text" name="name" value={$rec2['stu_name']} required></h3>
+            <h3>メールアドレス：<input type="text" name="mail" value={$rec2['stu_mail']} required></h3>
+            <h3>生年月日：<input type="text" name="birth" value={$rec2['birth']} required></h3>
+            <h3>住所：<input type="text" name="address" value={$rec2['stu_address']} required></h3>
+            <h3>電話番号：<input type="text" name="tell" value={$rec2['stu_tell']} required></h3>
+            <h3>学校名：<input type="text" name="school" value={$rec2['school']} required></h3>
             <h3>パスワード：<input type="password" name="pass" value={$rec2['pass']} required></h3>
             <h3>再入力：<input type="password" name="pass" value={$rec2['pass']} required></h3>
             <input type="submit" value="更新">
