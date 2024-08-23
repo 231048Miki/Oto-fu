@@ -8,6 +8,7 @@ $HTML_HEADER = <<<___EOF___
         <html>
         <head>
             <meta charset="UTF-8">
+            <link rel="stylesheet" , href="signup.css">
             <title>学生用新規登録</title>     
         </head>
         <body>
@@ -19,7 +20,7 @@ $HTML_FOOTER = <<<___EOF___
     ___EOF___;
 
 $HTML_BODY = <<<___EOF___
-    <div class="torogin">
+    <div class="tologin">
         <ul>
             <a href="rogin.php">就活サイト(仮)</a>
         </ul>
@@ -36,25 +37,26 @@ $HTML_BODY = <<<___EOF___
     <div>
         <form action="register.php" method="post">
     </div>
-    <div>
+    <div class="center">
+    <div class="field">
         <label>
             名前：
             <input type="text" name="name" required>
         </label>
     </div>
-    <div>
+    <div class="field">
         <label>
             メールアドレス：
             <input type="text" name="mail" required>
         </label>
     </div>
-    <div>
+    <div class="field">
         <label>
             生年月日：
             <input type="text" name="date" required>
         </label>
     </div>
-    <div>
+    <div class="field">
         <label>
             住所：
             <input type="text" name="address" required>
@@ -66,25 +68,28 @@ $HTML_BODY = <<<___EOF___
             <input type="text" name="tell" required>
         </label>
     </div>
-    <div>
+    <div class="field">
         <label>
             学校名：
             <input type="text" name="school" required>
         </label>
     </div>
-    <div>
+    <div class="field">
         <label>
             パスワード：
             <input type="password" name="pass" required>
         </label>
     </div>
-    <div>
+    <div class="field">
         <label>
             再入力：
             <input type="password" name="repass" required>
         </label>
     </div>
+    </div>
+    <div class="submit">
     <input type="submit" value="新規登録">
+    </div>
     </form>
     ___EOF___;
 
