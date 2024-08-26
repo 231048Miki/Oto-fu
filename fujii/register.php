@@ -54,7 +54,7 @@ if(strlen($name) > 100 && strlen($name) != 0){
     $hashedPassword = password_hash($pass, PASSWORD_DEFAULT);
 
     include 'db_open.php';
-    $sql = "INSERT INTO student_table (stu_name, stu_address, stu_school, stu_tell, stu_mail, stu_pass, stu_birth) 
+    $sql = "INSERT INTO student_table (stu_name, stu_address, stu_school, stu_tell, stu_mail, stu_pass, birth) 
             VALUES (:name, :address, :school, :tell, :mail, :pass, :date)";
     $stmt = $dbh->prepare($sql);
 
