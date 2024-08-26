@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
-.calendar{
+/* .calendar-val{
     text-align: center;
-}
+} */
 
 .talk{
     text-align: left;
@@ -30,4 +30,8 @@
 
     margin-right: 30px;
     position: absolute; bottom: 500px; right: 50px;
+}
+
+@media screen and (max-width:600px){
+    
 }
