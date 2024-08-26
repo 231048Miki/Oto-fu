@@ -22,7 +22,7 @@ $HTML_FOOTER = <<<___EOF___
 $HTML_BODY = <<<___EOF___
     <div class="tologin">
         <ul>
-            <a href="rogin.php">就活サイト(仮)</a>
+            <a href="login.php">就活サイト(仮)</a>
         </ul>
     </div>
     <div class=tocomsignup>
