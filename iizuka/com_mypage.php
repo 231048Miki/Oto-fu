@@ -22,8 +22,24 @@
         </div>
     </header>
 
-    <h2 class="com-name">~~~様</h2>
+    <?php
+    session_start();
+    if (!isset($_SESSION['login'])) {
+        header("Location:");
+        // セッション追加頼む
+        exit();
+    }
+    $userid = $_SESSION["id"];
+    include '../db_open.php';
 
+    $sql = "SELECT * FROM company_table WHERE com_id = $userid";
+    $sql_res = $dbh->query($sql);
+    $rec = $sql_res->fetch();
+    echo <<<___EOF
+    <h2 class="com-name">{$name}様</h2>
+
+    ___EOF;
+    ?>
     <div class="mypage_boo">
         <button class="cmypage_button" onclick="location.href='#'">オファーリスト</button>
         <button class="cmypage_button" onclick="location.href='#'">イベント</button>
