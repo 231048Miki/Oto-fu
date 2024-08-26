@@ -19,6 +19,8 @@
     <h2 class="page-name">情報更新</h2>
 
     <?php
+
+    //idに基づいて表示
     session_start();
     if (!isset($_SESSION['login'])) {
         header("Location:");
@@ -27,25 +29,25 @@
     }
     function fileSave($com_name, $manager, $mail, $tell, $address,  $pass) {}
 
-    $userid = $_SESSION['id'];
-    include '../db_open.php';
+    // $userid = $_SESSION['id'];
+    // include '../db_open.php';
 
-    $sql2 = "SELECT * FROM company_table WHERE com_id = $userid";
-    $sql_res2 = $dbh->query($sql2);
-    $rec2 = $sql_res2->fetch();
+    // $sql2 = "SELECT * FROM company_table WHERE com_id = $userid";
+    // $sql_res2 = $dbh->query($sql2);
+    // $rec2 = $sql_res2->fetch();
 
     if ($_SERVER["REQUEST_METHOD"] != "POST") {
         echo <<<___EOF___
-            <form method="POST" enctype="multipart/form-data">
+            <form method="POST" enctype="multipart/form-data" class="stu_form">
             <input type="hidden" name="MAX_FILE_SIZE" value="1500000" /> 
-            <h3>名前：<input type="text" name="name" value={$rec2['stu_name']} required></h3>
-            <h3>メールアドレス：<input type="text" name="mail" value={$rec2['stu_mail']} required></h3>
-            <h3>生年月日：<input type="text" name="birth" value={$rec2['birth']} required></h3>
-            <h3>住所：<input type="text" name="address" value={$rec2['stu_address']} required></h3>
-            <h3>電話番号：<input type="text" name="tell" value={$rec2['stu_tell']} required></h3>
-            <h3>学校名：<input type="text" name="school" value={$rec2['school']} required></h3>
-            <h3>パスワード：<input type="password" name="pass" value={$rec2['pass']} required></h3>
-            <h3>再入力：<input type="password" name="pass" value={$rec2['pass']} required></h3>
+            <h3>名前：<input type="text" name="name" value="{$rec2['stu_name']}" required></h3>
+            <h3>メールアドレス：<input type="text" name="mail" value="{$rec2['stu_mail']}" required></h3>
+            <h3>生年月日：<input type="text" name="birth" value="{$rec2['birth']}" required></h3>
+            <h3>住所：<input type="text" name="address" value="{$rec2['stu_address']}" required></h3>
+            <h3>電話番号：<input type="text" name="tell" value="{$rec2['stu_tell']}" required></h3>
+            <h3>学校名：<input type="text" name="school" value="{$rec2['school']}" required></h3>
+            <h3>パスワード：<input type="password" name="pass" value="{$rec2['pass']}" required></h3>
+            <h3>再入力：<input type="password" name="pass" value="{$rec2['pass']}" required></h3>
             <input type="submit" value="更新">
         </form>
 ___EOF___;
@@ -60,7 +62,7 @@ ___EOF___;
         {
 
         // エラー処理
-        $sql = "SELECT * FROM user_table2 WHERE userid = $userid";
+        $sql = "SELECT * FROM student_table WHERE userid = $userid";
         $sql_res = $dbh->query($sql);
 
         if (mb_strlen($name) > 10) {
@@ -93,13 +95,6 @@ ___EOF___;
             echo "alert('無効な文字が含まれています')";
             echo "</script>";
             echo '<script>location.href = "infoedit.php";</script>';
-        // } elseif ($filename && $sql_res) {
-        //     $sql = "UPDATE user_table2 SET icon='{$filename}', username='{$name}', mail='{$mail}', birth='{$brith}', pass='{$pass}',  file_path='{$save_path}' where userid = $userid";
-        //     $sql_res = $dbh->query($sql);
-        //     echo "<script>";
-        //     echo "alert('更新が完了しました')";
-        //     echo "</script>";
-        //     echo '<script>location.href = "setting.php";</script>';
         } elseif ($sql_res) {
             $sql = "UPDATE company_table SET com_name='{$name}', manager='{$manager}, mail='{$mail}', tell='{$tell}', address='{$address}, pass='{$pass}' where userid = $userid";
             $sql_res = $dbh->query($sql);
