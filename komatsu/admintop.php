@@ -5,20 +5,21 @@
   <style>
     .right {
       position: absolute;
-      right: 200px;
+      right: 250px;
       top: 450px;
     }
     .right1 {
       position: absolute;
       right: 250px;
+      top: 250px;
     }
     .left {
       position: absolute;
-      left: 200px;
+      left: 250px;
     }
     .left1 {
       position: absolute;
-      left: 210px;
+      left: 250px;
     }
     .bottom {
       position: absolute;
@@ -51,7 +52,7 @@
 </head>
 <body>
   <br><br><br><br><br><br>
-  <input type="button" onclick="location.href='./'" value="ブロックワード編集" class="large-button"><br><br><br>
+  <input type="button" onclick="location.href='./admintop.php'" value="ブロックワード編集" class="large-button"><br><br><br>
   
   <div class="left1">
     <input type="button" onclick="location.href='./index.html'" value="追加" class="small-button">
@@ -66,7 +67,7 @@
   </div>
 
   <div class="aaa">
-    <input type="button" onclick="location.href='./'" value="利用者関連" class="large-button"><br><br><br>
+    <input type="button" onclick="location.href='./admintop.php'" value="利用者関連" class="large-button"><br><br><br>
   </div>
 
   <br><br>
