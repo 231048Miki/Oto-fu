@@ -1,18 +1,16 @@
 <?PHP 
 require("../db_open.php");
-$eventList=[];
+$eventList=[];//dbから取り出したデータ格納用 
 
-//完了ボタン押した時用処理
-if(isset($_POST['deleteDate'])){
-    $delEvent = $dbh->prepare('DELETE FROM testevent_table WHERE eventDate = :eventDate AND stu_id = :stu_id');
-    $delEvent->bindValue(':eventDate',$_POST['deleteDate'],PDO::PARAM_STR);
-    $delEvent->bindValue(':stu_id',1,PDO::PARAM_STR);//ユーザーIDを入れる、今はテストで１を入れている
-    $delEvent->execute();
+if(isset($_POST['deleteDate'])){ //完了ボタン押した時用処理
+    $addEvent = $dbh->prepare('DELETE FROM testevent_table WHERE eventDate = :eventDate');
+    $addEvent->bindValue(':eventDate',$_POST['deleteDate'],PDO::PARAM_STR);
+    $addEvent->execute();
+    echo"よていけした";
 }
 
 //$eventList[]にdbから取得したデータを格納、['data']と['Text']がキーになって一つの予定を構成している。
-$getEventRec = $dbh->prepare('SELECT * FROM testevent_table WHERE stu_id = :stu_id');
-$getEventRec->bindValue(':stu_id',1,PDO::PARAM_STR);//ユーザーIDを入れる、今はテストで１を入れている
+$getEventRec = $dbh->prepare('SELECT * FROM testevent_table');
 $getEventRec->execute();
 while($event = $getEventRec->fetch(PDO::FETCH_ASSOC)){
     $eventList[]= 
@@ -35,6 +33,7 @@ if(isset($_GET['ym'])){
 }
 
 
+echo $ym."(\$ym 指定時間)<br>";
 
 $timestamp = strtotime($ym . '-01'); //今月の一日をタイムスタンプで取得
 
@@ -43,27 +42,29 @@ if($timestamp === false){//エラー対策
     $ym = date('Y-m');
     $timestamp = strtotime($ym . '-01');
 }
-
+echo $timestamp."(\$timestamp 今月の初日を、UNIXタイムスタンプ型式にしたやつ)<br>";
 
 //今月の日付　フォーマット　例）2020-10-2
 $today = date('Y-m-j');//YYYY-mm-j 
-
+echo $today."(\$today今日の日付)<br>";
 
 //カレンダーのタイトルを作成　例）2020年10月
 $html_title = date('Y年n月', $timestamp);//date(表示する内容,基準)
-
+echo $html_title."(\$html_title カレンダーのタイトル)<br>";
 
 //前月・次月の年月を取得、strotimeでUNIXタイムスタンプ型式にしてからdateでフォーマット
 $prev = date('Y-m', strtotime('-1 month', $timestamp));
 $next = date('Y-m', strtotime('+1 month', $timestamp));
-
+echo $prev."(\$prev 先月)<br>";
+echo $next."(\$next 来月)<br>";
 
 //該当月の日数を取得
 $day_count = date('t', $timestamp);//その月の日数
-
+echo $day_count."(\$day_count 該当月の日数)<br>";
 
 //１日が何曜日か
 $youbi = date('w', $timestamp);//曜日番号0[日曜]-6[土曜]
+echo $youbi."(\$youbi 1日の曜日,0[日曜]-6[土曜])<br>";
 
 //カレンダー作成の準備
 $weeks = [];
@@ -72,31 +73,31 @@ $week = '';
 //第１週目：空のセルを追加
 //str_repeat(文字列, 反復回数),木曜なら４回的な、カレンダーの最初の空欄何個いるかってこと
 $week .= str_repeat('<td></td>', $youbi);
+echo $week."<br>";
 
-//予定追加フォームに入力時、空なら追加埋まってたら変更する処理
 if(isset($_POST['eventDate'])&&isset($_POST['eventText'])){
-    $dbAdd=true;//追加と変更の判定flag的なもの
-    $_POST['eventDate'] = date("Y-m-d",strtotime($_POST['eventDate']));//単なる型式変更
+    $dbAdd=true;
+    $_POST['eventDate'] = date("Y-m-d",strtotime($_POST['eventDate']));
+    echo $_POST['eventText']."(\$_POST['eventText'] <br>";
+    echo $_POST['eventDate']."(\$_POST['eventDate'] <br>";
 
-    foreach($eventList as $event){//入ってるeventの配列回し用、
+    foreach($eventList as $event){//入ってるeventの配列回し用
         if($event['date']==$_POST['eventDate']){
             $dbAdd = false;
         }
     }
-    //ここからdbへのsqlの処理
     if($dbAdd){
-    $addEvent = $dbh->prepare('INSERT INTO testevent_table(stu_id,eventDate,eventText) VALUES(:stu_id,:eventDate,:eventText)');
-    $addEvent->bindValue(':stu_id',1,PDO::PARAM_STR);//ユーザーIDを入れる、今はテストで１を入れている
+    $addEvent = $dbh->prepare('INSERT INTO testevent_table(eventDate,eventText) VALUES(:eventDate,:eventText)');
     $addEvent->bindValue(':eventDate',$_POST['eventDate'],PDO::PARAM_STR);
     $addEvent->bindValue(':eventText',$_POST['eventText'],PDO::PARAM_STR);
     $addEvent->execute();
+    echo "イベント登録 した。";
     header("Location: " . $_SERVER['PHP_SELF']);
     }else{
-    $updateEvent = $dbh->prepare('UPDATE testevent_table SET eventText = :eventText WHERE stu_id = :stu_id AND eventDate = :eventDate');
-    $updateEvent->bindValue(':stu_id',1,PDO::PARAM_STR);//ユーザーIDを入れる、今はテストで１を入れている
-    $updateEvent->bindValue(':eventDate',$_POST['eventDate'],PDO::PARAM_STR);
-    $updateEvent->bindValue(':eventText',$_POST['eventText'],PDO::PARAM_STR);
-    $updateEvent->execute();
+    $addEvent = $dbh->prepare('UPDATE testevent_table SET eventText = :eventText WHERE eventDate = :eventDate');
+    $addEvent->bindValue(':eventDate',$_POST['eventDate'],PDO::PARAM_STR);
+    $addEvent->bindValue(':eventText',$_POST['eventText'],PDO::PARAM_STR);
+    $addEvent->execute();
          echo "更新";
          header("Location: " . $_SERVER['PHP_SELF']);
          exit();
@@ -104,10 +105,13 @@ if(isset($_POST['eventDate'])&&isset($_POST['eventText'])){
     }
 }
 
+    echo "\$date(for文で繰り返して取得されている)<br>";
 for($day = 1; $day <= $day_count; $day++, $youbi++){//1から、その月の日数まで
     $day=str_pad($day, 2, 0, STR_PAD_LEFT);
+    echo $day."dayです<br>";
     $haveEvent = false;
     $date = $ym . '-' . $day; //年年年年-月月-日日
+    echo $date."<br>";
 
     foreach($eventList as $event){//入ってるeventの配列回し用
         if ($event['date'] == $date){
@@ -157,8 +161,6 @@ for($day = 1; $day <= $day_count; $day++, $youbi++){//1から、その月の日�
     <style>
       .container {
         font-family: 'Noto Sans', sans-serif;
-
-
         /*--GoogleFontsを使用--*/
           /* margin-top: 80px; */
           /* height: 600px;
@@ -191,23 +193,14 @@ for($day = 1; $day <= $day_count; $day++, $youbi++){//1から、その月の日�
 
         .border {
             border: solid 3px #555555;
-            margin-top: 5px;
-            margin-left: 5px;
             display: flex;
-            /* background-color: lightcoral; */
-            width: 400px;
-            height: 250px;
-            aspect-ratio: 5 / 3.8;
-
+            width: 900px;
+            height: 500px;
         }
 
         .eventForm {
-            width: 200px;
-            margin-left: 4px;
-            display:none;
-        }
-        .show{
-            display: block;
+            margin-top: 50px;
+            margin-left: 20px;
         }
 
         .eventForm > form {
@@ -218,40 +211,20 @@ for($day = 1; $day <= $day_count; $day++, $youbi++){//1から、その月の日�
         textarea{
             resize: none;
         }
-
-        
         .eventBoard{
-            /* display:none; */
-            
             margin-left: 8px;
             margin-top: 10px;
         }
-        .addTab{
-            margin-top: 205px;
-            text-align: center;
-            width: 25px;
-            height: 25px;
-        }
-        .calendarHeader{
-            
-        }
-        #frame{
-
-        }
-     
- 
-
-
 
 
     </style>
 </head>
 <body>
-<div id='frame'>
+    <h2>カレンダー作製所</h2>
     <div class="border">
         <div class="container">
-            <h4 class="calendarHeader"><a href="?ym=<?php echo $prev; ?>">&lt;</a><?php echo $html_title; ?><a href="?ym=<?php echo $next; ?>">&gt;</a></h4>
-            <table class="table-bordered">
+            <h4><a href="?ym=<?php echo $prev; ?>">&lt;</a><?php echo $html_title; ?><a href="?ym=<?php echo $next; ?>">&gt;</a></h4>
+            <table class="table table-bordered">
 
                 <tr>
                     <th>日</th>
@@ -269,43 +242,28 @@ for($day = 1; $day <= $day_count; $day++, $youbi++){//1から、その月の日�
                 ?>
             </table>
         </div>
-        <button class="addTab">+</button>
-        <div class="eventBoard">
-                    <?PHP 
-                     $i = 1;
-                     echo "-「直近の予定」-<br>";
-                    foreach($eventList as $event){//入ってるeventの配列回し用
-                    if($i>3){
-                        echo "etc..";
-                        break;
-                    }
+            <div class="eventForm">
+                <form method="post" action="">
+                    <input type="date" name="eventDate">
+                    <textarea name="eventText" cols="40" rows="10"></textarea>
+                    <input type="submit" value="追加">
+                </form>
+            </div>
+
+            <div class="eventBoard">
+                    <h3>予定だよ</h3>
+                    <?PHP foreach($eventList as $event){//入ってるeventの配列回し用
                     $formatDate=date("m月j日", strtotime($event['date']));
                     echo "・",$formatDate.":".$event['Text'].
                     "<form method=post>
                     <input type='hidden' name='deleteDate' value={$event['date']}>
-                    <input type='submit' value='完了'>
+                    <input type='submit' value='終わった。'>
                     </form>"
                     ;
-                    $i++;
-                    }?>
-        </div>
-    </div>
-    <div class="eventForm">
-        <form method="post" action="">
-            <input type="date" name="eventDate">
-            <textarea name="eventText" cols="40" rows="10"></textarea>
-            <input type="submit" value="追加">
-        </form>
-    </div>
-</div>
 
-    <script>
-        const addTab = document.getElementsByClassName('addTab');
-        const eventForm = document.getElementsByClassName('eventForm');
-        addTab[0].addEventListener('click',()=>{
-            eventForm[0].classList.toggle('show');
-        })
-    </script>
+    }?>
+            </div>
+    </div>
+        
 </body>
-
 </html>
