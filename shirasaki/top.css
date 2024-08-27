@@ -23,15 +23,16 @@
     border-bottom: none;
   }
 
-  .calendar{
+  /* .calendar{
 
-    width: 500px;
-    height: 330px;
+    width: 40%;
+
     margin: 10px;
     margin-right: 100px;
     border: 1px solid #333;
     background: #e7edf8;
-  }
+    aspect-ratio: 5 / 3.8;
+  } */
 
   .search{
     border: 1px solid #333;

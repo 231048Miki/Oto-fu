@@ -20,11 +20,9 @@
 </div>
 
 <div class="flex1">
-    <div class="calendar">
         <?php 
-        require_once("calendar.php");
+        require_once("myCalendar.php");
         ?>
-    </div>
 
     <!-- <div class="search">
     検索フォーム予定地
