@@ -1,8 +1,8 @@
 <?php
     $dbserver = "localhost";
     $dbname = "otofu_mydb";
-    $dbuser = "pojobot_user";
-    $dbpasswd = "Hirata317";
+    $dbuser = "";
+    $dbpasswd = "";
 
     global $dbh;
     $opt = [
