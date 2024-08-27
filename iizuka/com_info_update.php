@@ -37,7 +37,7 @@
 
     if ($_SERVER["REQUEST_METHOD"] != "POST") {
         echo <<<___EOF___
-            <form method="POST" enctype="multipart/form-data" class="com_form">
+            <form method="POST" action="" enctype="multipart/form-data" class="com_form">
             <input type="hidden" name="MAX_FILE_SIZE" value="1500000" /> 
             <h3>企業名：<input type="text" name="com_name" value="{$rec2['com_name']}" required></h3>
             <h3>採用担当者名：<input type="text" name="cmanager" value="{$rec2['manager']}" required></h3>
