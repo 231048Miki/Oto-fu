@@ -4,30 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" , href="header.css">
+    <link rel="stylesheet" , href="NGword_in.css">
+    <!-- <title>NGワード追加</title> -->
 </head>
 
 <body>
+    <div class="header">
+        <h2 class="sns" onclick="適当にいれてね">job hunting</h2>
+        <div class="menu">
+            <a onclick="history.back(-1)" class="header-nav">戻る</a>
+        </div>
+    </div>
     <h2>ブロックワード追加</h2>
     <?php
     include '../db_open.php';
 
-    // $sql2 = "SELECT * FROM ngword_table";
-    // $sql_res2 = $dbh->query($sql2);
-    // $rec2 = $sql_res2->fetch();
+    $sql2 = "SELECT * FROM ngword_table";
+    $sql_res2 = $dbh->query($sql2);
+    $rec2 = $sql_res2->fetch();
 
     echo <<<___EOF
-        <form method="POST" enctype="multipart/form-data" class="ng_form" action="">
-            <input type="hidden" name="MAX_FILE_SIZE" value="1500000" /> 
-            <h3>ブロックワード：<input type="text" name="word" value="" required></h3>
-            <input type="submit" value="追加">
-        </form>
+
+        <div class="form">
+            <form method="POST" class="ng_form" action="">
+                <h3>ブロックワード：<input type="text" name="ngword" value="" required></h3>
+                <input type="submit" value="追加" class="button">
+            </form>
+            </div>
         ___EOF;
 
-        $word = $_POST['word'];
-
+    if (isset($_POST['ngword'])) {
+        $word = $_POST['ngword'];
         $sql = "INSERT INTO ngword_table (ngword) VALUES ('$word')";
         $sql_res = $dbh->query($sql);
 
+        echo <<<___EOF
+        <script>alert('追加されました！！')</script>
+        <script>location.href = "";</script>
+        ___EOF;
+    }
     ?>
 </body>
+
 </html>

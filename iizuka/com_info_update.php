@@ -67,39 +67,39 @@ ___EOF___;
             echo "<script>";
             echo "alert('ユーザー名が長すぎます')";
             echo "</script>";
-            echo '<script>location.href = "infoedit.php";</script>';
+            echo '<script>location.href = "";</script>';
         } elseif (mb_strlen($mail) > 100) {
             echo "<script>";
             echo "alert('メールアドレスが長すぎます')";
             echo "</script>";
-            echo '<script>location.href = "infoedit.php";</script>';
+            echo '<script>location.href = "";</script>';
         } elseif (mb_strlen($pass) > 8) {
             echo "<script>";
             echo "alert('パスワードが長すぎます')";
             echo "</script>";
-            echo '<script>location.href = "infoedit.php";</script>';
+            echo '<script>location.href = "";</script>';
         } elseif (!preg_match('/^[a-zA-Z0-9@._-]+$/u', $mail)) {
             echo "<script>";
             echo "alert('無効な文字が含まれています')";
             echo "</script>";
-            echo '<script>location.href = "infoedit.php";</script>';
+            echo '<script>location.href = "";</script>';
         } elseif (!preg_match('/^[a-zA-Z0-9]+$/u', $pass)) {
             echo "<script>";
             echo "alert('無効な文字が含まれています')";
             echo "</script>";
-            echo '<script>location.href = "infoedit.php";</script>';
+            echo '<script>location.href = "";</script>';
         } elseif (!preg_match('/^[0-9\-]+$/', $tell)) {
             echo "<script>";
             echo "alert('無効な文字が含まれています')";
             echo "</script>";
-            echo '<script>location.href = "infoedit.php";</script>';
+            echo '<script>location.href = "";</script>';
         } elseif ($sql_res) {
             $sql = "UPDATE company_table SET com_name='{$name}', manager='{$manager}, mail='{$mail}', tell='{$tell}', address='{$address}, pass='{$pass}' where userid = $userid";
             $sql_res = $dbh->query($sql);
             echo "<script>";
             echo "alert('更新が完了しました。')";
             echo "</script>";
-            echo '<script>location.href = "setting.php";</script>';
+            echo '<script>location.href = "";</script>';
         }
     }
 }
