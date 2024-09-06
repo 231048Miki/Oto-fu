@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" , href="com_top.css">
+    <!-- <title>企業用トップページ</title> -->
 </head>
 
 <body>
