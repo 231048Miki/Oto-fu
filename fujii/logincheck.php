@@ -1,5 +1,5 @@
 <?php
-include 'db_open.php';
+include '../db_open.php';
 
 // POSTメソッドでメールアドレスとパスワードを受け取る
 if (!isset($_POST['mail']) || !isset($_POST['pass'])) {
@@ -21,11 +21,12 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 // パスワード検証
 if ($user && password_verify($pass, $user['stu_pass'])) {
     // ログイン成功
+    session_start();
     $_SESSION['user_id'] = $user['stu_id'];
     $_SESSION['user_name'] = $user['stu_name'];
     echo "ログイン成功！";
     // 必要に応じてリダイレクト
-    // header('Location: welcome.php');
+    header('Location: ../shirasaki/top.php');
     // exit;
 } else {
     // ログイン失敗

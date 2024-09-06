@@ -1,6 +1,7 @@
 <?php
 //trust me
-include 'db_open.php';
+// include 'db_open.php';
+include '../db_open.php';
 
 $HTML_HEADER = <<<___EOF___
     <!DOCTYPE html>

@@ -1,18 +1,23 @@
 <?PHP 
 require("../db_open.php");
+require("xssBlock.php");
 $eventList=[];
+
+if(!isset($_SESSION['user_id'])){
+    $_SESSION['user_id']=1;//テスト用後で消せ
+}
 
 //完了ボタン押した時用処理
 if(isset($_POST['deleteDate'])){
-    $delEvent = $dbh->prepare('DELETE FROM testevent_table WHERE eventDate = :eventDate AND stu_id = :stu_id');
+    $delEvent = $dbh->prepare('DELETE FROM calendar_table WHERE eventDate = :eventDate AND stu_id = :stu_id');
     $delEvent->bindValue(':eventDate',$_POST['deleteDate'],PDO::PARAM_STR);
-    $delEvent->bindValue(':stu_id',1,PDO::PARAM_STR);//ユーザーIDを入れる、今はテストで１を入れている
+    $delEvent->bindValue(':stu_id',$_SESSION['user_id'],PDO::PARAM_STR);//ユーザーIDを入れる、今はテストで１を入れている
     $delEvent->execute();
 }
 
 //$eventList[]にdbから取得したデータを格納、['data']と['Text']がキーになって一つの予定を構成している。
-$getEventRec = $dbh->prepare('SELECT * FROM testevent_table WHERE stu_id = :stu_id');
-$getEventRec->bindValue(':stu_id',1,PDO::PARAM_STR);//ユーザーIDを入れる、今はテストで１を入れている
+$getEventRec = $dbh->prepare('SELECT * FROM calendar_table WHERE stu_id = :stu_id');
+$getEventRec->bindValue(':stu_id',$_SESSION['user_id'],PDO::PARAM_STR);//ユーザーIDを入れる、今はテストで１を入れている
 $getEventRec->execute();
 while($event = $getEventRec->fetch(PDO::FETCH_ASSOC)){
     $eventList[]= 
@@ -75,6 +80,8 @@ $week .= str_repeat('<td></td>', $youbi);
 
 //予定追加フォームに入力時、空なら追加埋まってたら変更する処理
 if(isset($_POST['eventDate'])&&isset($_POST['eventText'])){
+    $_POST['eventDate']=str2html($_POST['eventDate']);
+    $_POST['eventText']=str2html($_POST['eventText']);
     $dbAdd=true;//追加と変更の判定flag的なもの
     $_POST['eventDate'] = date("Y-m-d",strtotime($_POST['eventDate']));//単なる型式変更
 
@@ -85,15 +92,15 @@ if(isset($_POST['eventDate'])&&isset($_POST['eventText'])){
     }
     //ここからdbへのsqlの処理
     if($dbAdd){
-    $addEvent = $dbh->prepare('INSERT INTO testevent_table(stu_id,eventDate,eventText) VALUES(:stu_id,:eventDate,:eventText)');
-    $addEvent->bindValue(':stu_id',1,PDO::PARAM_STR);//ユーザーIDを入れる、今はテストで１を入れている
+    $addEvent = $dbh->prepare('INSERT INTO calendar_table(stu_id,eventDate,eventText) VALUES(:stu_id,:eventDate,:eventText)');
+    $addEvent->bindValue(':stu_id',$_SESSION['user_id'],PDO::PARAM_STR);//ユーザーIDを入れる、今はテストで１を入れている
     $addEvent->bindValue(':eventDate',$_POST['eventDate'],PDO::PARAM_STR);
     $addEvent->bindValue(':eventText',$_POST['eventText'],PDO::PARAM_STR);
     $addEvent->execute();
     header("Location: " . $_SERVER['PHP_SELF']);
     }else{
-    $updateEvent = $dbh->prepare('UPDATE testevent_table SET eventText = :eventText WHERE stu_id = :stu_id AND eventDate = :eventDate');
-    $updateEvent->bindValue(':stu_id',1,PDO::PARAM_STR);//ユーザーIDを入れる、今はテストで１を入れている
+    $updateEvent = $dbh->prepare('UPDATE calendar_table SET eventText = :eventText WHERE stu_id = :stu_id AND eventDate = :eventDate');
+    $updateEvent->bindValue(':stu_id',$_SESSION['user_id'],PDO::PARAM_STR);//ユーザーIDを入れる、今はテストで１を入れている
     $updateEvent->bindValue(':eventDate',$_POST['eventDate'],PDO::PARAM_STR);
     $updateEvent->bindValue(':eventText',$_POST['eventText'],PDO::PARAM_STR);
     $updateEvent->execute();
@@ -152,17 +159,10 @@ for($day = 1; $day <= $day_count; $day++, $youbi++){//1から、その月の日�
 <head>
     <meta charset="utf-8">
     <title>PHPカレンダー</title>
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet"> -->
     <style>
       .container {
         font-family: 'Noto Sans', sans-serif;
 
-
-        /*--GoogleFontsを使用--*/
-          /* margin-top: 80px; */
-          /* height: 600px;
-          width: 300px; */
       }
 
         tr {
@@ -191,7 +191,7 @@ for($day = 1; $day <= $day_count; $day++, $youbi++){//1から、その月の日�
 
         .border {
             border: solid 3px #555555;
-            margin-top: 5px;
+            margin-top: 16px;
             margin-left: 5px;
             display: flex;
             /* background-color: lightcoral; */
