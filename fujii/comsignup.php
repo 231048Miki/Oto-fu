@@ -9,6 +9,7 @@ $HTML_HEADER = <<<___EOF___
         <head>
             <meta charset="UTF-8">
             <link rel="stylesheet" , href="signup.css">
+            <link rel="stylesheet" , href="../iizuka/header.css">
             <title>企業用新規登録</title>     
         </head>
         <body>
@@ -20,16 +21,18 @@ $HTML_FOOTER = <<<___EOF___
     ___EOF___;
 
 $HTML_BODY = <<<___EOF___
+    <div class="header">
     <div class="tologin">
         <ul>
-            <a href="login.php">就活サイト(仮)</a>
+            <h2>
+                <a href="login.php"  class="web-name">job hunting</a>
+            </h2>
         </ul>
     </div>
-    <div class=tocomsignup>
-        <ul>
-            <a href="signup.php">学生登録</a>
-        </ul>
-        
+        <div class="menu">
+            <a onclick="history.back(-1)" class="header-nav">戻る</a>
+            <a href="signup.php" class="header-nav">学生登録</a>
+        </div>
     </div>
     <div>
     <h1>企業用用新規登録</h1>

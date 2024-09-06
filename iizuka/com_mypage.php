@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" , href="com_mypage.css">
     <link rel="stylesheet" , href="header.css">
+    <!-- <title>企業用マイページ</title> -->
 </head>
 
 <body>
