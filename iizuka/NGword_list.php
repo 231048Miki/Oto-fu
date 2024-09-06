@@ -23,14 +23,22 @@
     $sql_res = $dbh->query($sql);
 
     while ($rec = $sql_res->fetch()) {
+        $id = $rec['ngword_id'];
         echo <<<___EOF
         <div class="flex">
-            <p class="form">$rec[ngword]</p>
+            <p class="form-p">$rec[ngword]</p>
             <div class="form">
                 <form action="" method="post">
                     <input type="hidden" name="delete" value="$rec[ngword_id]">
                     <input type="submit" name="submit" value = "削除" class="trash">
                 </form>
+
+            <div class="form">
+                <form action="NGword_update.php" method="POST">
+                    <input type="hidden" name="update" value="$id">
+                    <input type="submit" value="更新" class="trash">
+                </form>
+            </div>
             </div>
         </div>
      ___EOF;
@@ -47,6 +55,7 @@
         <script>location.href = "";</script>
         ___EOF;
     }
+
     ?>
 </body>
 
