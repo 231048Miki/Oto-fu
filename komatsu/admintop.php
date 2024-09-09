@@ -5,21 +5,21 @@
   <style>
     .right {
       position: absolute;
-      right: 250px;
+      right: 300px;
       top: 450px;
     }
     .right1 {
       position: absolute;
-      right: 250px;
+      right: 300px;
       top: 250px;
     }
     .left {
       position: absolute;
-      left: 250px;
+      left: 300px;
     }
     .left1 {
       position: absolute;
-      left: 250px;
+      left: 300px;
     }
     .bottom {
       position: absolute;
@@ -30,62 +30,52 @@
       position: relative;
       top: 60px;
     }
-
-    /* ボタンのサイズを変更するCSS */
     input[type="button"] {
-      width: 150px;   /* 幅を指定 */
-      height: 50px;   /* 高さを指定 */
-      font-size: 16px;  /* 文字サイズを指定 */
+      width: 150px;   
+      height: 50px;   
+      font-size: 15px;  
     }
-
-    /* 特定のボタンのサイズを変更する例 */
-    .large-button {
-      width: 200px;
-      height: 60px;
+    .rounded {
+      border-radius: 10px;
     }
-    .small-button {
-      width: 100px;
-      height: 40px;
-    }
-
   </style>
 </head>
 <body>
   <br><br><br><br><br><br>
-  <input type="button" onclick="location.href='./admintop.php'" value="ブロックワード編集" class="large-button"><br><br><br>
+  <input type="button" onclick="location.href='./admintop.php'" value="ブロックワード編集"><br><br><br>
   
   <div class="left1">
-    <input type="button" onclick="location.href='./index.html'" value="追加" class="small-button">
+    <input type="button" class="rounded" onclick="location.href='./index.html'" value="追加">
   </div>
 
   <center>
-    <input type="button" onclick="location.href='./index.html'" value="編集" class="large-button">
+    <input type="button" class="rounded" onclick="location.href='./index.html'" value="編集">
   </center>
 
   <div class="right1">
-    <input type="button" onclick="location.href='./index.html'" value="一覧" class="small-button"><br><br><br>
+    <input type="button" class="rounded" onclick="location.href='./index.html'" value="一覧"><br><br><br>
   </div>
 
   <div class="aaa">
-    <input type="button" onclick="location.href='./admintop.php'" value="利用者関連" class="large-button"><br><br><br>
+    <input type="button" onclick="location.href='./admintop.php'" value="利用者関連"><br><br><br>
   </div>
 
   <br><br>
   <div class="left">
-    <input type="button" onclick="location.href='./index.html'" value="通報履歴" class="small-button">
+    <input type="button" class="rounded" onclick="location.href='./index.html'" value="通報履歴">
   </div>
 
   <center>
-    <input type="button" onclick="location.href='./index.html'" value="企業承認" class="large-button">
+    <input type="button" class="rounded" onclick="location.href='./index.html'" value="企業承認">
   </center>
 
   <div class="right">
-    <input type="button" onclick="location.href='./index.html'" value="パスワードリセット" class="small-button">
+    <input type="button" class="rounded" onclick="location.href='./index.html'" value="パスワードリセット">
   </div>
 
   <div class="bottom">
     <center>
-      <input type="button" onclick="location.href='./index.html'" value="タグ編集" class="large-button">
+      <input type="button" class="rounded" onclick="location.href='./index.html'" value="タグ編集">
     </center>
   </div>
 </body>
