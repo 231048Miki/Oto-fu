@@ -30,17 +30,17 @@ echo "<h4>name:".$_SESSION['user_name']."</h4><h4>id:".$_SESSION['user_id']."</h
     </div>
     <div class="headBanner">
         <button class="btn-gradient-3d-simple" onclick="location.href=''">就活アプリ</button>
-        <button class="btn-gradient-3d-simple" onclick="location.href='mypage.php'">マイページ</button>
+        <button class="btn-gradient-3d-simple" onclick="location.href='../mypage/mypage.php'">マイページ</button>
         <button class="btn-gradient-3d-simple" onclick="location.href='history'">閲覧履歴</button>
         <button class="btn-gradient-3d-simple" onclick="location.href='modoru'">戻る</button>
-        <button class="btn-gradient-3d-simple" onclick="location.href='../fujii/login.php'">ログアウト</button>
+        <button class="btn-gradient-3d-simple" onclick="location.href='../../fujii/login.php'">ログアウト</button>
     </div>
 
 </div>
 
 <div class="flex1">
         <?php 
-        require_once("myCalendar.php");
+        require_once("../calender/myCalendar.php");
         ?>
 
         <div class="form">
