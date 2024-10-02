@@ -10,7 +10,9 @@
 
 <body>
     <div class="header">
-        <h2 class="sns" onclick="適当にいれてね">job hunting</h2>
+        <h2>
+            <a href="login.php" class="web-name">job hunting</a>
+        </h2>
         <div class="menu">
             <a onclick="history.back(-1)" class="header-nav">戻る</a>
         </div>
@@ -19,14 +21,14 @@
     <?php
     include '../db_open.php';
 
-    if(isset($_POST['update'])){
-    $id = $_POST['update'];
+    if (isset($_POST['update'])) {
+        $id = $_POST['update'];
 
-    $sql = "SELECT * FROM ngword_table where ngword_id = $id";
-    $sql_res = $dbh->query($sql);
-    $rec = $sql_res->fetch();
+        $sql = "SELECT * FROM ngword_table where ngword_id = $id";
+        $sql_res = $dbh->query($sql);
+        $rec = $sql_res->fetch();
 
-    echo <<<___EOF
+        echo <<<___EOF
     <div class="form">
         <form class='form-up' action="" method="post">
             <input type='text' name='up' value='$rec[ngword]'>

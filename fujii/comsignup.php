@@ -35,7 +35,7 @@ $HTML_BODY = <<<___EOF___
         </div>
     </div>
     <div>
-    <h1>企業用用新規登録</h1>
+    <h2>企業用用新規登録</h2>
     </div>
     <div>
         <form action="comregister.php" method="post">

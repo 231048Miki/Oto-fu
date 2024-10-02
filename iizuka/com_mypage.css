@@ -27,6 +27,11 @@
         display: flex;
         align-items: center;
     }
+
+    .web-name{
+        color: #555;
+        text-decoration: none;
+    }
 }
 @media screen and (max-width:600px) {
     .cmypage_button {
