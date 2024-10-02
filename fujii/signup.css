@@ -1,0 +1,18 @@
+@charset "UTF-8";
+.center{
+    text-align: center;
+}
+
+.field{
+    height: 30px;
+}
+
+.submit{
+    height: 100px;
+    text-align: center;
+}
+
+.web-name{
+    color: #555;
+    text-decoration: none;
+}

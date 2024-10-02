@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+.upper{
+    text-align: center;
+}
+
+.sign{
+    width: 230px;
+    text-align: center;
+}
+
+.login{
+    width: 300px;
+    text-align: center;
+}
+.under{
+    display: flex;
+    justify-content: center;
+}
+
+.submit{
+    width: 50px;
+}
+
+.web-name{
+    color: #555;
+    text-decoration: none;
+}
+

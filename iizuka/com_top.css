@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+/* .calendar-val{
+    text-align: center;
+} */
+
+.talk{
+    text-align: left;
+    /* margin-left: 30px; */
+    position: absolute;
+    /* bottom: 500px; */
+    left: 50px;
+}
+
+.talk_t{
+    color: #181818;
+}
+
+.tag{
+  /* border-radius:10px 10px 10px 10px;
+  background: #6cdeff; */
+    box-shadow: 0 5px #8e9fea;
+    border-radius: 5px;
+    width: 200px;
+    padding: 15px;
+    box-sizing: border-box;
+    background: #c4d9fe;
+    color: #181818;
+    text-decoration: none;
+    text-align: center;
+    margin: 10px 0;
+
+    margin-right: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    position: absolute;
+    right: 50px;
+}
+.tag2{
+  /* border-radius:10px 10px 10px 10px;
+  background: #6cdeff; */
+    box-shadow: 0 5px #8e9fea;
+    border-radius: 5px;
+    width: 200px;
+    padding: 15px;
+    box-sizing: border-box;
+    background: #c4d9fe;
+    color: #181818;
+    text-decoration: none;
+    text-align: center;
+    margin: 10px 0;
+
+    margin-right: 30px;
+    margin-top: 70px;
+    display: flex;
+    position: absolute;
+    right: 50px;
+}
+
+.talkroom{
+  background-color: lightgoldenrodyellow;
+  margin-left: 100px;
+  margin-top: 30px;
+  width: 300px;
+  height: 300px;
+
+}
+
+.web-name{
+  color: #555;
+  text-decoration: none;
+}
+
+
+@media screen and (max-width:600px){
+    /* .headBanner{
+        display: none;
+      }
+      .r-header{
+        display: block;
+      }
+      .hamburger{
+        width: 60px;
+        height:60px;
+        display: block;
+    
+      } */
+  
+      /* ハンバーガーメニューの1番目の線 */
+      /* .hamburger.active span:first-of-type{
+        /* top: 50px;
+        transform: rotate(45deg);
+      } */
+  
+      /* ハンバーガーメニューの2番目の線 */
+      /* .hamburger.active span:nth-of-type(2){
+        opacity: 0; /* 透明にする */
+      /* } */
+
+      /* ハンバーガーメニューの3番目の線 */
+      /* .hamburger.active span:last-of-type{
+        top: 50px;
+        transform: rotate(-45deg);
+      }
+      .header{
+        text-align: right;
+      } */
+}

@@ -1,0 +1,46 @@
+@charset "UTF-8";
+.btn-gradient-3d-simple {
+
+    box-shadow: 0 5px #8E9FEA;
+    border-radius: 5px;
+    width: 200px;
+    padding: 15px;
+    box-sizing: border-box;
+    background: #C4D9FE;
+    color: #181818;
+    text-decoration: none;
+    text-align: center;
+    margin: 10px 0;
+    margin-left: 20px;
+    color: #181818;
+
+  }
+
+  .otu{
+    border: solid 3px  #555555;
+    margin-left: 20px;
+    margin-top: 50px;
+    width: 220px;
+    padding-left: 20px;
+
+  }
+  
+.menu{
+    margin-top: 100px;
+}
+
+.menu1,.menu2{
+    margin-left: 250px;
+}
+
+.menu1>button{
+    margin-left: 70px;
+}
+
+.menu2>button{
+    margin-left: 100px;
+    margin-top: 100px;
+}
+  @media (max-width: 800px){
+    
+  }
