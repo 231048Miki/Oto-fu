@@ -11,7 +11,6 @@
 }
 .menu{
     margin: 30px;
-    padding-left: 30px;
     margin-left: 500px;
 }
 
@@ -21,7 +20,7 @@
     color: #555;
     text-decoration: none;
     padding-left: 8px;
-    margin-left: 30px;
+    /* margin-left: 30px; */
 }
 .header-nav:before {
     content: "";
@@ -37,4 +36,16 @@
 }
 .header-nav:hover:before {
     transform: scale(1);
+}
+
+.web-name{
+    color: #555;
+    text-decoration: none;
+}
+
+@media screen and (max-width:600px){
+    .menu{
+        margin: 30px;
+        margin-left: 500px;
+    }
 }

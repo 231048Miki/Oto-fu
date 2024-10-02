@@ -236,7 +236,7 @@ for($day = 1; $day <= $day_count; $day++, $youbi++){//1から、その月の日�
             
         }
         #frame{
-
+            display: flex;
         }
      
  
