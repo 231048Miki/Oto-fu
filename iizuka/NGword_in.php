@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" , href="header.css">
     <link rel="stylesheet" , href="NGword_in.css">
-    <!-- <title>NGワード追加</title> -->
+    <title>NGワード追加</title>
 </head>
 
 <body>
     <div class="header">
         <h2>
-            <a href="login.php" class="web-name">job hunting</a>
+            <a href="com_top.php" class="web-name">job hunting</a>
         </h2>
         <div class="menu">
             <a onclick="history.back(-1)" class="header-nav">戻る</a>

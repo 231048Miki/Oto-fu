@@ -5,12 +5,15 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" , href="com_info_update.css">
     <link rel="stylesheet" , href="header.css">
+    <title>企業情報更新</title>
 </head>
 
 <body>
     <header>
         <div class="header">
-            <h2 class="sns">job hunting</h2>
+            <h2>
+                <a href="com_top.php" class="web-name">job hunting</a>
+            </h2>
             <div class="menu">
                 <a onclick="history.back(-1)" class="header-nav">戻る</a>
             </div>
@@ -55,54 +58,52 @@ ___EOF___;
         $mail = $_POST['mail'];
         $tell = $_POST['tell'];
         $address = $_POST['address'];
-        $pass = $_POST['pass'];
+        $pass = $_POST['pass']; {
 
-        {
-
-        // エラー処理
-        $sql = "SELECT * FROM user_table2 WHERE userid = $userid";
-        $sql_res = $dbh->query($sql);
-
-        if (mb_strlen($name) > 10) {
-            echo "<script>";
-            echo "alert('ユーザー名が長すぎます')";
-            echo "</script>";
-            echo '<script>location.href = "";</script>';
-        } elseif (mb_strlen($mail) > 100) {
-            echo "<script>";
-            echo "alert('メールアドレスが長すぎます')";
-            echo "</script>";
-            echo '<script>location.href = "";</script>';
-        } elseif (mb_strlen($pass) > 8) {
-            echo "<script>";
-            echo "alert('パスワードが長すぎます')";
-            echo "</script>";
-            echo '<script>location.href = "";</script>';
-        } elseif (!preg_match('/^[a-zA-Z0-9@._-]+$/u', $mail)) {
-            echo "<script>";
-            echo "alert('無効な文字が含まれています')";
-            echo "</script>";
-            echo '<script>location.href = "";</script>';
-        } elseif (!preg_match('/^[a-zA-Z0-9]+$/u', $pass)) {
-            echo "<script>";
-            echo "alert('無効な文字が含まれています')";
-            echo "</script>";
-            echo '<script>location.href = "";</script>';
-        } elseif (!preg_match('/^[0-9\-]+$/', $tell)) {
-            echo "<script>";
-            echo "alert('無効な文字が含まれています')";
-            echo "</script>";
-            echo '<script>location.href = "";</script>';
-        } elseif ($sql_res) {
-            $sql = "UPDATE company_table SET com_name='{$name}', manager='{$manager}, mail='{$mail}', tell='{$tell}', address='{$address}, pass='{$pass}' where userid = $userid";
+            // エラー処理
+            $sql = "SELECT * FROM user_table2 WHERE userid = $userid";
             $sql_res = $dbh->query($sql);
-            echo "<script>";
-            echo "alert('更新が完了しました。')";
-            echo "</script>";
-            echo '<script>location.href = "";</script>';
+
+            if (mb_strlen($name) > 10) {
+                echo "<script>";
+                echo "alert('ユーザー名が長すぎます')";
+                echo "</script>";
+                echo '<script>location.href = "";</script>';
+            } elseif (mb_strlen($mail) > 100) {
+                echo "<script>";
+                echo "alert('メールアドレスが長すぎます')";
+                echo "</script>";
+                echo '<script>location.href = "";</script>';
+            } elseif (mb_strlen($pass) > 8) {
+                echo "<script>";
+                echo "alert('パスワードが長すぎます')";
+                echo "</script>";
+                echo '<script>location.href = "";</script>';
+            } elseif (!preg_match('/^[a-zA-Z0-9@._-]+$/u', $mail)) {
+                echo "<script>";
+                echo "alert('無効な文字が含まれています')";
+                echo "</script>";
+                echo '<script>location.href = "";</script>';
+            } elseif (!preg_match('/^[a-zA-Z0-9]+$/u', $pass)) {
+                echo "<script>";
+                echo "alert('無効な文字が含まれています')";
+                echo "</script>";
+                echo '<script>location.href = "";</script>';
+            } elseif (!preg_match('/^[0-9\-]+$/', $tell)) {
+                echo "<script>";
+                echo "alert('無効な文字が含まれています')";
+                echo "</script>";
+                echo '<script>location.href = "";</script>';
+            } elseif ($sql_res) {
+                $sql = "UPDATE company_table SET com_name='{$name}', manager='{$manager}, mail='{$mail}', tell='{$tell}', address='{$address}, pass='{$pass}' where userid = $userid";
+                $sql_res = $dbh->query($sql);
+                echo "<script>";
+                echo "alert('更新が完了しました。')";
+                echo "</script>";
+                echo '<script>location.href = "";</script>';
+            }
         }
     }
-}
     ?>
 </body>
 

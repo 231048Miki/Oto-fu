@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" , href="com_mypage.css">
     <link rel="stylesheet" , href="header.css">
-    <!-- <title>企業用マイページ</title> -->
+    <title>企業マイページ</title>
 </head>
 
 <body>
     <header>
         <div class="header">
             <h2>
-                <a href="login.php" class="web-name">job hunting</a>
+                <a href="com_top.php" class="web-name">job hunting</a>
             </h2>
             <div class="menu">
                 <a href="#" class="header-nav">マイページ</a>

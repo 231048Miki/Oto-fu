@@ -7,7 +7,7 @@
     <link rel="stylesheet" , href="com_top.css">
     <link rel="stylesheet" , href="header.css">
     <!-- <link rel="stylesheet" href="../shirasaki/top.css"> -->
-    <!-- <title>企業用トップページ</title> -->
+    <title>企業トップページ</title>
 </head>
 
 <body>
@@ -28,7 +28,7 @@
                 <!-- /ハンバーガーメニューの線 -->
             <!-- </div> -->
             <h2>
-                <a href="login.php"  class="web-name">job hunting</a>
+                <a href="com_top.php"  class="web-name">job hunting</a>
             </h2>
             <div class="menu">
                 <a href="#" class="header-nav">マイページ</a>
