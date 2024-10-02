@@ -10,7 +10,9 @@
 
 <body>
     <div class="header">
-        <h2 class="sns" onclick="適当にいれてね">job hunting</h2>
+        <h2>
+            <a href="login.php" class="web-name">job hunting</a>
+        </h2>
         <div class="menu">
             <a onclick="history.back(-1)" class="header-nav">戻る</a>
         </div>

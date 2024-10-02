@@ -24,3 +24,8 @@ input.button{
 	transform: translate(5px, 5px);
 	color: #27acd9;
 }
+
+.web-name{
+    color: #555;
+    text-decoration: none;
+}

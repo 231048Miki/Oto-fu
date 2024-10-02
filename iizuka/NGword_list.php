@@ -10,7 +10,9 @@
 
 <body>
     <div class="header">
-        <h2 class="sns" onclick="適当にいれてね">job hunting</h2>
+        <h2>
+            <a href="login.php" class="web-name">job hunting</a>
+        </h2>
         <div class="menu">
             <a onclick="history.back(-1)" class="header-nav">戻る</a>
         </div>
@@ -25,20 +27,22 @@
     while ($rec = $sql_res->fetch()) {
         $id = $rec['ngword_id'];
         echo <<<___EOF
-        <div class="flex">
-            <p class="form-p">$rec[ngword]</p>
-            <div class="form">
-                <form action="" method="post">
-                    <input type="hidden" name="delete" value="$rec[ngword_id]">
-                    <input type="submit" name="submit" value = "削除" class="trash">
-                </form>
+        <div class='center'>
+            <h2 class="form-p">$rec[ngword]</h2>
+            <div class="flex">
+                <div class="form">
+                    <form action="" method="post">
+                        <input type="hidden" name="delete" value="$rec[ngword_id]">
+                        <input type="submit" name="submit" value = "削除" class="button">
+                    </form>
+                </div>
 
-            <div class="form">
-                <form action="NGword_update.php" method="POST">
-                    <input type="hidden" name="update" value="$id">
-                    <input type="submit" value="更新" class="trash">
-                </form>
-            </div>
+                <div class="form">
+                    <form action="NGword_update.php" method="POST">
+                        <input type="hidden" name="update" value="$id">
+                        <input type="submit" value="更新" class="button">
+                    </form>
+                </div>
             </div>
         </div>
      ___EOF;

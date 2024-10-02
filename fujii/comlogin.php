@@ -34,7 +34,7 @@ $HTML_BODY = <<<___EOF___
         </div>
     </div>
 
-    <h1>企業ログイン</h1>
+    <h2>企業ログイン</h2>
     <div class="upper">
     <form method="POST" action="comlogincheck.php">
         <p class="text">メールアドレス：<input type='text' name='mail'  value='' required></p>

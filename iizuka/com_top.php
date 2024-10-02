@@ -6,7 +6,7 @@
     <!-- <link rel="stylesheet" , href="reset.css"> -->
     <link rel="stylesheet" , href="com_top.css">
     <link rel="stylesheet" , href="header.css">
-    <link rel="stylesheet" href="../shirasaki/top.css">
+    <!-- <link rel="stylesheet" href="../shirasaki/top.css"> -->
     <!-- <title>企業用トップページ</title> -->
 </head>
 
@@ -20,14 +20,16 @@
         ?>
         <div class="header">
             <!-- <div class="r-header"><button class="btn-gradient-3d-simple" onclick="location.href=''">就活アプリ</button></div> -->
-            <div class="hamburger">
+            <!-- <div class="hamburger"> -->
                 <!-- ハンバーガーメニューの線 -->
+                <!-- <span></span>
                 <span></span>
-                <span></span>
-                <span></span>
+                <span></span> -->
                 <!-- /ハンバーガーメニューの線 -->
-            </div>
-            <h2 class="sns" onclick="適当にいれてね">job hunting</h2>
+            <!-- </div> -->
+            <h2>
+                <a href="login.php"  class="web-name">job hunting</a>
+            </h2>
             <div class="menu">
                 <a href="#" class="header-nav">マイページ</a>
                 <a onclick="history.back(-1)" class="header-nav">戻る</a>
