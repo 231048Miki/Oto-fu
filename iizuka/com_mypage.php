@@ -5,22 +5,39 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" , href="com_mypage.css">
     <link rel="stylesheet" , href="header.css">
-    <!-- <title>企業用マイページ</title> -->
+    <title>企業マイページ</title>
 </head>
 
 <body>
     <header>
         <div class="header">
             <h2>
-                <a href="login.php" class="web-name">job hunting</a>
+                <a href="com_top.php" class="web-name">job hunting</a>
             </h2>
             <div class="menu">
-                <a href="#" class="header-nav">マイページ</a>
-                <a onclick="history.back(-1)" class="header-nav">戻る</a>
-                <!-- <a href="#" class="header-nav">登録</a> -->
-                <!-- <a href="#" class="header-nav">ログイン</a> -->
-                <a href="#" class="header-nav">ログアウト</a>
-                <a href="#" class="header-nav">退会</a>
+                <div id="nav-drawer">
+                    <!-- ハンバーガーメニュー開いたときの挙動。これないと機能しません -->
+                    <input id="nav-input" type="checkbox" class="nav-unshown">
+                    <!-- 三本線 -->
+                    <label id="nav-open" for="nav-input" class="nav-unshown"><span></span></label>
+                    <label class="nav-unshown" id="nav-close" for="nav-input"></label>
+
+                    <!-- レスポンシブが効いてるとき -->
+                    <div id="nav-content">
+                    <a href="com_mypage.php" class="header-nav">マイページ</a><br>
+                        <a onclick="history.back()" class="header-nav">戻る</a><br>
+                        <a href="logout.php" class="header-nav">ログアウト</a><br>
+                        <a href="../shirasaki/quit.php" class="header-nav">退会</a>
+                    </div>
+
+                    <!-- 通常メニュー -->
+                    <nav id="desktop-menu">
+                    <a href="com_mypage.php" class="header-nav">マイページ</a><br>
+                        <a onclick="history.back()" class="header-nav">戻る</a><br>
+                        <a href="logout.php" class="header-nav">ログアウト</a><br>
+                        <a href="../shirasaki/quit.php" class="header-nav">退会</a>
+                    </nav>
+                </div>
             </div>
         </div>
     </header>
