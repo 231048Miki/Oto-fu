@@ -15,24 +15,30 @@
             </h2>
             <div class="menu">
                 <div id="nav-drawer">
+                    <!-- ハンバーガーメニュー開いたときの挙動。これないと機能しません -->
                     <input id="nav-input" type="checkbox" class="nav-unshown">
+                    <!-- 三本線 -->
                     <label id="nav-open" for="nav-input" class="nav-unshown"><span></span></label>
                     <label class="nav-unshown" id="nav-close" for="nav-input"></label>
 
+                    <!-- レスポンシブが効いてるとき -->
                     <div id="nav-content">
-                        <a href="#" class="header-nav">マイページ</a><br>
+                        <a href="com_mypage.php" class="header-nav">マイページ</a><br>
                         <a onclick="history.back()" class="header-nav">戻る</a><br>
-                        <a href="#" class="header-nav">ログアウト</a><br>
+                        <a href="logout.php" class="header-nav">ログアウト</a><br>
                     </div>
+
+                    <!-- 通常メニュー -->
                     <nav id="desktop-menu">
-                        <a href="#" class="header-nav">マイページ</a>
+                        <a href="com_mypage.php" class="header-nav">マイページ</a>
                         <a onclick="history.back()" class="header-nav">戻る</a>
-                        <a href="#" class="header-nav">ログアウト</a>
+                        <a href="logout.php" class="header-nav" id="logout">ログアウト</a>
                     </nav>
                 </div>
             </div>
         </div>
     </header>
+
 </body>
 
 </html>

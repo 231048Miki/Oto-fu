@@ -110,7 +110,7 @@ header {
     right: 0;
     z-index: 9999;
     width: 90%;
-    max-width: 330px;
+    max-width: 230px;
     height: 100%;
     background: #fff;
     transition: .3s ease-in-out;
@@ -118,12 +118,12 @@ header {
     transform: translateX(105%);
 }
 
-#nav-input:checked ~ #nav-close {
+#nav-input:checked~#nav-close {
     display: block;
     opacity: .5;
 }
 
-#nav-input:checked ~ #nav-content {
+#nav-input:checked~#nav-content {
     -webkit-transform: translateX(0%);
     transform: translateX(0%);
     box-shadow: -6px 0 25px rgba(0, 0, 0, .15);
@@ -142,6 +142,7 @@ header {
     .nav-unshown {
         display: none;
     }
+
     #nav-open {
         display: none;
     }
@@ -152,15 +153,19 @@ header {
     #nav-open {
         display: block;
     }
+
     #desktop-menu {
         display: none;
     }
+
     #nav-drawer {
         display: block;
     }
+
     .nav-shown {
         display: block;
     }
+
     .nav-unshown {
         display: none;
     }
@@ -168,5 +173,11 @@ header {
     #nav-drawer {
         position: absolute;
         right: 0;
+    }
+
+    .header-nav {
+        padding-left: 75px;
+        /* padding-top: 20px; */
+        margin-top: 20px;
     }
 }
