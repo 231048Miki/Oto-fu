@@ -1,6 +1,6 @@
 <?PHP 
-require("../db_open.php");
-require("xssBlock.php");
+require("../../db_open.php");
+require("../xssBlock.php");
 $eventList=[];
 
 if(!isset($_SESSION['user_id'])){
@@ -204,6 +204,9 @@ for($day = 1; $day <= $day_count; $day++, $youbi++){//1から、その月の日�
         .eventForm {
             width: 200px;
             margin-left: 4px;
+            position: relative;
+            bottom: 200px;
+            left: 200px;
             display:none;
         }
         .show{
@@ -236,7 +239,7 @@ for($day = 1; $day <= $day_count; $day++, $youbi++){//1から、その月の日�
             
         }
         #frame{
-            display: flex;
+            
         }
      
  
