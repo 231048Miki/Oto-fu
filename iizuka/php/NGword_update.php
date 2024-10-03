@@ -3,8 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" , href="header.css">
-    <link rel="stylesheet" , href="NGword_update.css">
+    <link rel="stylesheet" , href="../header.css">
+    <link rel="stylesheet" , href="../css/NGword_update.css">
+    <meta name="viewport" content="width=device-width" />
     <title>NGワード更新</title>
 </head>
 
@@ -19,7 +20,7 @@
     </div>
     <h2>ブロックワード更新</h2>
     <?php
-    include '../db_open.php';
+    include '../../db_open.php';
 
     if (isset($_POST['update'])) {
         $id = $_POST['update'];

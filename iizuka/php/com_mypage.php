@@ -3,8 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" , href="com_mypage.css">
-    <link rel="stylesheet" , href="header.css">
+    <link rel="stylesheet" , href="../css/com_mypage.css">
+    <link rel="stylesheet" , href="../header.css">
+    <meta name="viewport" content="width=device-width" />
     <title>企業マイページ</title>
 </head>
 
@@ -24,23 +25,25 @@
 
                     <!-- レスポンシブが効いてるとき -->
                     <div id="nav-content">
-                    <a href="com_mypage.php" class="header-nav">マイページ</a><br>
+                        <a href="com_mypage.php" class="header-nav">マイページ</a><br>
                         <a onclick="history.back()" class="header-nav">戻る</a><br>
-                        <a href="logout.php" class="header-nav">ログアウト</a><br>
-                        <a href="../shirasaki/quit.php" class="header-nav">退会</a>
+                        <a href="../logout.php" class="header-nav">ログアウト</a><br>
+                        <a href="../../shirasaki/quit/quit.php" class="header-nav">退会</a>
                     </div>
 
                     <!-- 通常メニュー -->
                     <nav id="desktop-menu">
-                    <a href="com_mypage.php" class="header-nav">マイページ</a><br>
+                        <a href="com_mypage.php" class="header-nav">マイページ</a><br>
                         <a onclick="history.back()" class="header-nav">戻る</a><br>
-                        <a href="logout.php" class="header-nav">ログアウト</a><br>
-                        <a href="../shirasaki/quit.php" class="header-nav">退会</a>
+                        <a href="../logout.php" class="header-nav">ログアウト</a><br>
+                        <a href="../../shirasaki/quit/quit.php" class="header-nav">退会</a>
+                    </nav>
                     </nav>
                 </div>
             </div>
         </div>
     </header>
+
 
     <?php
     session_start();
@@ -50,7 +53,7 @@
         exit();
     }
     $userid = $_SESSION["id"];
-    include '../db_open.php';
+    include '../../db_open.php';
 
     $sql = "SELECT * FROM company_table WHERE com_id = $userid";
     $sql_res = $dbh->query($sql);

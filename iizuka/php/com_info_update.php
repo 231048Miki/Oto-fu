@@ -3,8 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" , href="com_info_update.css">
-    <link rel="stylesheet" , href="header.css">
+    <link rel="stylesheet" , href="../css/com_info_update.css">
+    <link rel="stylesheet" , href="../header.css">
+    <meta name="viewport" content="width=device-width" />
     <title>企業情報更新</title>
 </head>
 
@@ -32,7 +33,7 @@
 
     //idに基づいて表示
     $userid = $_SESSION['id'];
-    include '../db_open.php';
+    include '../../db_open.php';
 
     $sql2 = "SELECT * FROM company_table WHERE com_id = $userid";
     $sql_res2 = $dbh->query($sql2);
