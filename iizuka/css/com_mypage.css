@@ -32,6 +32,10 @@
         color: #555;
         text-decoration: none;
     }
+
+    #desktop-menu {
+        display: flex; /* 要素を横並びにする */
+    }
 /* } */
 @media screen and (max-width:600px) {
     .cmypage_button {
