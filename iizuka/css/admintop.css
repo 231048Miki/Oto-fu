@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+.tag {
+    /* border-radius:10px 10px 10px 10px;
+        background: #6cdeff; */
+    box-shadow: 0 5px #8e9fea;
+    border-radius: 5px;
+    width: 200px;
+    padding: 15px;
+    box-sizing: border-box;
+    background: #c4d9fe;
+    color: #181818;
+    text-decoration: none;
+    text-align: center;
+    margin: 10px 0;
+
+    margin-right: 30px;
+    margin-bottom: 30px;
+}
+
+.word-edit {
+    text-align: center;
+}
+
+.user-connection {
+    text-align: center;
+}
