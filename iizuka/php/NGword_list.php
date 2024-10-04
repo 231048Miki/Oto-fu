@@ -3,15 +3,16 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" , href="header.css">
-    <link rel="stylesheet" , href="NGword_list.css">
-    <!-- <title>NGワード一覧</title> -->
+    <link rel="stylesheet" , href="../header.css">
+    <link rel="stylesheet" , href="../css/NGword_list.css">
+    <meta name="viewport" content="width=device-width" />
+    <title>NGワード一覧</title>
 </head>
 
 <body>
     <div class="header">
         <h2>
-            <a href="login.php" class="web-name">job hunting</a>
+            <a href="com_top.php" class="web-name">job hunting</a>
         </h2>
         <div class="menu">
             <a onclick="history.back(-1)" class="header-nav">戻る</a>
@@ -19,7 +20,7 @@
     </div>
     <h2>ブロックワード一覧</h2>
     <?php
-    include '../db_open.php';
+    include '../../db_open.php';
 
     $sql = "SELECT * FROM ngword_table";
     $sql_res = $dbh->query($sql);
