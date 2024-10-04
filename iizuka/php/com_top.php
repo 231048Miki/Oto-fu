@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <!-- <link rel="stylesheet" , href="reset.css"> -->
-    <link rel="stylesheet" , href="com_top.css">
-    <link rel="stylesheet" , href="header.css">
+    <link rel="stylesheet" , href="../css/com_top.css">
+    <link rel="stylesheet" , href="../header.css">
     <!-- <link rel="stylesheet" href="../shirasaki/top.css"> -->
     <title>企業トップページ</title>
 </head>
@@ -35,14 +35,14 @@
                         <div id="nav-content">
                             <a href="com_mypage.php" class="header-nav">マイページ</a><br>
                             <a onclick="history.back()" class="header-nav">戻る</a><br>
-                            <a href="#" class="header-nav">ログアウト</a><br>
+                            <a href="../logout.php" class="header-nav">ログアウト</a><br>
                         </div>
 
                         <!-- 通常メニュー -->
                         <nav id="desktop-menu">
-                            <a href="#" class="header-nav">マイページ</a>
+                            <a href="com_mypage.php" class="header-nav">マイページ</a>
                             <a onclick="history.back()" class="header-nav">戻る</a>
-                            <a href="#" class="header-nav" id="logout">ログアウト</a>
+                            <a href="../logout.php" class="header-nav" id="logout">ログアウト</a>
                         </nav>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
 
         <div class="flex1">
             <?php
-            require_once("../shirasaki/myCalendar.php");
+            require_once("../../shirasaki/calender/myCalendar.php");
             ?>
         </div>
         <div class="talkroom">

@@ -3,8 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" , href="header.css">
-    <link rel="stylesheet" , href="NGword_in.css">
+    <link rel="stylesheet" , href="../header.css">
+    <link rel="stylesheet" , href="../css/NGword_in.css">
+    <meta name="viewport" content="width=device-width" />
     <title>NGワード追加</title>
 </head>
 
@@ -19,7 +20,7 @@
     </div>
     <h2>ブロックワード追加</h2>
     <?php
-    include '../db_open.php';
+    include '../../db_open.php';
 
     $sql2 = "SELECT * FROM ngword_table";
     $sql_res2 = $dbh->query($sql2);
