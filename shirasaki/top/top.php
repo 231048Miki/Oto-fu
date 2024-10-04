@@ -1,3 +1,4 @@
+<?PHP if(isset($_SESSION_["keyword"])){unset($_SESSION_["keyword"]);}?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -48,11 +49,23 @@
 
             <div class="left">
                 <div class="block"> 
-                <form method="POST" action="../search/companySearch.php">
-                <input type="text" name="company">
-                <input type="submit" value="検索">
-                </form>
+                    <form method="POST" action="../search/companySearch.php">
+                    <input type="text" name="company" placeholder="空欄で全て表示">
+                    <input type="submit" value="検索">
+                    </form>
+
+                    <div class="tags">
+                        <form method="POST" action="../search/companySearch.php">
+                        転勤:有<input type="radio" id="tenkin" name="tenkin" value="y" checked>
+                        無<input type="radio" id="tenkin" name="tenkin" value="n">
+                        <br>
+                        勤務地:道内<input type="radio" id="basyo" name="basyo" value="h" checked>
+                        都心部<input type="radio" id="basyo" name="basyo" value="t">
+                        <br><input type="submit" value="タグで検索">
+                        </form>
+                    </div>
                 </div>
+
                 <div class="block"> 
                     掲示板予定
                 </div>
