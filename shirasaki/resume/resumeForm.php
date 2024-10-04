@@ -125,6 +125,8 @@ if(isset($_POST['hdl'])){
     <input type="submit" value="追加">
     </form>
     <?php getHistory($dbh,1)?>
+
+    <button onclick="location.href='resumeLayout.php'">履歴書もどき</button>
     </div>
     </div>
     </body>

@@ -51,7 +51,7 @@ if($timestamp === false){//エラー対策
 
 
 //今月の日付　フォーマット　例）2020-10-2
-$today = date('Y-m-j');//YYYY-mm-j 
+$today = date('Y-m-d');//YYYY-mm-j 
 
 
 //カレンダーのタイトルを作成　例）2020年10月
@@ -204,9 +204,10 @@ for($day = 1; $day <= $day_count; $day++, $youbi++){//1から、その月の日�
         .eventForm {
             width: 200px;
             margin-left: 4px;
-            position: relative;
-            bottom: 200px;
-            left: 200px;
+            margin-top: 10px;
+            /* position: relative; */
+            /* bottom: 200px;
+            left: 200px; */
             display:none;
         }
         .show{
@@ -239,7 +240,7 @@ for($day = 1; $day <= $day_count; $day++, $youbi++){//1から、その月の日�
             
         }
         #frame{
-            
+            display: flex;
         }
      
  
