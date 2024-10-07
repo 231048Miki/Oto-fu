@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" , href="stu_info_update.css">
-    <link rel="stylesheet" , href="header.css">
+    <link rel="stylesheet" , href="../css/stu_info_update.css">
+    <link rel="stylesheet" , href="../header.css">
     <title>学生情報更新</title>
 </head>
 
@@ -12,7 +12,7 @@
     <header>
         <div class="header">
         <h2>
-            <a href="../shirasaki/top.css" class="web-name">job hunting</a>
+            <a href="../../shirasaki/top/top.php" class="web-name">job hunting</a>
         </h2>
             <div class="menu">
                 <a onclick="history.back(-1)" class="header-nav">戻る</a>
@@ -24,13 +24,13 @@
     <?php
 
     //idに基づいて表示
-    session_start();
-    if (!isset($_SESSION['login'])) {
-        header("Location:");
-        // セッション追加頼む
-        exit();
-    }
-    function fileSave($com_name, $manager, $mail, $tell, $address,  $pass) {}
+    // session_start();
+    // if (!isset($_SESSION['login'])) {
+    //     header("Location:");
+    //     // セッション追加頼む
+    //     exit();
+    // }
+    function fileSave($stu_name, $stu_address, $stu_school, $stu_tell, $stu_mail, $stu_pass) {}
 
     // $userid = $_SESSION['id'];
     // include '../db_open.php';
@@ -48,9 +48,9 @@
             <h3>生年月日：<input type="text" name="birth" value="{$rec2['birth']}" required></h3>
             <h3>住所：<input type="text" name="address" value="{$rec2['stu_address']}" required></h3>
             <h3>電話番号：<input type="text" name="tell" value="{$rec2['stu_tell']}" required></h3>
-            <h3>学校名：<input type="text" name="school" value="{$rec2['school']}" required></h3>
-            <h3>パスワード：<input type="password" name="pass" value="{$rec2['pass']}" required></h3>
-            <h3>再入力：<input type="password" name="pass" value="{$rec2['pass']}" required></h3>
+            <h3>学校名：<input type="text" name="school" value="{$rec2['stu_school']}" required></h3>
+            <h3>パスワード：<input type="password" name="pass" value="{$rec2['stu_pass']}" required></h3>
+            <h3>再入力：<input type="password" name="pass" value="{$rec2['stu_pass']}" required></h3>
             <input type="submit" value="更新">
         </form>
 ___EOF___;
