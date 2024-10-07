@@ -24,7 +24,12 @@ if ($user && password_verify($pass, $user['stu_pass'])) {
     session_start();
     $_SESSION['user_id'] = $user['stu_id'];
     $_SESSION['user_name'] = $user['stu_name'];
+    $_SESSION['stu_id'] = $user['stu_id'];
     echo "ログイン成功！";
+    //作成時用、実装時に削除
+    echo $_SESSION['user_id'];
+    echo "<a href='chat/chat_top.php'>チャット</a></center>";
+    
     // 必要に応じてリダイレクト
     header('Location: ../shirasaki/top.php');
     // exit;
