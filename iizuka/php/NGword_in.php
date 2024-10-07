@@ -30,7 +30,7 @@
 
         <div class="form">
             <form method="POST" class="ng_form" action="">
-                <h3>ブロックワード：<input type="text" name="ngword" value="" required></h3>
+                <h2>ブロックワード：<input type="text" name="ngword" value="" required></h2>
                 <input type="submit" value="追加" class="button">
             </form>
             </div>

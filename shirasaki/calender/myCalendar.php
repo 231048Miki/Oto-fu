@@ -1,6 +1,6 @@
 <?PHP 
 require("../../db_open.php");
-require("../xssBlock.php");
+// require("../xssBlock.php");
 $eventList=[];
 
 if(!isset($_SESSION['user_id'])){
