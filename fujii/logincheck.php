@@ -1,5 +1,5 @@
 <?php
-include 'db_open.php';
+include '../db_open.php';
 
 // POSTメソッドでメールアドレスとパスワードを受け取る
 if (!isset($_POST['mail']) || !isset($_POST['pass'])) {
@@ -31,7 +31,7 @@ if ($user && password_verify($pass, $user['stu_pass'])) {
     echo "<a href='chat/chat_top.php'>チャット</a></center>";
     
     // 必要に応じてリダイレクト
-    // header('Location: welcome.php');
+    header('Location: ../shirasaki/top.php');
     // exit;
 } else {
     // ログイン失敗

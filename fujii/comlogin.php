@@ -8,6 +8,7 @@ $HTML_HEADER = <<<___EOF___
         <head>
             <meta charset="UTF-8">
             <link rel="stylesheet" , href="login.css">
+            <link rel="stylesheet" , href="../iizuka/header.css">
             <title>企業ログイン画面</title>     
         </head>
         <body>
@@ -19,9 +20,21 @@ $HTML_FOOTER = <<<___EOF___
     ___EOF___;
 
 $HTML_BODY = <<<___EOF___
-    <a href="">就活アプリ</a>
-    <a href="login.php">学生の方はこちら</a>
-    <h1>企業ログイン</h1>
+    <div class="header">
+    <div class="tologin">
+        <ul>
+            <h2>
+                <a href="login.php"  class="web-name">job hunting</a>
+            </h2>
+        </ul>
+    </div>
+        <div class="menu">
+            <a onclick="history.back(-1)" class="header-nav">戻る</a>
+            <a href="login.php" class="header-nav">学生の方はこちら</a>
+        </div>
+    </div>
+
+    <h2>企業ログイン</h2>
     <div class="upper">
     <form method="POST" action="comlogincheck.php">
         <p class="text">メールアドレス：<input type='text' name='mail'  value='' required></p>
@@ -29,7 +42,7 @@ $HTML_BODY = <<<___EOF___
         </div>
         <div class="under">
         <div class="sign">
-        <a href="comsignup.php">新規登録はこちら</a>
+        <a href="comsignup.php" class="header-nav">新規登録はこちら</a>
         </div>
         <div class="login">
         <p><input type="submit" class="submit" name="comlogin"></p>

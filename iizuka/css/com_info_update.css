@@ -1,14 +1,6 @@
 @charset "UTF-8";
-.center{
-    text-align: center;
-}
 
-.field{
-    height: 30px;
-}
-
-.submit{
-    height: 100px;
+.com_form{
     text-align: center;
 }
 
