@@ -1,0 +1,29 @@
+#messages {
+    max-height: 400px; /* 高さを指定 */
+    overflow-y: scroll; /* 縦方向にスクロール */
+     /* IE, Edge 対応 */
+    -ms-overflow-style: none;
+    /* Firefox 対応 */
+    scrollbar-width: none;
+    border: 1px solid #ccc; /* 境界線 */
+    padding: 10px; /* 内側の余白 */
+    margin-bottom: 10px; /* 下の余白 */
+}
+
+.my_message { 
+    margin: 10px; 
+}
+.mycomment { 
+    background-color: #D1F2EB; 
+    padding: 10px; 
+    border-radius: 5px; 
+}
+.says { 
+    background-color: #F2F2F2; 
+    padding: 10px; 
+    border-radius: 5px; 
+}
+.message_created_at { 
+    font-size: 0.8em; 
+    color: gray; 
+}
