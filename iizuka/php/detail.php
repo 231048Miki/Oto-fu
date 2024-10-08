@@ -61,7 +61,7 @@
     $rec2 = $sql_res2->fetch();
 
     echo <<<___EOF
-    <h3>$rec2[com_name]</h3>
+    <h2 class='company'>$rec2[com_name]</h2>
     
     <div class='info'>
 
