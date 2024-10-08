@@ -25,6 +25,7 @@ if ($user && password_verify($pass, $user['com_pass'])) {
     $_SESSION['user_id'] = $user['com_id'];
     $_SESSION['user_name'] = $user['com_name'];
     $_SESSION['com_id'] = $user['com_id'] ;
+    $_SESSION['user_type'] = 'company';
     echo "ログイン成功！";
     echo "<a href='chat/chat_top.php'>チャットへ</a>";
     // 必要に応じてリダイレクト

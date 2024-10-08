@@ -16,7 +16,9 @@ function check_relation_message($user_id, $destination_user_id) {
         $password = 'f21053879i';
         $dbh = new PDO($dsn, $user, $password);
 
-        $sql = "SELECT user_id, destination_user_id FROM message_relation WHERE (user_id = :user_id AND destination_user_id = :destination_user_id) OR (user_id = :destination_user_id AND destination_user_id = :user_id)";
+        $sql = "SELECT user_id, destination_user_id FROM message_relation 
+                WHERE (user_id = :user_id AND destination_user_id = :destination_user_id) 
+                OR (user_id = :destination_user_id AND destination_user_id = :user_id)";
         $stmt = $dbh->prepare($sql);
         $stmt->execute(array(':user_id' => $user_id, ':destination_user_id' => $destination_user_id));
         return $stmt->fetch();
@@ -51,13 +53,20 @@ try {
     $date->setTimeZone(new DateTimeZone('Asia/Tokyo'));
 
     $message_text = htmlspecialchars($_POST['text'], ENT_QUOTES, 'UTF-8');
-    $user_id = htmlspecialchars($_SESSION['user_id'], ENT_QUOTES, 'UTF-8');
+    $user_id = $_SESSION['user_id']; // 現在のユーザーIDを取得
     $destination_user_id = htmlspecialchars($_POST['destination_user_id'], ENT_QUOTES, 'UTF-8');
 
     if (empty($message_text)) {
         set_flash('danger', 'メッセージ内容が未記入です');
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        echo json_encode(['status' => 'error', 'message' => 'メッセージ内容が未記入です']);
         exit;
+    }
+
+    // チャット相手のタイプを判別しstucomを設定
+    if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'student') {
+        $stucom = 1; // 学生の場合
+    } else {
+        $stucom = 0; // 企業の場合
     }
 
     // DB接続と送られてきたデータを保存
@@ -67,24 +76,22 @@ try {
     $dbh = new PDO($dsn, $user, $password);
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $sql = 'INSERT INTO message (text, user_id, destination_user_id, created_at) VALUES (?, ?, ?, ?)';
+    $sql = 'INSERT INTO message (text, user_id, destination_user_id, created_at, stucom) VALUES (?, ?, ?, ?, ?)';
     $stmt = $dbh->prepare($sql);
-    $stmt->execute([$message_text, $user_id, $destination_user_id, $date->format('Y-m-d H:i:s')]);
+    $stmt->execute([$message_text, $user_id, $destination_user_id, $date->format('Y-m-d H:i:s'), $stucom]);
 
     // メッセージ関係を確認し、存在しない場合は新しく追加
     if (!check_relation_message($user_id, $destination_user_id)) {
         insert_message($user_id, $destination_user_id);
     }
 
-    // メッセージ送信成功のフラッシュメッセージを設定し、リダイレクト
-    set_flash('success', 'メッセージを送信しました');
-    header('Location: message.php?user_id=' . $destination_user_id);
+    // 成功時のJSONレスポンス
+    echo json_encode(['status' => 'success', 'message' => 'メッセージを送信しました。']);
     exit;
 
 } catch (Exception $e) {
     // 例外発生時のエラーメッセージ
     error_log('エラー発生: ' . $e->getMessage());
-    set_flash('error', ERR_MSG1);
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    echo json_encode(['status' => 'error', 'message' => 'エラーが発生しました。もう一度お試しください。']);
     exit;
 }

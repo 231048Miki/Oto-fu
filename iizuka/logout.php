@@ -14,22 +14,29 @@
 
     include "../db_open.php";
 
-
-
     //sessionない
     session_start();
     if (!isset($_SESSION['login'])) {
         header("Location:../fujii/login.php");
         exit();
-    }
+    }else{
+
     //session破棄
     $_SESSION = array();
     session_destroy();
-    ?>
 
-    <script>
-        alert('ログアウトしましたー');
-    </script>
+    //scriptでメッセージ
+    echo "<script>";
+    echo "alert('ログアウトしましたー')";
+    echo "</script>";
+
+    echo "<center>";
+    echo "<h1 class='log'>ログアウトしました</h1>";
+    echo "<a class='log' href=../fujii/login.php>ログイン画面へ</a>";    
+    echo "</center>";
+    }
+
+    ?>
 </body>
 
 </html>
