@@ -3,7 +3,7 @@
 .form{
     text-align: center;
 }
-input.button{
+.btn{
 	display: block;
 	text-align: center;
 	vertical-align: middle;
@@ -19,7 +19,7 @@ input.button{
 	box-shadow: 5px 5px #27acd9;
 	transition: 0.3s ease-in-out;
 }
-input.button{
+.btn{
 	/* box-shadow: none; */
 	transform: translate(5px, 5px);
 	color: #27acd9;

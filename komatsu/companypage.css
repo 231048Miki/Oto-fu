@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+.form{
+    text-align: center;
+    
+}
+
 .sns {
     font-size: 30px;
     padding-top: 5px;

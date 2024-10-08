@@ -22,9 +22,17 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 if ($user && password_verify($pass, $user['stu_pass'])) {
     // ログイン成功
     session_start();
+    
     $_SESSION['user_id'] = $user['stu_id'];
     $_SESSION['user_name'] = $user['stu_name'];
+    $_SESSION['stu_id'] = $user['stu_id'];
+    $_SESSION['user_type'] = 'student';
     echo "ログイン成功！";
+    //作成時用、実装時に削除
+    echo $_SESSION['user_id'];
+    echo "<a href='chat/chat_top.php'>チャット</a></center>";
+    
+    $_SESSION['login'] = 1;
     // 必要に応じてリダイレクト
     header('Location: ../shirasaki/top/top.php');
     // exit;
