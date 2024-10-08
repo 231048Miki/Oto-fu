@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+.info{
+    text-align: center;
+}
+
+input{
+    margin-left: 60px;
+}
+
+.company{
+    margin-left: 100px;
+}
+
+@media screen and (max-width:600px){
+	.company{
+        margin-left: 75px;
+    }
+}
