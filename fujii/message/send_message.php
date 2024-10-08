@@ -56,18 +56,17 @@ try {
     $user_id = $_SESSION['user_id']; // 現在のユーザーIDを取得
     $destination_user_id = htmlspecialchars($_POST['destination_user_id'], ENT_QUOTES, 'UTF-8');
 
-    // チャット相手のタイプを判別
-    // ここでuser_typeを確認し、stucomを設定
+    if (empty($message_text)) {
+        set_flash('danger', 'メッセージ内容が未記入です');
+        echo json_encode(['status' => 'error', 'message' => 'メッセージ内容が未記入です']);
+        exit;
+    }
+
+    // チャット相手のタイプを判別しstucomを設定
     if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'student') {
         $stucom = 1; // 学生の場合
     } else {
         $stucom = 0; // 企業の場合
-    }
-
-    if (empty($message_text)) {
-        set_flash('danger', 'メッセージ内容が未記入です');
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
-        exit;
     }
 
     // DB接続と送られてきたデータを保存
@@ -86,15 +85,13 @@ try {
         insert_message($user_id, $destination_user_id);
     }
 
-    // メッセージ送信成功のフラッシュメッセージを設定し、リダイレクト
-    set_flash('success', 'メッセージを送信しました');
-    header('Location: message.php?user_id=' . $destination_user_id);
+    // 成功時のJSONレスポンス
+    echo json_encode(['status' => 'success', 'message' => 'メッセージを送信しました。']);
     exit;
 
 } catch (Exception $e) {
     // 例外発生時のエラーメッセージ
     error_log('エラー発生: ' . $e->getMessage());
-    set_flash('error', ERR_MSG1);
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    echo json_encode(['status' => 'error', 'message' => 'エラーが発生しました。もう一度お試しください。']);
     exit;
 }
