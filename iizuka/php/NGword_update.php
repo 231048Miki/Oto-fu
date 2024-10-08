@@ -32,9 +32,9 @@
         echo <<<___EOF
     <div class="form">
         <form class='form-up' action="" method="post">
-            <input type='text' name='up' value='$rec[ngword]'>
-            <input type='hidden' name='id' value='$id'>
-            <input type="submit" name="submit" value = "更新" class="trash">
+            <h2>ワード：<input type='text' name='up' value='$rec[ngword]'></h2>
+            <input type='hidden' class='btn' name='id' value='$id'>
+            <input type="submit" class='btn' name="submit" value = "更新" class="trash">
         </form>
     </div>
     ___EOF;

@@ -1,82 +1,39 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="utf-8" />
-  <style>
-    .right {
-      position: absolute;
-      right: 300px;
-      top: 450px;
-    }
-    .right1 {
-      position: absolute;
-      right: 300px;
-      top: 250px;
-    }
-    .left {
-      position: absolute;
-      left: 300px;
-    }
-    .left1 {
-      position: absolute;
-      left: 300px;
-    }
-    .bottom {
-      position: absolute;
-      bottom: 30px;
-      left: 607px;
-    }
-    .aaa {
-      position: relative;
-      top: 60px;
-    }
-    input[type="button"] {
-      width: 150px;   
-      height: 50px;   
-      font-size: 15px;  
-    }
-    .rounded {
-      border-radius: 10px;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>管理者トップ</title>
+  <link rel="stylesheet" , href="../iizuka/header.css">
+  <link rel="stylesheet" , href="../iizuka/css/admintop.css">
+  <meta name="viewport" content="width=device-width" />
 </head>
+
 <body>
-  <br><br><br><br><br><br>
-  <input type="button" onclick="location.href='./admintop.php'" value="ブロックワード編集"><br><br><br>
-  
-  <div class="left1">
-    <input type="button" class="rounded" onclick="location.href='./index.html'" value="追加">
+  <header>
+    <div class="header">
+      <h2>
+        <a href="admintop.php" class="web-name">job hunting</a>
+      </h2>
+      <div class="menu">
+        <a onclick="history.back(-1)" class="header-nav">戻る</a>
+      </div>
+    </div>
+  </header>
+  <h2 class="page-name">管理者画面</h2>
+
+  <h3 class="sub-header">ブロックワード編集</h3>
+  <div class="word-edit">
+    <button class="tag" onclick="location.href='#'">追加</button>
+    <button class="tag" onclick="location.href='#'">一覧</button>
   </div>
 
-  <center>
-    <input type="button" class="rounded" onclick="location.href='./index.html'" value="編集">
-  </center>
-
-  <div class="right1">
-    <input type="button" class="rounded" onclick="location.href='./index.html'" value="一覧"><br><br><br>
-  </div>
-
-  <div class="aaa">
-    <input type="button" onclick="location.href='./admintop.php'" value="利用者関連"><br><br><br>
-  </div>
-
-  <br><br>
-  <div class="left">
-    <input type="button" class="rounded" onclick="location.href='./index.html'" value="通報履歴">
-  </div>
-
-  <center>
-    <input type="button" class="rounded" onclick="location.href='./index.html'" value="企業承認">
-  </center>
-
-  <div class="right">
-    <input type="button" class="rounded" onclick="location.href='./index.html'" value="パスワードリセット">
-  </div>
-
-  <div class="bottom">
-    <center>
-      <input type="button" class="rounded" onclick="location.href='./index.html'" value="タグ編集">
-    </center>
+  <h3 class="sub-header">利用者関連</h3>
+  <div class="user-connection">
+    <button class="tag" onclick="location.href='#'">通報履歴</button>
+    <button class="tag" onclick="location.href='#'">企業承認</button>
+    <button class="tag" onclick="location.href='#'">パスワードリセット</button>
   </div>
 </body>
+
 </html>

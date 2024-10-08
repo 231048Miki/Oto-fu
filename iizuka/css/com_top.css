@@ -16,50 +16,31 @@
     color: #181818;
 }
 
-.tag{
+.tag {
   /* border-radius:10px 10px 10px 10px;
-  background: #6cdeff; */
-    box-shadow: 0 5px #8e9fea;
-    border-radius: 5px;
-    width: 200px;
-    padding: 15px;
-    box-sizing: border-box;
-    background: #c4d9fe;
-    color: #181818;
-    text-decoration: none;
-    text-align: center;
-    margin: 10px 0;
+      background: #6cdeff; */
+  box-shadow: 0 5px #8e9fea;
+  border-radius: 5px;
+  width: 200px;
+  padding: 15px;
+  box-sizing: border-box;
+  background: #c4d9fe;
+  color: #181818;
+  text-decoration: none;
+  text-align: center;
+  margin: 10px 0;
 
-    margin-right: 30px;
-    margin-bottom: 30px;
-    display: flex;
-    position: absolute;
-    right: 50px;
-}
-.tag2{
-  /* border-radius:10px 10px 10px 10px;
-  background: #6cdeff; */
-    box-shadow: 0 5px #8e9fea;
-    border-radius: 5px;
-    width: 200px;
-    padding: 15px;
-    box-sizing: border-box;
-    background: #c4d9fe;
-    color: #181818;
-    text-decoration: none;
-    text-align: center;
-    margin: 10px 0;
-
-    margin-right: 30px;
-    margin-top: 70px;
-    display: flex;
-    position: absolute;
-    right: 50px;
+  /* margin-right: 30px;
+  margin: 65px; */
+  /* margin-bottom: 30px; */
+  /* display: flex;
+  position: absolute;
+  right: 50px; */
 }
 
 .talkroom{
   background-color: lightgoldenrodyellow;
-  margin-left: 100px;
+  margin-left: 30px;
   margin-top: 30px;
   width: 300px;
   height: 300px;
@@ -71,38 +52,29 @@
   text-decoration: none;
 }
 
+.btn-flex{
+  text-align: center;
+}
+@media(min-width:801px){
+.all{
+  display: flex;
+  white-space: pre;
+  ;
+}
+
+.btn-flex{
+  margin-left: 300px
+}
+}
+
 
 @media screen and (max-width:600px){
-    /* .headBanner{
-        display: none;
-      }
-      .r-header{
-        display: block;
-      }
-      .hamburger{
-        width: 60px;
-        height:60px;
-        display: block;
-    
-      } */
-  
-      /* ハンバーガーメニューの1番目の線 */
-      /* .hamburger.active span:first-of-type{
-        /* top: 50px;
-        transform: rotate(45deg);
-      } */
-  
-      /* ハンバーガーメニューの2番目の線 */
-      /* .hamburger.active span:nth-of-type(2){
-        opacity: 0; /* 透明にする */
-      /* } */
+    .tag{
+      position: static;
+      text-align: center;
+    }
 
-      /* ハンバーガーメニューの3番目の線 */
-      /* .hamburger.active span:last-of-type{
-        top: 50px;
-        transform: rotate(-45deg);
-      }
-      .header{
-        text-align: right;
-      } */
+    .all{
+      white-space: nowrap; 
+    }
 }
