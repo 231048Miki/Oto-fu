@@ -26,7 +26,7 @@ if ($user && password_verify($pass, $user['stu_pass'])) {
     $_SESSION['user_name'] = $user['stu_name'];
     echo "ログイン成功！";
     // 必要に応じてリダイレクト
-    header('Location: ../shirasaki/top.php');
+    header('Location: ../shirasaki/top/top.php');
     // exit;
 } else {
     // ログイン失敗

@@ -1,25 +1,28 @@
-<?PHP if(isset($_SESSION_["keyword"])){unset($_SESSION_["keyword"]);}
-require("../functions/xssBlock.php");
+<?php 
+require("searchCtl.php");
 require("../../db_open.php");
-require("../functions/userCtlFunc.php");
-session_start();
-
-$login = login($dbh);
-// var_dump($login);
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="../baseLayout.css">
+        <style>
+            .tagMenu{
+                border: solid,3px,black;
+                margin-left: 10%;
 
-        <title>トップページ</title>
+                width: 80%;
+                height: 60%;
+            }
+        </style>
+        <title>タイトル</title>
     </head>
 
     <body>
     <div class="main">
         <header>
-            <div class="title"><h1>トップページ</h1></div>
+            <div class="title"><h1>タグ検索</h1></div>
             <div class="banner">
             <button class="btn-gradient-3d-simple" onclick="location.href=''">就活アプリ</button>
             <button class="btn-gradient-3d-simple" onclick="location.href='../mypage/mypage.php'">マイページ</button>
@@ -36,38 +39,28 @@ $login = login($dbh);
                 <!-- /ハンバーガーメニューの線 -->
             </div>
             <ul class="slide-menu">
-            <li><a href="">マイページ</a></li>
-            <li><a href="">閲覧履歴</a></li>
-            <li><a href="">戻る</a></li>
-            <li><a href="">ログアウト</a></li>
+                <li><a href="">aaa</a></li>
+                <li><a href="">iii</a></li>
+                <li><a href="">uuu</a></li>
+                <li><a href="">eee</a></li>
+                <li><a href="">aaa</a></li>
+                <li><a href="">iii</a></li>
+                <li><a href="">uuu</a></li>
+                <li><a href="">eee</a></li>
+                <li><a href="">aaa</a></li>
+                <li><a href="">iii</a></li>
+                <li><a href="">uuu</a></li>
+                <li><a href="">eee</a></li>
             </ul>
         </header>
 
         <div class="mid">
-            <div class="right">
-                <div class="block" id="b1">
-                <?php 
-                require_once("../calender/myCalendar.php");
-                ?>
-                </div>
-                <div class="block"> 
-                    トークルーム予定
-                </div>
-            </div>
-
-            <div class="left">
-                <div class="block"> 
-                    <form method="POST" action="../search/companySearch.php">
-                    <input type="text" name="company" placeholder="空欄で全て表示">
-                    <input type="submit" value="検索">
-                    </form>
-                    <button class="" onclick="location.href='../search/tagSearch.php'">タグで検索</button>
-
-                </div>
-
-                <div class="block"> 
-                    掲示板予定
-                </div>
+            <div class="tagMenu">
+            <h3>・タグ一覧</h3>
+            <form method="post" action="dami-.php">
+            <?php getTag($dbh); ?>
+            <input type="submit"value="検索">
+            </form>
             </div>
         </div>
     </div>
@@ -78,4 +71,3 @@ $login = login($dbh);
         });
     </script>
     </body>
-</html>

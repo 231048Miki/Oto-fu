@@ -21,11 +21,11 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 // パスワード検証
 if ($user && password_verify($pass, $user['com_pass'])) {
     // ログイン成功
-    $_SESSION['user_id'] = $user['com_id'];
-    $_SESSION['user_name'] = $user['com_name'];
+    $_SESSION['com_id'] = $user['com_id'];
+    $_SESSION['com_name'] = $user['com_name'];
     echo "ログイン成功！";
     // 必要に応じてリダイレクト
-    // header('Location: welcome.php');
+    header('Location: welcome.php');
     // exit;
 } else {
     // ログイン失敗
