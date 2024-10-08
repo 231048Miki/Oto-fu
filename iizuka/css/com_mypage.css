@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@media screen and (min-width:600px) {
+/* @media screen and (min-width:600px) { */
     /* h3{
     margin-left: 30px;
     color: #181818;
@@ -32,7 +32,11 @@
         color: #555;
         text-decoration: none;
     }
-}
+
+    #desktop-menu {
+        display: flex; /* 要素を横並びにする */
+    }
+/* } */
 @media screen and (max-width:600px) {
     .cmypage_button {
         box-shadow: 0 5px #8E9FEA;

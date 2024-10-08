@@ -13,6 +13,7 @@ select {
   /* 中央寄せ */
   gap: 1rem;
   /* ボタン同士の間隔を調整 */
+  margin-bottom: 30px;
 }
 
 .form-p {

@@ -5,12 +5,15 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" , href="stu_info_update.css">
     <link rel="stylesheet" , href="header.css">
+    <title>学生情報更新</title>
 </head>
 
 <body>
     <header>
         <div class="header">
-            <h2 class="sns">job hunting</h2>
+        <h2>
+            <a href="../shirasaki/top.css" class="web-name">job hunting</a>
+        </h2>
             <div class="menu">
                 <a onclick="history.back(-1)" class="header-nav">戻る</a>
             </div>
