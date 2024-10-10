@@ -44,7 +44,6 @@ while($resume = $getRsume->fetch(PDO::FETCH_ASSOC)){
             $syumi = $resume['skill'];
             $photoID = $resume['photoID'];
 };
-echo "photo",$photoID;
 
 $count = 0;
 
@@ -268,7 +267,7 @@ while($qual = $get->fetch(PDO::FETCH_ASSOC)){
                 ?>  
                 </div>
                 <div class="kao">
-                    <img src=<?php $photoID?>>
+                    <img src="<?php echo $photoID?>">
                 </div>
             </div>    
 

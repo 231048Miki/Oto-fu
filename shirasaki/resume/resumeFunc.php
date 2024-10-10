@@ -142,7 +142,7 @@ function imgUpload($dbh,$id){
     $imgSave->bindValue(':stu_id',$id,PDO::PARAM_STR);//テストで１をいれてる、STUID
     $imgSave->bindValue(':photoID',$distoinationPath,PDO::PARAM_STR);
     $imgSave->execute();
-    echo "<h4>画像保存しました</h4>";
+    echo "<h4>画像保存しました</h4>".$distoinationPath;
     // echo "<p>アップロードに成功しました,保存された画像は以下です。</p>";
     // echo "<img src={$distoinationPath} style='width:300px'><br>";
     // echo "(保存ファイル名:{$distoinationPath})";

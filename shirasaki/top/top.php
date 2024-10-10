@@ -51,7 +51,7 @@ $login = login($dbh);
                 ?>
                 </div>
                 <div class="block"> 
-                    トークルーム予定
+                    <button class="btn-gradient-3d-simple" onclick="location.href='../../fujii/message/chat_top.php'">トークルームへ</button>
                 </div>
             </div>
 
@@ -66,7 +66,7 @@ $login = login($dbh);
                 </div>
 
                 <div class="block"> 
-                    掲示板予定
+                <button class="btn-gradient-3d-simple" onclick="location.href='../dummy/itiran.html'">掲示板一覧(はりぼて)へ</button>
                 </div>
             </div>
         </div>

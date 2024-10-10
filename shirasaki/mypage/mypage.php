@@ -1,3 +1,12 @@
+<?PHP if(isset($_SESSION_["keyword"])){unset($_SESSION_["keyword"]);}
+require("../functions/xssBlock.php");
+require("../../db_open.php");
+require("../functions/userCtlFunc.php");
+session_start();
+
+$login = login($dbh);
+// var_dump($login);
+?>
 <!DOCTYPE html>
 <html>
     <head>

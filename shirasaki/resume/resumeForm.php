@@ -30,7 +30,7 @@ if(isset($_POST['save'])){
     $skill = $_POST['skill'];
 }
 
-if(isset($_POST['img'])){
+if(isset($_POST['imgSend'])){
     imgUpload($dbh,$id);
 }
 
@@ -104,12 +104,6 @@ if(isset($_POST['hdl'])){
     <input type="submit" value="保存">
     </form>
     <br>
-    ・画像変更用フォーム
-    <form method="post"  action="" enctype="multipart/form-data">
-    <input type="hidden" name="max_file_size" value="2097152">
-    <input type="file" name="img"> 
-    <input type="submit" value="画像保存">
-    </form>
     </div>
 
     <div class="right">
@@ -135,7 +129,14 @@ if(isset($_POST['hdl'])){
     <input type="submit" value="追加">
     </form>
     <?php getHistory($dbh,$id)?>
-
+    <br>
+    ・画像変更用フォーム
+    <form method="post"  action="" enctype="multipart/form-data">
+    <input type="hidden" name="max_file_size" value="2097152">
+    <input type="hidden" name="imgSend" value="y">
+    <input type="file" name="img"> 
+    <input type="submit" value="画像保存">
+    </form>
     <button onclick="location.href='resumeLayout.php'">履歴書もどき</button>
     </div>
     </div>
