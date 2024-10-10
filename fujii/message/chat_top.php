@@ -8,7 +8,7 @@ $sql_res = $dbh->query($sql);
 while ($rec = $sql_res->fetch()) {
     //送信する相手のurl
     
-    
+    echo "<a>ID $rec[com_id]</a>";
     echo "<a>Company Name $rec[com_name]</a>";
     echo "<a href='message.php?user_id={$rec['com_id']}'>チャット</a> <br>";
    
@@ -19,7 +19,7 @@ while ($rec = $sql_res->fetch()) {
     $sql_res = $dbh->query($sql);
     while ($rec = $sql_res->fetch()) {
     //送信する相手のurl
-    
+    echo "<a>Student School $rec[stu_school]</a>";
     echo "<a>Student Name $rec[stu_name]</a>";
     echo "<a href='message.php?user_id={$rec['stu_id']}'>チャット</a> <br>";
    
