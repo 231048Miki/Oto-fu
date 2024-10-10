@@ -29,8 +29,8 @@ if ($user && password_verify($pass, $user['com_pass'])) {
     echo "ログイン成功！";
     echo "<a href='chat/chat_top.php'>チャットへ</a>";
     // 必要に応じてリダイレクト
-    // header('Location: welcome.php');
-    // exit;
+    header('Location: ../iizuka/php/com_top.php');
+    exit;
 } else {
     // ログイン失敗
     // echo var_dump($user);

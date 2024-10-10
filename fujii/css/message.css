@@ -1,29 +1,114 @@
-#messages {
-    max-height: 400px; /* 高さを指定 */
-    overflow-y: scroll; /* 縦方向にスクロール */
-     /* IE, Edge 対応 */
-    -ms-overflow-style: none;
-    /* Firefox 対応 */
-    scrollbar-width: none;
-    border: 1px solid #ccc; /* 境界線 */
-    padding: 10px; /* 内側の余白 */
-    margin-bottom: 10px; /* 下の余白 */
+/* 全体のスタイル */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
-.my_message { 
-    margin: 10px; 
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
 }
-.mycomment { 
-    background-color: #D1F2EB; 
-    padding: 10px; 
-    border-radius: 5px; 
+
+/* チャットウィンドウのスタイル */
+#messages {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    overflow-y: auto;
+    height: calc(100vh - 160px); /* 画面にフィットさせる */
+    margin-bottom: 20px;
 }
-.says { 
-    background-color: #F2F2F2; 
-    padding: 10px; 
-    border-radius: 5px; 
+
+.my_message {
+    margin-bottom: 15px;
 }
-.message_created_at { 
-    font-size: 0.8em; 
-    color: gray; 
+
+.mycomment {
+    background-color: #d1f2eb;
+    padding: 12px 18px;
+    border-radius: 15px;
+    text-align: right;
+    margin-left: auto;
+    width: fit-content;
+    max-width: 80%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.says {
+    background-color: #f2f2f2;
+    padding: 12px 18px;
+    border-radius: 15px;
+    text-align: left;
+    margin-right: auto;
+    width: fit-content;
+    max-width: 80%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.message_created_at {
+    font-size: 0.8em;
+    color: gray;
+    margin-top: 5px;
+    display: block;
+}
+
+/* メッセージ送信フォームのスタイル */
+form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-top: 1px solid #ddd;
+}
+
+textarea {
+    width: 80%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 1em;
+    resize: none;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:active {
+    background-color: #003f7f;
+}
+
+/* メディアクエリでモバイル対応 */
+@media (max-width: 768px) {
+    #messages {
+        padding: 15px;
+    }
+
+    textarea {
+        width: 75%;
+    }
+
+    button {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
 }
