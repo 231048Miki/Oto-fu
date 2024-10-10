@@ -60,7 +60,7 @@
         </div>
         <div class="all">
             <div class="talkroom">
-                トークルーム予定
+                <button class="tag" onclick="location.href='../../fujii/message/chat_top.php'">チャット一覧へ！</button>
             </div>
 
             <!-- #のところに遷移するところのパス入れてください -->
