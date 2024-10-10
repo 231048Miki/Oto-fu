@@ -65,8 +65,8 @@
     ?>
     <div class="mypage_boo">
         <button class="cmypage_button" onclick="location.href='#'">オファーリスト</button>
-        <button class="cmypage_button" onclick="location.href='#'">イベント</button>
-        <button class="cmypage_button" onclick="location.href='#'">ページ編集</button>
+        <!-- <button class="cmypage_button" onclick="location.href='#'">イベント</button> -->
+        <button class="cmypage_button" onclick="location.href='../../komastu/companypage.php'">ページ編集</button>
         <button class="cmypage_button" onclick="location.href='cominfo_update.php'">設定</button>
     </div>
 </body>
