@@ -19,7 +19,7 @@
 
         session_start();
         if (isset($_SESSION['user_name'])) {
-            echo "<h4>name:" . $_SESSION['user_name'] . "</h4><h4>id:" . $_SESSION['user_id'] . "</h4>";
+            // echo "<h4>name:" . $_SESSION['user_name'] . "</h4><h4>id:" . $_SESSION['user_id'] . "</h4>";
         }
         ?>
         <header>
