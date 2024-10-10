@@ -20,7 +20,6 @@ while ($rec = $sql_res->fetch()) {
     while ($rec = $sql_res->fetch()) {
     //送信する相手のurl
     
-    echo "<a>ID $rec[stu_id]</a>";
     echo "<a>Student Name $rec[stu_name]</a>";
     echo "<a href='message.php?user_id={$rec['stu_id']}'>チャット</a> <br>";
    

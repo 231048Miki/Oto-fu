@@ -69,9 +69,10 @@ if(strlen($name) > 100 && strlen($name) != 0){
 
     // SQLを実行
     if ($stmt->execute()) {
-        echo "Record inserted successfully";
+        echo "登録完了しました。";
+        echo "<a href = 'login.php'>学生ログイン画面へ</a>";
     } else {
-        echo "Error inserting record";
+        echo "エラー登録失敗。";
     }
 
     }else{
