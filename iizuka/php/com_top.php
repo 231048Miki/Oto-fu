@@ -18,9 +18,15 @@
         require("../../shirasaki/xssBlock.php");
 
         session_start();
-        if (isset($_SESSION['user_name'])) {
-            echo "<h4>name:" . $_SESSION['user_name'] . "</h4><h4>id:" . $_SESSION['user_id'] . "</h4>";
-        }
+
+    if (!isset($_SESSION['login']) && !isset($_SESSION['com_id'])) {
+        header("Location:../../fujii/login.php");
+        // セッション追加頼む
+        exit();
+    } else {
+        // $userid = $_SESSION['com_id'];
+        // echo $userid;  
+    }
         ?>
         <header>
             <div class="header">
@@ -52,7 +58,7 @@
                 </div>
             </div>
         </header>
-
+        
         <div class="flex1">
             <?php
             require_once("../../shirasaki/calender/myCalendar.php");
@@ -60,7 +66,7 @@
         </div>
         <div class="all">
             <div class="talkroom">
-                トークルーム予定
+                <button class="tag" onclick="location.href='../../fujii/message/chat_top.php'">チャット一覧へ！</button>
             </div>
 
             <!-- #のところに遷移するところのパス入れてください -->
