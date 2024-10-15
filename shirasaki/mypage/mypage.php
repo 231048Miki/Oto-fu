@@ -91,10 +91,10 @@ $login = login($dbh);
             <div class="right">
 
                 <div class="block" id="b1">
-                <button class="btn-gradient-3d-simple" onclick="location.href=''">オファーリスト</button>
+                <button class="btn-gradient-3d-simple" onclick="location.href='../dummy/offer.html'">オファーリスト</button>
                 </div>
                 <div class="block"> 
-                <button class="btn-gradient-3d-simple" onclick="location.href=''">気になる企業リスト</button>
+                <button class="btn-gradient-3d-simple" onclick="location.href='../dummy/kininaru.html'">気になる企業リスト</button>
                 </div>
             </div>
 
