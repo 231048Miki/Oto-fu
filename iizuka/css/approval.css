@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+.com{
+    text-align: center;
+    padding: 30px;
+}
+
+input[type=checkbox] {
+    -ms-transform: scale(1.5, 1.5);
+    -webkit-transform: scale(1.5, 1.5);
+    transform: scale(1.5, 1.5);
+  }

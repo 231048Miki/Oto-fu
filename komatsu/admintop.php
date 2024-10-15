@@ -17,6 +17,7 @@
       </h2>
       <div class="menu">
         <a onclick="history.back(-1)" class="header-nav">戻る</a>
+        <a href="logout.php" class="header-nav" id="logout">ログアウト</a>
       </div>
     </div>
   </header>
@@ -31,7 +32,7 @@
   <h3 class="sub-header">利用者関連</h3>
   <div class="user-connection">
     <button class="tag" onclick="location.href='#'">通報履歴</button>
-    <button class="tag" onclick="location.href='#'">企業承認</button>
+    <button class="tag" onclick="location.href='../iizuka/php/approval.php'">企業承認</button>
     <button class="tag" onclick="location.href='#'">パスワードリセット</button>
   </div>
 </body>
