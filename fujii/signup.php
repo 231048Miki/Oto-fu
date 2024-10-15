@@ -21,6 +21,7 @@ $HTML_FOOTER = <<<___EOF___
     ___EOF___;
 
 $HTML_BODY = <<<___EOF___
+    
     <div class="header">
     <div class="tologin">
         <ul>
