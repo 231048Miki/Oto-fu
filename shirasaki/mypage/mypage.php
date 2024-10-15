@@ -45,15 +45,15 @@
     <body>
     <div class="main">
         <header>
-            <div class="title"><h1>マイページ</h1></div>
             <div class="banner">
-            <button class="btn-gradient-3d-simple" onclick="location.href=''">就活アプリ</button>
-            <button class="btn-gradient-3d-simple" onclick="location.href='../top/top.php'">もどる</button>
+            <button class="btn-gradient-3d-simple" onclick="location.href='../top/top.php'">job hunting</button>
+            <button class="btn-gradient-3d-simple" onclick="location.href='history.back()'">もどる</button>
             <button class="btn-gradient-3d-simple" onclick="location.href='../../fujii/login.php'">ログアウト</button>
-            <button class="btn-gradient-3d-simple" onclick="location.href=''">閲覧履歴</button>
+            <button class="btn-gradient-3d-simple" onclick="location.href='../../komastu/browsing.php'">閲覧履歴</button>
             <button class="btn-gradient-3d-simple" onclick="location.href='../quit/quit.php'">退会</button>
             </div>
 
+            <div class="title"><h1>マイページ</h1></div>
             <div class="hamburger">
                 <!-- ハンバーガーメニューの線 -->
                 <span></span>

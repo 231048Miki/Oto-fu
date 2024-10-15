@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 
 <head>
@@ -47,26 +48,33 @@
 
     <?php
     session_start();
-    if (!isset($_SESSION['login'])) {
-        header("Location:");
+    
+    if (!isset($_SESSION['login']) && !isset($_SESSION['com_id'])) {
+        header("Location:../../fujii/login.php");
         // セッション追加頼む
         exit();
+    }else{
+        $userid = $_SESSION['com_id'];
+        // echo $userid;  
     }
-    $userid = $_SESSION["id"];
+    // $userid = $_SESSION["com_id"];
+    // echo $_SESSION["com_id"];
+    
     include '../../db_open.php';
+    
 
-    $sql = "SELECT * FROM company_table WHERE com_id = $userid";
+    $sql = "SELECT * FROM company_table WHERE com_id = $_SESSION[com_id]";
     $sql_res = $dbh->query($sql);
     $rec = $sql_res->fetch();
     echo <<<___EOF
-    <h2 class="com-name">{$name}様</h2>
+    <h2 class="com-name">{$rec['com_name']}様</h2>
 
     ___EOF;
     ?>
     <div class="mypage_boo">
         <button class="cmypage_button" onclick="location.href='#'">オファーリスト</button>
-        <button class="cmypage_button" onclick="location.href='#'">イベント</button>
-        <button class="cmypage_button" onclick="location.href='#'">ページ編集</button>
+        <!-- <button class="cmypage_button" onclick="location.href='#'">イベント</button> -->
+        <button class="cmypage_button" onclick="location.href='../../komastu/companypage.php'">ページ編集</button>
         <button class="cmypage_button" onclick="location.href='cominfo_update.php'">設定</button>
     </div>
 </body>
