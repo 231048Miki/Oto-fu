@@ -92,9 +92,15 @@
     // }
 
     echo <<<___EOF
+    <h4>所在地</h4>
     <p>$rec2[com_address]</p>
-    <p>$rec2[com_tell]</p>
+
+    <h4>メールアドレス</h4>
     <p>$rec2[com_mail]</p>
+
+    <h4>電話番号</h4>
+    <p>$rec2[com_tell]</p>
+
     ___EOF;
 
     echo "<h4>イベント情報</h4>";
