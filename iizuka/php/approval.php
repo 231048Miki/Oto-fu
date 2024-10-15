@@ -4,7 +4,7 @@
 <head>
     <meta charset="UUTF-8">
     <link rel="stylesheet" , href="../header.css">
-    <link rel="stylesheet" , href="../approval.css">
+    <link rel="stylesheet" , href="../css/approval.css">
     <meta name="viewport" content="width=device-width" />
 
     <title>企業承認</title>
