@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
+  <title>閲覧履歴</title>
   <link rel="stylesheet" , href="../iizuka/header.css">
   <link rel="stylesheet" , href="browsing.css">
   <!-- cssファイル作ったのでそっちにデザイン系移しました　飯塚 -->
@@ -49,17 +50,28 @@
   <h3 class="sub-header">閲覧履歴</h3>
   <div class="history-P">
     <div id="wrapper" class="histry-C">
-      <?php
-      include "../db_open.php";
-      $sql = 'SELECT * FROM test order by comid desc;';
-      $stmt = $dbh->query($sql);
-      while ($record = $stmt->fetch()) {
+    <?php
+include "../db_open.php";
+
+try {
+    
+  $sql = 'SELECT c.com_name, i.com_rinen 
+  FROM company_table c 
+  JOIN cominfo_table i ON c.com_id = i.com_id
+  ORDER BY c.com_id DESC;'; 
+$stmt = $dbh->query($sql);
+  
+    while ($record = $stmt->fetch(PDO::FETCH_ASSOC)) {
         echo "<div class='record'>";
-        echo "<div class='comid-msg'><strong>$record[comid]</strong></div>";
-        echo "<div class='msg'>$record[msg]</div>";
+        echo "<div class='com-name'><strong>" . htmlspecialchars($record['com_name'], ENT_QUOTES, 'UTF-8') . "</strong></div>";
+        echo "<div class='com-rinen'>" . htmlspecialchars($record['com_rinen'], ENT_QUOTES, 'UTF-8') . "</div>";
         echo "</div>";
-      }
-      ?>
+    }
+} catch (PDOException $e) {
+    echo "エラー: " . $e->getMessage();
+}
+?>
+
     </div>
   </div>
 </body>
