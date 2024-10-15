@@ -48,10 +48,22 @@
     <h2>詳細画面</h2>
 
     <?php
+    session_start();
+
+    if (!isset($_SESSION['login']) && !isset($_SESSION['com_id'])) {
+        header("Location:../../fujii/login.php");
+        // セッション追加頼む
+        exit();
+    } else {
+        $userid = $_SESSION['com_id'];
+        // echo $userid;  
+    }
+    // $userid = $_SESSION["com_id"];
+    // echo $_SESSION["com_id"];
     include '../../db_open.php';
 
-    // $sql = "SELECT * FROM cominfo_table where com_id = $id";
-    $sql = "SELECT * FROM cominfo_table where com_id = 11";
+    $sql = "SELECT * FROM cominfo_table where com_id = $_SESSION[com_id]";
+    // $sql = "SELECT * FROM cominfo_table where com_id = 11";
     $sql_res = $dbh->query($sql);
     $rec = $sql_res->fetch();
 
@@ -92,9 +104,15 @@
     // }
 
     echo <<<___EOF
+    <h4>所在地</h4>
     <p>$rec2[com_address]</p>
-    <p>$rec2[com_tell]</p>
+
+    <h4>メールアドレス</h4>
     <p>$rec2[com_mail]</p>
+
+    <h4>電話番号</h4>
+    <p>$rec2[com_tell]</p>
+
     ___EOF;
 
     echo "<h4>イベント情報</h4>";

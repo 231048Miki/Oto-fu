@@ -9,7 +9,7 @@
     <body>
         <h3>退会しました</h3>
         <div class="buttonSpace" >
-            <button onclick="location.href='../fujii/login.php'">登録画面へ</button>
+            <button onclick="location.href='../../fujii/login.php'">登録画面へ</button>
         </div>
     </body>
 </html>

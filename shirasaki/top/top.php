@@ -18,7 +18,7 @@
             <div class="banner">
                 <button class="btn-gradient-3d-simple" onclick="location.href=''">就活アプリ</button>
                 <button class="btn-gradient-3d-simple" onclick="location.href='../mypage/mypage.php'">マイページ</button>
-                <button class="btn-gradient-3d-simple" onclick="location.href='../../komastu/broesing.php'">閲覧履歴</button>
+                <button class="btn-gradient-3d-simple" onclick="location.href='../../komastu/browsing.php'">閲覧履歴</button>
                 <button class="btn-gradient-3d-simple" onclick="location.href='history.back()'">戻る</button>
                 <button class="btn-gradient-3d-simple" onclick="location.href='../../iizuka/logout.php'">ログアウト</button>
             </div>
