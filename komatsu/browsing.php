@@ -47,7 +47,7 @@
     </div>
   </header>
 
-  <h3 class="sub-header">ブロックワード編集</h3>
+  <h3 class="sub-header">閲覧履歴</h3>
   <div class="history-P">
     <div id="wrapper" class="histry-C">
     <?php
