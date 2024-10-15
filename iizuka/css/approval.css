@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.com{
+.com {
     text-align: center;
     padding: 30px;
 }
@@ -9,4 +9,10 @@ input[type=checkbox] {
     -ms-transform: scale(1.5, 1.5);
     -webkit-transform: scale(1.5, 1.5);
     transform: scale(1.5, 1.5);
-  }
+}
+
+@media screen and (max-width: 768px) {
+    .header-nav {
+        padding-top: 0px;
+    }
+}

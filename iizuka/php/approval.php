@@ -4,7 +4,7 @@
 <head>
     <meta charset="UUTF-8">
     <link rel="stylesheet" , href="../header.css">
-    <link rel="stylesheet" , href="../css/approval.css">
+    <link rel="stylesheet" , href="../approval.css">
     <meta name="viewport" content="width=device-width" />
 
     <title>企業承認</title>
@@ -14,7 +14,7 @@
     <header>
         <div class="header">
             <h2>
-                <a href="admintop.php" class="web-name">job hunting</a>
+                <a href="../../komatsu/admintop.php" class="web-name">job hunting</a>
             </h2>
             <div class="menu">
                 <a onclick="history.back(-1)" class="header-nav">戻る</a>
