@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
+  <title>企業ページ</title>
   <link rel="stylecheet" , href="../iizuka/header.css">
   <link rel="stylesheet" , href="./companypage.css">
   <meta name="viewport" content="width=device-width" />

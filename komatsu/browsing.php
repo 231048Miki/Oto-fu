@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
+  <title>閲覧履歴</title>
   <link rel="stylesheet" , href="../iizuka/header.css">
   <link rel="stylesheet" , href="browsing.css">
   <!-- cssファイル作ったのでそっちにデザイン系移しました　飯塚 -->
