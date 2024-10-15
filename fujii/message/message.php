@@ -38,7 +38,8 @@ try {
         .message_created_at { font-size: 0.8em; color: gray; }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+    <link rel="stylesheet" , href="../../iizuka/header.css">
+    <meta name="viewport" content="width=device-width" />
     <!-- Ajax対応のjs -->
     <script>
     $(document).ready(function() {
@@ -110,6 +111,66 @@ try {
 
 </head>
 <body>
+<header>
+        <div class="header">
+            <h2>
+
+            <?php
+                    if( $_SESSION['user_type'] == 'student' ){
+                        echo "<a href='../../shirasaki/top/top.php' class='web-name'>job hunting</a>";
+                    }else{
+                        echo "<a href='../../iizuka/php/com_top.php' class='web-name'>job hunting";
+                    }
+                ?>    
+
+            </h2>
+            <div class="menu">
+                <div id="nav-drawer">
+                    <!-- ハンバーガーメニュー開いたときの挙動。これないと機能しません -->
+                    <input id="nav-input" type="checkbox" class="nav-unshown">
+                    <!-- 三本線 -->
+                    <label id="nav-open" for="nav-input" class="nav-unshown"><span></span></label>
+                    <label class="nav-unshown" id="nav-close" for="nav-input"></label>
+
+                    <!-- レスポンシブが効いてるとき -->
+                    <div id="nav-content">
+
+                        <?php
+                        if( $_SESSION['user_type'] == 'student' ){
+                            //就活生でログインしているとき
+                            echo "<a href='../../shirasaki/mypage/mypage.php' class='header-nav'>マイページ</a><br>";
+                        }else{
+                            //企業でログインしているとき
+                            echo "<a href='../../iizuka/php/com_mypage.php' class='header-nav'>マイページ</a><br>";
+                        }
+                        ?>
+                        
+                        <a onclick="history.back()" class="header-nav">戻る</a><br>
+                        <a href="../../iizuka/logout.php" class="header-nav">ログアウト</a><br>
+                    </div>
+
+                    <!-- 通常メニュー -->
+                    <nav id="desktop-menu">
+
+                    <?php
+                        if( $_SESSION['user_type'] == 'student' ){
+                            //就活生でログインしているとき
+                            echo "<a href='../../shirasaki/mypage/mypage.php' class='header-nav'>マイページ</a>";
+                        }else{
+                            //企業でログインしているとき
+                            echo "<a href='../../iizuka/php/com_mypage.php' class='header-nav'>マイページ</a>";
+                        }
+                        ?>
+                        
+
+                        
+                        <a onclick="history.back()" class="header-nav">戻る</a>
+                        <a href="../../iizuka/logout.php" class="header-nav" id="logout">ログアウト</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
     <h2>メッセージ</h2>
     <div id="messages">
         <?php foreach ($messages as $message) : ?>
