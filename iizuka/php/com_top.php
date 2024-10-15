@@ -18,9 +18,15 @@
         require("../../shirasaki/xssBlock.php");
 
         session_start();
-        if (isset($_SESSION['user_name'])) {
-            // echo "<h4>name:" . $_SESSION['user_name'] . "</h4><h4>id:" . $_SESSION['user_id'] . "</h4>";
-        }
+
+    if (!isset($_SESSION['login']) && !isset($_SESSION['com_id'])) {
+        header("Location:../../fujii/login.php");
+        // セッション追加頼む
+        exit();
+    } else {
+        // $userid = $_SESSION['com_id'];
+        // echo $userid;  
+    }
         ?>
         <header>
             <div class="header">
