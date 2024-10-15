@@ -53,7 +53,7 @@
         // セッション追加頼む
         exit();
     } else {
-        $userid = $_SESSION['com_id'];
+        // $userid = $_SESSION['com_id'];
         // echo $userid;  
     }
     // $userid = $_SESSION["com_id"];
