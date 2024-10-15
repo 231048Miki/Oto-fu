@@ -42,19 +42,23 @@
     $sql_res2 = $dbh->query($sql2);
     $rec2 = $sql_res2->fetch();
 
+    $sql3 = "SELECT * FROM manager_table WHERE com_id = $_SESSION[com_id]";
+    $sql_res3 = $dbh->query($sql3);
+    $rec3 = $sql_res3->fetch();
+
     if ($_SERVER["REQUEST_METHOD"] != "POST") {
         echo <<<___EOF___
             <form method="POST" action="" class="com_form">
             <h3>企業名：<input type="text" name="com_name" value="{$rec2['com_name']}" required></h3>
-            <h3>採用担当者名：<input type="text" name="cmanager" value="{$rec2['manager']}" required></h3>
+            <h3>採用担当者名：<input type="text" name="manager" value="{$rec3['manager']}" required></h3>
             <h3>メールアドレス：<input type="text" name="mail" value="{$rec2['com_mail']}" required></h3>
             <h3>電話番号：<input type="text" name="tell" value="{$rec2['com_tell']}" required></h3>
             <h3>所在地：<input type="text" name="address" value="{$rec2['com_address']}" required></h3>
             <input type="submit" value="更新">
         </form>
 ___EOF___;
-// <h3>パスワード：<input type="password" name="pass" value="{$rec2['pass']}" required></h3>
-// <h3>再入力：<input type="password" name="pass" value="{$rec2['pass']}" required></h3>
+        // <h3>パスワード：<input type="password" name="pass" value="{$rec2['pass']}" required></h3>
+        // <h3>再入力：<input type="password" name="pass" value="{$rec2['pass']}" required></h3>
     } else {
         $name = $_POST['name'];
         $manager = $_POST['manager'];
