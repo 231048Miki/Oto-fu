@@ -21,20 +21,31 @@
         exit();
     }else{
 
-    //session破棄
+    //sessionをアレイ
     $_SESSION = array();
+    //session破棄
     session_destroy();
 
     //scriptでメッセージ
     echo "<script>";
-    echo "alert('ログアウトしましたー')";
+    echo "alert('ログアウトしました。')";
     echo "</script>";
 
-    echo "<center>";
-    echo "<h1 class='log'>ログアウトしました</h1>";
-    echo "<a class='log' href=../fujii/login.php>ログイン画面へ</a>";    
-    echo "</center>";
+    echo "<script>";
+    echo "location.href='../fujii/login.php'";
+    echo "</script>";
+
+
+    
+    // echo "<div class='log'>";
+    // echo "<a class='log' href=../fujii/login.php>ログイン画面へ</a>";
+    // echo "</div>";
+
+
+
     }
+
+ 
 
     ?>
 </body>
