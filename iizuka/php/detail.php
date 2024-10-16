@@ -67,8 +67,8 @@
     $sql_res = $dbh->query($sql);
     $rec = $sql_res->fetch();
 
-    // $sql2 = "SELECT * FROM company_table where com_id = $id";
-    $sql2 = "SELECT * FROM company_table where com_id = 11";
+    $sql2 = "SELECT * FROM company_table where com_id = $_SESSION[com_id]";
+    // $sql2 = "SELECT * FROM company_table where com_id = 11";
     $sql_res2 = $dbh->query($sql2);
     $rec2 = $sql_res2->fetch();
 

@@ -17,6 +17,7 @@
       </h2>
       <div class="menu">
         <a onclick="history.back(-1)" class="header-nav">戻る</a>
+        <a href="logout.php" class="header-nav" id="logout">ログアウト</a>
       </div>
     </div>
   </header>
@@ -24,15 +25,15 @@
 
   <h3 class="sub-header">ブロックワード編集</h3>
   <div class="word-edit">
-    <button class="tag" onclick="location.href='#'">追加</button>
-    <button class="tag" onclick="location.href='#'">一覧</button>
+    <button class="tag" onclick="location.href='../iizuka/php/NGword_in.php'">追加</button>
+    <button class="tag" onclick="location.href='../iizuka/php/NGword_list.php'">一覧</button>
   </div>
 
   <h3 class="sub-header">利用者関連</h3>
   <div class="user-connection">
-    <button class="tag" onclick="location.href='#'">通報履歴</button>
-    <button class="tag" onclick="location.href='#'">企業承認</button>
-    <button class="tag" onclick="location.href='#'">パスワードリセット</button>
+    <button class="tag" onclick="location.href='../fujii/admin/report.html'">通報履歴</button>
+    <button class="tag" onclick="location.href='../iizuka/php/approval.php'">企業承認</button>
+    <button class="tag" onclick="location.href='../fujii/admin/re_pass.html'">パスワードリセット</button>
   </div>
 </body>
 
