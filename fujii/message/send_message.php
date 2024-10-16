@@ -2,14 +2,16 @@
 session_start();
 
 // フラッシュメッセージをセット
-function set_flash($key, $message) {
+function set_flash($key, $message)
+{
     $_SESSION['flash'][$key] = $message;
 }
 
 define('ERR_MSG1', 'エラーが発生しました。もう一度お試しください。');
 
 // メッセージ関係を確認する
-function check_relation_message($user_id, $destination_user_id) {
+function check_relation_message($user_id, $destination_user_id)
+{
     try {
         $dsn = 'mysql:dbname=otofu_mydb;host=localhost;charset=utf8';
         $user = 'fujii231109_user';
@@ -30,7 +32,8 @@ function check_relation_message($user_id, $destination_user_id) {
 }
 
 // 新たなメッセージ関係を挿入
-function insert_message($user_id, $destination_user_id) {
+function insert_message($user_id, $destination_user_id)
+{
     try {
         $dsn = 'mysql:dbname=otofu_mydb;host=localhost;charset=utf8';
         $user = 'fujii231109_user';
@@ -88,7 +91,6 @@ try {
     // 成功時のJSONレスポンス
     echo json_encode(['status' => 'success', 'message' => 'メッセージを送信しました。']);
     exit;
-
 } catch (Exception $e) {
     // 例外発生時のエラーメッセージ
     error_log('エラー発生: ' . $e->getMessage());

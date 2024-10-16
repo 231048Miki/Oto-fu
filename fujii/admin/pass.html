@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>パスワードリセットダミー</title>
-    <link rel="stylesheet"  href="../../iizuka/header.css">
-    <link rel="stylesheet" href="../css/re_pass.css">
+    <title>パスワードリセット入力ダミー</title>
+    <link rel="stylesheet" href="../../iizuka/header.css">
+    <link rel="stylesheet" href="../css/pass.css">
 </head>
+
 <body>
     <header>
         <div class="header">
@@ -15,7 +17,7 @@
             </h2>
             <div class="menu">
                 <div id="nav-drawer">
-                    
+
                     <!-- 通常メニュー -->
                     <nav id="desktop-menu">
                         <a onclick="history.back()" class="header-nav">戻る</a>
@@ -28,20 +30,19 @@
 
     <main>
         <h2>パスワードリセット</h2><br>
-        <div class="mes">
-            <p>登録されているメールアドレスに</p>
-            <p>パスワードリセット再設定リンクを送信します。</p>
+        <div class="form">
+            <p>パスワード</p>
+            <input type="password">
+            <p>再入力</p>
+            <input type="password">
+            <div>
+                <input type="submit" onclick="location.href='result.html'" value="登録">
+            </div>
         </div>
-        <form class="for" action="pass.html" >
-            
-        <p>メールアドレス：<input type="text" required></p>
-        <input type="button" onclick="location.href='pass.html'" value="送信">
-            
-        </form>
-
     </main>
 
 
-    
+
 </body>
+
 </html>
