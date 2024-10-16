@@ -1,0 +1,15 @@
+.report{
+    text-align: center;
+    width: 50%; /* report全体の幅を50%に設定（適宜調整） */
+    margin: 0 auto; /* 左右の中央揃え */
+}
+
+.report_waku {
+    border: 2px solid black; /* 枠線を追加 */
+    border-radius: 15px; /* 角を丸くする */
+    width: 80%; /* 幅を指定（適宜調整） */
+    padding: 10px; /* 内側の余白 */
+}
+.report_naka {
+    text-align: center;
+}
