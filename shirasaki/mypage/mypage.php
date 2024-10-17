@@ -56,9 +56,9 @@ $login = login($dbh);
         <header>
             <div class="banner">
             <button class="btn-gradient-3d-simple" onclick="location.href='../top/top.php'">job hunting</button>
-            <button class="btn-gradient-3d-simple" onclick="location.href='history.back()'">もどる</button>
+            <button class="btn-gradient-3d-simple" onclick="history.back()">もどる</button>
             <button class="btn-gradient-3d-simple" onclick="location.href='../../fujii/login.php'">ログアウト</button>
-            <button class="btn-gradient-3d-simple" onclick="location.href='../../komastu/browsing.php'">閲覧履歴</button>
+            <button class="btn-gradient-3d-simple" onclick="location.href='#'">閲覧履歴</button>
             <button class="btn-gradient-3d-simple" onclick="location.href='../quit/quit.php'">退会</button>
             </div>
 
@@ -103,7 +103,7 @@ $login = login($dbh);
                 <button class="btn-gradient-3d-simple" onclick="location.href='../resume/resumeForm.php'">履歴書</button>
                 </div>
                 <div class="block"> 
-                <button class="btn-gradient-3d-simple" onclick="location.href=''">設定</button>
+                <button class="btn-gradient-3d-simple" onclick="location.href='../../iizuka/php/stu_info_update.php'">設定</button>
                 </div>
             </div>
         </div>
