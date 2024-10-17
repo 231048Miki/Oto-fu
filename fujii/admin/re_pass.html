@@ -32,12 +32,20 @@
             <p>登録されているメールアドレスに</p>
             <p>パスワードリセット再設定リンクを送信します。</p>
         </div>
-        <form class="for" action="pass.html" >
-            
-        <p>メールアドレス：<input type="text" required></p>
-        <input type="button" onclick="location.href='pass.html'" value="送信">
-            
+        <form class="for" action="pass.html">
+            <p>メールアドレス：<input type="text" required></p>
+            <input type="button" id="btn" value="送信">
         </form>
+
+        <!-- script追加　飯塚 -->
+        <script>
+            function move() {
+                alert('送信しました。');
+                window.location.href = 'pass.html';
+            }
+            let BtnMove = document.getElementById('btn');
+            BtnMove.addEventListener('click', move);
+        </script>
 
     </main>
 
