@@ -1,3 +1,12 @@
+<?PHP if(isset($_SESSION_["keyword"])){unset($_SESSION_["keyword"]);}
+require("../functions/xssBlock.php");
+require("../../db_open.php");
+require("../functions/userCtlFunc.php");
+session_start();
+
+$login = login($dbh);
+// var_dump($login);
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -47,9 +56,9 @@
         <header>
             <div class="banner">
             <button class="btn-gradient-3d-simple" onclick="location.href='../top/top.php'">job hunting</button>
-            <button class="btn-gradient-3d-simple" onclick="location.href='history.back()'">もどる</button>
+            <button class="btn-gradient-3d-simple" onclick="history.back()">もどる</button>
             <button class="btn-gradient-3d-simple" onclick="location.href='../../fujii/login.php'">ログアウト</button>
-            <button class="btn-gradient-3d-simple" onclick="location.href='../../komastu/browsing.php'">閲覧履歴</button>
+            <button class="btn-gradient-3d-simple" onclick="location.href='#'">閲覧履歴</button>
             <button class="btn-gradient-3d-simple" onclick="location.href='../quit/quit.php'">退会</button>
             </div>
 
@@ -82,10 +91,10 @@
             <div class="right">
 
                 <div class="block" id="b1">
-                <button class="btn-gradient-3d-simple" onclick="location.href=''">オファーリスト</button>
+                <button class="btn-gradient-3d-simple" onclick="location.href='../dummy/offer.html'">オファーリスト</button>
                 </div>
                 <div class="block"> 
-                <button class="btn-gradient-3d-simple" onclick="location.href=''">気になる企業リスト</button>
+                <button class="btn-gradient-3d-simple" onclick="location.href='../dummy/kininaru.html'">気になる企業リスト</button>
                 </div>
             </div>
 
@@ -94,7 +103,7 @@
                 <button class="btn-gradient-3d-simple" onclick="location.href='../resume/resumeForm.php'">履歴書</button>
                 </div>
                 <div class="block"> 
-                <button class="btn-gradient-3d-simple" onclick="location.href=''">設定</button>
+                <button class="btn-gradient-3d-simple" onclick="location.href='../../iizuka/php/stu_info_update.php'">設定</button>
                 </div>
             </div>
         </div>

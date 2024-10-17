@@ -1,21 +1,29 @@
+<?php 
+require("searchCtl.php");
+require("../../db_open.php");
+?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="baseLayout.css">
-
+        <link rel="stylesheet" href="../baseLayout.css">
+        <style>
+            .mid{
+                display: block;
+            }
+        </style>
         <title>タイトル</title>
     </head>
 
     <body>
     <div class="main">
         <header>
-            <div class="title"><h1>title</h1></div>
+            <div class="title"><h1>タグ検索</h1></div>
             <div class="banner">
             <button class="btn-gradient-3d-simple" onclick="location.href=''">就活アプリ</button>
             <button class="btn-gradient-3d-simple" onclick="location.href='../mypage/mypage.php'">マイページ</button>
             <button class="btn-gradient-3d-simple" onclick="location.href='#'">閲覧履歴</button>
-            <button class="btn-gradient-3d-simple" onclick="location.href='modoru'">戻る</button>
+            <button class="btn-gradient-3d-simple" onclick="location.href='tagSearch.php'">戻る</button>
             <button class="btn-gradient-3d-simple" onclick="location.href='../../fujii/login.php'">ログアウト</button>
             </div>
 
@@ -43,24 +51,14 @@
         </header>
 
         <div class="mid">
-            <div class="right">
-                <div class="block" id="b1">
-                    aa
-                </div>
-                <div class="block"> 
-                    uu
-                </div>
-            </div>
-
-            <div class="left">
-                <div class="block"> 
-                    ii
-                </div>
-                <div class="block"> 
-                    ii
-                </div>
-            </div>
-        </div>
+        <h1>タグ検索したぜ</h1>
+            <?php 
+            $result = searchComOnTag($dbh,$_POST['tags']);
+            echo "絞り込み中使用タグ：<br>";
+            outputTagsName($_POST['tags'],$dbh);
+            // var_dump($result);
+            searchByComId($dbh,$result);
+            ?>
     </div>
     <script>
         document.querySelector('.hamburger').addEventListener('click', function(){
@@ -69,4 +67,3 @@
         });
     </script>
     </body>
-</html>

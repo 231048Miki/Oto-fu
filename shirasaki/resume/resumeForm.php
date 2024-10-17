@@ -2,18 +2,19 @@
 session_start();
 include("../../db_open.php");
 include("resumeFunc.php");
-
+$id=$_SESSION['user_id'];
 $getSuccess = false;
-$reazon;
-$pr;
-$skill;
+$reazon="";
+$pr="";
+$skill="";
 
 
 $resumeInfo=[];//ID拾って全データ取り出し
 $getRsume = $dbh->prepare('SELECT * FROM resume_table WHERE stu_id = :stu_id');
-$getRsume->bindValue(':stu_id',1,PDO::PARAM_STR);//ユーザーIDを入れる、今はテストで１を入れている
+$getRsume->bindValue(':stu_id',$_SESSION['user_id'],PDO::PARAM_STR);//ユーザーIDを入れる、今はテストで１を入れている
 $getRsume->execute();
 
+//取り出せるデータがあるなら表示用の変数に値を入れて、取り出せたか判別する$getSuccessにtrueを入れる
 while($resume = $getRsume->fetch(PDO::FETCH_ASSOC)){
             $getSuccess = true;
             $reazon = $resume['reazon'];
@@ -21,21 +22,26 @@ while($resume = $getRsume->fetch(PDO::FETCH_ASSOC)){
             $skill = $resume['skill'];
 };
 
-if(isset($_POST['save'])){//一番上のフォーム
-    resumeSave($dbh,$getSuccess);
+//保存が押された時の処理
+if(isset($_POST['save'])){
+    resumeSave($dbh,$getSuccess,$id);
     $reazon = $_POST['reazon'];
     $pr = $_POST['pr'];
     $skill = $_POST['skill'];
 }
 
+if(isset($_POST['imgSend'])){
+    imgUpload($dbh,$id);
+}
+
 if(isset($_POST['qual'])){
-    qualAdd($dbh,$_POST['qual'],$_POST['timeQ']);
+    qualAdd($dbh,$_POST['qual'],$_POST['timeQ'],$id);
     header("Location:./resumeForm.php");
     exit(); 
 }
 
 if(isset($_POST['history'])){
-    historyAdd($dbh,$_POST['history'],$_POST['timeH']);
+    historyAdd($dbh,$_POST['history'],$_POST['timeH'],$id);
     header("Location:./resumeForm.php");
     exit(); 
 }
@@ -81,7 +87,7 @@ if(isset($_POST['hdl'])){
     <div class="left">
     <h1>履歴書コピペ保存場所</h1>
     <button onclick="location.href='../mypage/mypage.php'">もどる</button>
-    <form method="post"  action="">
+    <form method="post"  action="" >
     <br>
     志望動機
     <br>
@@ -94,8 +100,6 @@ if(isset($_POST['hdl'])){
     趣味特技
     <br>
     <textarea name="skill" cols="40" rows="10"><?PHP echo $skill?></textarea>
-    <br>
-    <!-- <input type="file" name="example" accept="image/jpeg, image/png"> --> 
     <input type="hidden" name="save">
     <input type="submit" value="保存">
     </form>
@@ -112,7 +116,7 @@ if(isset($_POST['hdl'])){
     <input type="month" name="timeQ">
     <input type="submit" value="追加">
     </form>
-    <?php getQual($dbh,1)?>
+    <?php getQual($dbh,$id)?>
     <br>
 
     <form method="post"  action="">
@@ -124,8 +128,15 @@ if(isset($_POST['hdl'])){
     <input type="month" name="timehH">
     <input type="submit" value="追加">
     </form>
-    <?php getHistory($dbh,1)?>
-
+    <?php getHistory($dbh,$id)?>
+    <br>
+    ・画像変更用フォーム
+    <form method="post"  action="" enctype="multipart/form-data">
+    <input type="hidden" name="max_file_size" value="2097152">
+    <input type="hidden" name="imgSend" value="y">
+    <input type="file" name="img"> 
+    <input type="submit" value="画像保存">
+    </form>
     <button onclick="location.href='resumeLayout.php'">履歴書もどき</button>
     </div>
     </div>
