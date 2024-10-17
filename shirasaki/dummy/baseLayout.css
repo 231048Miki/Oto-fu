@@ -1,0 +1,150 @@
+
+html{
+    height: 100%;
+    overflow-x: hidden;
+}
+body{
+    height: 100%;
+}
+h1{
+    margin-left: 2%;
+}
+.main{
+    /* background-color: red; */
+    height: 100%;
+}
+
+header{
+    /* background-color: blue; */
+    height: 25%;
+}
+
+.banner{
+    margin-top: 10px;
+}
+.title{
+    /* background-color: aliceblue; */
+    height: 65px;
+    width: 280px;
+    text-align: center;
+    border: solid,2px,black;
+}
+.block{
+    height: 300px;
+    width: 300px;
+    margin-top: 50px;
+    /* background-color: #8E9FEA; */
+}
+.hamburger{
+    position: relative; /* 今の位置を基準 */
+    bottom: 70px;
+    right: 10px; 
+    /* background-color: green; */
+    margin-left: 90%;
+    width: 50px;
+    height: 50px;
+}
+.mid{
+    /* background-color: paleturquoise; */
+   height: 100%;
+}
+.msg{
+    margin:  0 auto; 
+    margin-top: 10px;
+    height: 20%;
+    width: 600px;
+    border: solid,3px,black;
+}
+
+.banner button{
+    box-shadow: 0 5px #8E9FEA;
+    border-radius: 5px;
+    width: 170px;
+    height: 60px;
+    padding: 15px;
+    box-sizing: border-box;
+    background: #C4D9FE;
+    color: #181818;
+    text-decoration: none;
+    text-align: center;
+    margin-left: 20px;
+    color: #181818;
+}
+
+.hamburger span{
+position: absolute;
+width: 40px;
+height: 2px;
+background-color: black;
+}
+.hamburger span:first-of-type{/* ハンバーガーメニューの1番目の線 */
+top: 15px;
+}
+.hamburger span:nth-of-type(2){/* ハンバーガーメニューの2番目の線 */
+top: 30px;
+}
+.hamburger span:last-of-type{/* ハンバーガーメニューの3番目の線 */
+top: 45px;
+}
+.slide-menu{
+    position: relative; /* 今の位置を基準 */
+    bottom: 90px;
+    right: 10px; 
+    transform: translateX(200%);
+    height: 300px;
+    transition: .5s;
+    margin-left: 78%;
+    background-color: white;
+    width: 100px;
+}
+
+.hamburger.active span:first-of-type{/* ハンバーガーメニューの1番目の線 */
+top: 30px;
+transform: rotate(45deg);
+}
+
+.hamburger.active span:nth-of-type(2){/* ハンバーガーメニューの2番目の線 */
+opacity: 0;/* 透明にする */
+}
+.hamburger.active span:last-of-type{/* ハンバーガーメニューの3番目の線 */
+top: 30px;
+transform: rotate(-45deg);
+}
+.slide-menu.active{
+transform: translateX(0); 
+}
+
+@media (min-width: 600px){
+    .hamburger,.slide-menu{
+        display: none;
+    }
+}
+
+@media (max-width: 600px){
+    .banner{
+        display: none;
+    }
+
+    header{
+        height: 10%;
+    }
+    
+    .mid{
+        display: block;
+    }
+
+    .right{
+    /* background-color: lightcoral; */
+    width: 100%;
+    padding-left: 100px;
+    height: 100%;
+    }
+
+    .left{
+    /* background-color: lightseagreen; */
+    width: 100%;
+    padding-left: 100px;
+    height:100%
+    }
+}
+

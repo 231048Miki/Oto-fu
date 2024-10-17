@@ -21,6 +21,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 // パスワード検証
 if ($user && password_verify($pass, $user['com_pass'])) {
     // ログイン成功
+
     session_start();
     $_SESSION['user_id'] = $user['com_id'];
     $_SESSION['user_name'] = $user['com_name'];
@@ -31,8 +32,10 @@ if ($user && password_verify($pass, $user['com_pass'])) {
 
     $_SESSION['login'] = 0;
     // 必要に応じてリダイレクト
+
     header('Location: ../iizuka/php/com_top.php');
     exit;
+
 } else {
     // ログイン失敗
     // echo var_dump($user);
