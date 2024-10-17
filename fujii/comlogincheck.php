@@ -29,6 +29,8 @@ if ($user && password_verify($pass, $user['com_pass'])) {
     $_SESSION['user_type'] = 'company';
     echo "ログイン成功！";
     echo "<a href='chat/chat_top.php'>チャットへ</a>";
+
+    $_SESSION['login'] = 0;
     // 必要に応じてリダイレクト
 
     header('Location: ../iizuka/php/com_top.php');
