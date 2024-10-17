@@ -60,14 +60,14 @@ ___EOF___;
 // <h3>再入力：<input type="password" name="pass" value="{$rec2['stu_pass']}" required></h3>
     } else {
         $name = $_POST['name'];
-        $manager = $_POST['manager'];
         $mail = $_POST['mail'];
-        $tell = $_POST['tell'];
+        $birth = $_POST['birth'];
         $address = $_POST['address'];
-        $pass = $_POST['pass']; {
+        $tell = $_POST['tell'];
+        $school = $_POST['school']; {
 
             // エラー処理
-            $sql = "SELECT * FROM student_table WHERE userid = $userid";
+            $sql = "SELECT * FROM student_table WHERE stu_id = $userid";
             $sql_res = $dbh->query($sql);
 
             if (mb_strlen($name) > 10) {
@@ -80,33 +80,34 @@ ___EOF___;
                 echo "alert('メールアドレスが長すぎます')";
                 echo "</script>";
                 echo '<script>location.href = "infoedit.php";</script>';
-            } elseif (mb_strlen($pass) > 8) {
-                echo "<script>";
-                echo "alert('パスワードが長すぎます')";
-                echo "</script>";
-                echo '<script>location.href = "infoedit.php";</script>';
+            // } elseif (mb_strlen($pass) > 8) {
+            //     echo "<script>";
+            //     echo "alert('パスワードが長すぎます')";
+            //     echo "</script>";
+            //     echo '<script>location.href = "infoedit.php";</script>';
             } elseif (!preg_match('/^[a-zA-Z0-9@._-]+$/u', $mail)) {
                 echo "<script>";
                 echo "alert('無効な文字が含まれています')";
                 echo "</script>";
                 echo '<script>location.href = "infoedit.php";</script>';
-            } elseif (!preg_match('/^[a-zA-Z0-9]+$/u', $pass)) {
-                echo "<script>";
-                echo "alert('無効な文字が含まれています')";
-                echo "</script>";
-                echo '<script>location.href = "infoedit.php";</script>';
+            // } elseif (!preg_match('/^[a-zA-Z0-9]+$/u', $pass)) {
+            //     echo "<script>";
+            //     echo "alert('無効な文字が含まれています')";
+            //     echo "</script>";
+            //     echo '<script>location.href = "infoedit.php";</script>';
             } elseif (!preg_match('/^[0-9\-]+$/', $tell)) {
                 echo "<script>";
                 echo "alert('無効な文字が含まれています')";
                 echo "</script>";
                 echo '<script>location.href = "infoedit.php";</script>';
             } elseif ($sql_res) {
-                $sql = "UPDATE company_table SET com_name='{$name}', manager='{$manager}, mail='{$mail}', tell='{$tell}', address='{$address}, pass='{$pass}' where userid = $userid";
+                $sql = "UPDATE student_table SET stu_name='{$name}',stu_mail='{$mail}',birth='{$birth}' ,stu_tell='{$tell}', stu_address='{$address}',stu_school='{$school}' where stu_id = $userid";
+                echo $sql;
                 $sql_res = $dbh->query($sql);
                 echo "<script>";
                 echo "alert('更新が完了しました。')";
                 echo "</script>";
-                echo '<script>location.href = "setting.php";</script>';
+                echo '<script>location.href = "";</script>';
             }
         }
     }
