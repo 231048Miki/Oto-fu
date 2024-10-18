@@ -50,25 +50,25 @@
     <?php
     session_start();
 
-    if (!isset($_SESSION['login']) && !isset($_SESSION['com_id'])) {
+    if (!isset($_SESSION['login']) && !isset($_SESSION['stu_id'])) {
         header("Location:../../fujii/login.php");
         // セッション追加頼む
         exit();
     } else {
-        $userid = $_SESSION['com_id'];
+        $userid = $_SESSION['stu_id'];
         // echo $userid;  
     }
     // $userid = $_SESSION["com_id"];
     // echo $_SESSION["com_id"];
     include '../../db_open.php';
 
-    $sql = "SELECT * FROM cominfo_table where com_id = $_SESSION[com_id]";
-    // $sql = "SELECT * FROM cominfo_table where com_id = 11";
+    // $sql = "SELECT * FROM cominfo_table where com_id = $_SESSION[com_id]";
+    $sql = "SELECT * FROM cominfo_table where com_id = 14";
     $sql_res = $dbh->query($sql);
     $rec = $sql_res->fetch();
 
-    $sql2 = "SELECT * FROM company_table where com_id = $_SESSION[com_id]";
-    // $sql2 = "SELECT * FROM company_table where com_id = 11";
+    // $sql2 = "SELECT * FROM company_table where com_id = $_SESSION[com_id]";
+    $sql2 = "SELECT * FROM company_table where com_id = 14";
     $sql_res2 = $dbh->query($sql2);
     $rec2 = $sql_res2->fetch();
 
