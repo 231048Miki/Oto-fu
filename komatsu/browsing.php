@@ -13,7 +13,7 @@
 
 <body>
 
-<!-- ヘッダー追加 -->
+  <!-- ヘッダー追加 -->
   <header>
     <div class="header">
       <h2>
@@ -50,26 +50,33 @@
   <h3 class="sub-header">閲覧履歴</h3>
   <div class="history-P">
     <div id="wrapper" class="histry-C">
-    <?php
-include "../db_open.php";
+      <?php
+      include "../db_open.php";
 
-try {
-    
-  $sql = 'SELECT c.com_id, c.com_name, i.com_rinen 
-                  FROM company_table c 
+      try {
+
+        // $sql = 'SELECT c.com_id, c.com_name, i.com_rinen, b.LastDate
+        //           FROM company_table c
+        //           JOIN cominfo_table i ON c.com_id = i.com_id
+        //           LEFT JOIN browsing_table b ON c.com_id = b.com_id
+        //           ORDER BY c.com_id DESC';
+
+        $sql = 'SELECT c.com_id, c.com_name, i.com_rinen, b.LastDate
+                  FROM company_table c
                   JOIN cominfo_table i ON c.com_id = i.com_id
-                  ORDER BY c.com_id DESC;'; 
-          $stmt = $dbh->query($sql);
-          
-          while ($record = $stmt->fetch(PDO::FETCH_ASSOC)) {
-              echo "<div class='record'>";
-              // 会社名をクリックできるリンクにする
-              echo "<div class='com-name'><a href='dummy_page.php?com_id=" . htmlspecialchars($record['com_id'], ENT_QUOTES, 'UTF-8') . "'><strong>" . htmlspecialchars($record['com_name'], ENT_QUOTES, 'UTF-8') . "</strong></a></div>";
-              echo "<div class='com-rinen'>" . htmlspecialchars($record['com_rinen'], ENT_QUOTES, 'UTF-8') . "</div>";
-              echo "</div>";
-          }
+                  LEFT JOIN browsing_table b ON c.com_id = b.com_id
+                  ORDER BY b.LastDate DESC';
+        $stmt = $dbh->query($sql);
+
+        while ($record = $stmt->fetch(PDO::FETCH_ASSOC)) {
+          echo "<div class='record'>";
+          // 会社名をクリックできるリンクにする
+          echo "<div class='com-name'><a href='../iizuka/php/detail.php?com_id=" . htmlspecialchars($record['com_id'], ENT_QUOTES, 'UTF-8') . "'><strong>" . htmlspecialchars($record['com_name'], ENT_QUOTES, 'UTF-8') . "</strong></a></div>";
+          echo "<div class='com-rinen'>" . htmlspecialchars($record['com_rinen'], ENT_QUOTES, 'UTF-8') . "</div>";
+          echo "</div>";
+        }
       } catch (PDOException $e) {
-          echo "エラー: " . $e->getMessage();
+        echo "エラー: " . $e->getMessage();
       }
       ?>
     </div>
