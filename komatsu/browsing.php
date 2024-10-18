@@ -55,23 +55,23 @@ include "../db_open.php";
 
 try {
     
-  $sql = 'SELECT c.com_name, i.com_rinen 
-  FROM company_table c 
-  JOIN cominfo_table i ON c.com_id = i.com_id
-  ORDER BY c.com_id DESC;'; 
-$stmt = $dbh->query($sql);
-  
-    while ($record = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        echo "<div class='record'>";
-        echo "<div class='com-name'><strong>" . htmlspecialchars($record['com_name'], ENT_QUOTES, 'UTF-8') . "</strong></div>";
-        echo "<div class='com-rinen'>" . htmlspecialchars($record['com_rinen'], ENT_QUOTES, 'UTF-8') . "</div>";
-        echo "</div>";
-    }
-} catch (PDOException $e) {
-    echo "エラー: " . $e->getMessage();
-}
-?>
-
+  $sql = 'SELECT c.com_id, c.com_name, i.com_rinen 
+                  FROM company_table c 
+                  JOIN cominfo_table i ON c.com_id = i.com_id
+                  ORDER BY c.com_id DESC;'; 
+          $stmt = $dbh->query($sql);
+          
+          while ($record = $stmt->fetch(PDO::FETCH_ASSOC)) {
+              echo "<div class='record'>";
+              // 会社名をクリックできるリンクにする
+              echo "<div class='com-name'><a href='dummy_page.php?com_id=" . htmlspecialchars($record['com_id'], ENT_QUOTES, 'UTF-8') . "'><strong>" . htmlspecialchars($record['com_name'], ENT_QUOTES, 'UTF-8') . "</strong></a></div>";
+              echo "<div class='com-rinen'>" . htmlspecialchars($record['com_rinen'], ENT_QUOTES, 'UTF-8') . "</div>";
+              echo "</div>";
+          }
+      } catch (PDOException $e) {
+          echo "エラー: " . $e->getMessage();
+      }
+      ?>
     </div>
   </div>
 </body>
