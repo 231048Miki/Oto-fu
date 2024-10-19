@@ -30,7 +30,7 @@
     header("Location:../../fujii/login.php");
     exit();
   } else {
-    $userid = $_SESSION['com_id'];
+    // $userid = $_SESSION['com_id'];
     // echo $userid;  
   }
 

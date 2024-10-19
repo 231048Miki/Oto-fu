@@ -17,7 +17,7 @@
   <header>
     <div class="header">
       <h2>
-        <a href="admintop.php" class="web-name">job hunting</a>
+        <a href="../shirasaki/top/top.php" class="web-name">job hunting</a>
       </h2>
       <div class="menu">
         <div id="nav-drawer">
