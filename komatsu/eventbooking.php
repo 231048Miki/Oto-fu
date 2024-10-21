@@ -6,6 +6,16 @@
   $event = isset($_POST['eventid']) ? $_POST['eventid'] : '';
   $event = $event;
   $com_id = $com_id;
+  if($event == 'event1'){
+    $content = 'event_content1';
+  }elseif($event == 'event2'){
+    $content = 'event_content2';
+  }elseif($event == 'event3'){
+    $content = 'event_content3';
+  }else{
+    echo "なんかエラー";
+  }
+
 ?>
 <!DOCTYPE html>
 <ht>
@@ -17,6 +27,7 @@
   <link rel="stylesheet" href="eventbooking.css">
   <meta name="viewport" content="width=device-width" />
 </head>
+
 <body>
   <!-- ヘッダー追加 -->
   <header>
@@ -74,45 +85,43 @@ try {
   echo "</ul>";
   echo '</div>';
 
-  $sql_event_dates = "SELECT eventdata1 FROM cominfo_table ORDER BY com_id DESC LIMIT 1";
-  $stmt_event_dates = $dbh->query($sql_event_dates);
-  echo '<div class="company-details2">';
-  echo "<h4>イベント日付</h4>";
-  echo "<ul>";
-  $event_date_value = ''; 
-  while ($row_event_dates = $stmt_event_dates->fetch(PDO::FETCH_ASSOC)) {
-    echo "<li>" . htmlspecialchars($row_event_dates['eventdata1'], ENT_QUOTES, 'UTF-8') . "</li>";
-    $event_date_value = $row_event_dates['eventdata1']; 
-  }
-  echo "</ul>";
-  echo '</div>';
+      echo '<div class="company-details">';
+      echo "<h4>会社名</h4>";
+      echo "<ul>";
+      $company_name = '';
+      if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        echo "<li>" . htmlspecialchars($row['com_name'], ENT_QUOTES, 'UTF-8') . "</li>";
+        $company_name = $row['com_name'];
+      }
+      echo "</ul>";
+      echo '</div>';
 
-  $sql_events = "SELECT $event FROM cominfo_table WHERE com_id = $com_id";
+  $sql_events = "SELECT $event  FROM cominfo_table WHERE com_id = $com_id";
   $stmt_events = $dbh->prepare($sql_events);
   $stmt_events->execute();
+
+  $sql_content = "SELECT $content FROM cominfo_table WHERE com_id = $com_id";
+  $stmt_content = $dbh->prepare($sql_content);
+  $stmt_content->execute();
+
   
   echo '<div class="event-container">';
   echo '<div class="event-details">';
   echo "<h4>イベント内容・詳細</h4>";
   $event_details_value = ''; 
+  $content_details_value = '';
   while ($row_events = $stmt_events->fetch(PDO::FETCH_ASSOC)) {
     echo "<p>" . htmlspecialchars($row_events[$event], ENT_QUOTES, 'UTF-8') . "</p>";
-    $event_details_value = $row_events[$event] ; 
+    $event_details_value = $row_events[$event] ;
+    while ($row_content = $stmt_content->fetch(PDO::FETCH_ASSOC)) {
+      echo "<p>" . htmlspecialchars($row_content[$content], ENT_QUOTES, 'UTF-8') . "</p>";
+      $content_details_value = $row_content[$content] ;
+    }
   }
   echo '</div>';
   echo '</div>';
 
-  // 予約ボタンが押されたら処理を行う削除予定
-  
-//   if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['booking'])) {
-//     $sql_insert = "INSERT INTO eventbooking_table (stu_id , com_id , EventData) VALUES ( :stu_id, :com_id, CURRENT_DATE)";
-//     $stmt_insert = $dbh->prepare($sql_insert);
-//     $stmt_insert->bindParam(':stu_id', $stu_id, PDO::PARAM_INT);
-//     $stmt_insert->bindParam(':com_id', $com_id, PDO::PARAM_INT);
-//     $stmt_insert->execute();
 
-//     echo "<script>alert('予約しました。'); window.location.href = '../iizuka/php/detail.php';</script>";
-//   }
 
 } catch (PDOException $e) {
   echo "エラー: " . $e->getMessage();
