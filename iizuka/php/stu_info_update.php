@@ -15,7 +15,7 @@
                 <a href="../../shirasaki/top/top.php" class="web-name">job hunting</a>
             </h2>
             <div class="menu">
-                <a onclick="history.back(-1)" class="header-nav">戻る</a>
+                <a href="../../shirasaki/mypage/mypage.php" class="header-nav">戻る</a>
             </div>
         </div>
     </header>
