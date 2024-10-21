@@ -1,14 +1,31 @@
 <?PHP
-    function search($keyword,$dbh){
-        $get = $dbh->prepare('SELECT * FROM company_table,cominfo_table WHERE com_name LIKE :com_name AND company_table.com_id = cominfo_table.com_id');
+    function search($keyword,$dbh,$startNo){//キーワードとPDOと開始位置入れて、そのキーワードを含む企業を返す関数
+        $result = [];//結果格納用
+        //  24こで画面いっぱいになるからlimitで制限、その場合次ページの遷移先を配置
+        $get = $dbh->prepare('SELECT * FROM company_table,cominfo_table WHERE com_name LIKE :com_name AND company_table.com_id = cominfo_table.com_id AND company_table.com_id > :startNo ORDER BY cominfo_table.com_id ASC limit 24');
         $get->bindValue(':com_name',$keyword."%",PDO::PARAM_STR);
+        $get->bindValue(':startNo',$startNo,PDO::PARAM_INT);
         $get->execute();
-        echo"<ul>";
         while($com = $get->fetch(PDO::FETCH_ASSOC)){
-            echo "<li><a href='#'>".$com['com_name']."</a>";//企業ページできたらここに遷移先を記入
-            echo "<br><b>企業理念：".$com['com_rinen']."</b></li><br>";
+            // echo "<li><a href='#'>".$com['com_name']."</a>";//企業ページできたらここに遷移先を記入
+            // echo "<br><b>企業理念：".$com['com_rinen']."</b></li><br>";
+            array_push($result,[$com['com_id'],$com['com_name'],$com['com_rinen']]);
         };
-        echo"</ul>";
+        // var_dump($result);
+        echo "<ul>";
+        for($i=0;$i<count($result);$i++){
+            if($i != 0 && $i % 8 == 0 ){
+                echo "</ul><ul>";
+            }
+            echo "<li><a href='#'>".$result[$i][1]."</a>";
+            echo  "<br><b>企業理念：".$result[$i][2]."</b></li><br>";
+
+            if($i == 23){
+                echo "<a href='?startNo={$result[$i][0]}'> >> </a>";
+            }
+        }
+        echo "<a href='?startNo=0' style='margin-left:30px'> 先頭へ </a>";
+        echo "</ul>";
     }
 
     function makeTagForm($dbh){//タグ全部取得、それらのIDをvalueにしたinput要素を召喚関数
@@ -33,10 +50,13 @@
         $get = $dbh->prepare('SELECT * FROM tag_table WHERE tag_id = :tag_id');
         $get->bindValue(':tag_id',$tag,PDO::PARAM_STR);
         $get->execute();
+        echo "<ul>";
         while($tag = $get->fetch(PDO::FETCH_ASSOC)){
+          echo "<li>";
           echo $tag['tag_name'];
-          echo "<br>";
+          echo "</li>";
         };
+        echo "</ul>";
     }
     }
 
@@ -63,16 +83,34 @@
         return $result;
     }
 
-    function searchByComId($dbh,$comIDs){
-        echo "<ul>";
+    function searchByComId($dbh,$comIDs,$startNo){
+        $result = [];//結果格納用
         foreach($comIDs as $comID){
-            $get = $dbh->prepare('SELECT * FROM company_table,cominfo_table WHERE company_table.com_id = :com_id AND company_table.com_id = cominfo_table.com_id');
+            $get = $dbh->prepare('SELECT * FROM company_table,cominfo_table WHERE company_table.com_id = :com_id AND company_table.com_id = cominfo_table.com_id AND company_table.com_id > :startNo ORDER BY cominfo_table.com_id ASC limit 24');
             $get->bindValue(':com_id',$comID,PDO::PARAM_INT);
+            $get->bindValue(':startNo',$startNo,PDO::PARAM_INT);
             $get->execute();
             $com = $get->fetch(PDO::FETCH_ASSOC);
-                echo "<li><a href='#'>".$com['com_name']."</a>";
-                echo "<br><b>企業理念：".$com['com_rinen']."</b></li><br>";
+            array_push($result,[$com['com_id'],$com['com_name'],$com['com_rinen']]);
         }
-        echo"</ul>";
+
+            echo "<ul>";
+            for($i=0;$i<count($result);$i++){
+                if($i != 0 && $i % 8 == 0 ){
+                    echo "</ul><ul>";
+                }
+                echo "<li><a href='#'>".$result[$i][1]."</a>";
+                echo  "<br><b>企業理念：".$result[$i][2]."</b></li><br>";
+    
+                if($i == 23){
+                    echo "<a href='?startNo={$result[$i][0]}'> >> </a>";
+                }
+            }
+            echo "<a href='?startNo=0' style='margin-left:30px'> 先頭へ </a>";
+            echo "</ul>";
+        //     $com = $get->fetch(PDO::FETCH_ASSOC);
+        //         echo "<li><a href='../../iizuka/php/detail.php?com_id={$com['com_id']}'>".$com['com_name']."</a>";
+        //         echo "<br><b>企業理念：".$com['com_rinen']."</b></li><br>";
+        // echo"</ul>";
     }
 ?>
