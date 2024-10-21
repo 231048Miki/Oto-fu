@@ -1,73 +1,82 @@
 @charset "UTF-8";
 
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 中央揃え */
+}
+
 .aaa {
-    padding: 0.5em 1em;
-    margin: 2em 0;
-    font-weight: bold;
-    border: 2px solid #000000;
-    width: 100px;
-    text-align: center;
-    margin-left: 0;
-  }
-  .aaa p {
-    margin: 0;
-    padding: 0;
-  }
-  
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
+  border: 2px solid #000000;
+  width: 100px;
+  text-align: center;
+}
 
-  li {
-    margin-bottom: 10px;
-  }
+.aaa p {
+  margin: 0; /* マージンを削除 */
+}
 
-  .company-details {
-    border: 2px solid #000;
-    padding: 2px;
-    text-align: center;
-    width: 190px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
-  }
-  .company-details2 {
-    position: fixed;
-    left: 320px;
-    top: 300px;
-    border: 2px solid #000;
-    padding: 2px;
-    text-align: center;
-    width: 190px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
-  }
+ul {
+  list-style-type: none;
+  padding: 0; /* パディングを削除 */
+}
 
-  .event-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
-  }
+li {
+  margin-bottom: 10px; /* リスト項目の間隔 */
+}
 
+.company-details,
+.company-details2,
+.event-details {
+  border: 2px solid #000;
+  text-align: center;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  width: 80%; /* 幅を80%に設定 */
+  max-width: 300px; /* 最大幅を300pxに設定 */
+  margin: 10px 0; /* 上下のスペースを確保 */
+}
+
+.event-container {
+  display: flex;
+  flex-direction: column; /* 縦に並べる */
+  align-items: center; /* 中央揃え */
+  margin-top: 30px;
+}
+
+.button {
+  padding: 10px 20px;
+  color: black;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  border: 2px solid #000000;
+  margin: 20px 0; /* 上下マージンを追加 */
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+  .company-details,
+  .company-details2,
   .event-details {
-    position: fixed;
-    top: 300px;
-    border: 2px solid #000;
-    padding: 5px;
-    text-align: center;
-    width: 300px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    width: 90%; /* 幅を90%に */
+    position: relative; /* 相対位置 */
+    top: auto; /* 固定位置を解除 */
   }
 
   .button {
-    position: fixed;
-    bottom: 20px;
-    left: 680px;
-    transform: translateX(-50%);
-    padding: 10px 20px;
-    color: black;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    border: 2px solid #000000;
+    width: 90%; /* 幅を90%に */
+    position: relative; /* 相対位置 */
   }
+}
+
+@media (min-width: 769px) {
+  .company-details,
+  .company-details2,
+  .event-details {
+    position: relative; /* 相対位置に設定 */
+    margin: 20px 0; /* スペースを確保 */
+  }
+}
