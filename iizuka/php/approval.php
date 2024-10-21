@@ -7,7 +7,7 @@
     <link rel="stylesheet" , href="../css/approval.css">
     <meta name="viewport" content="width=device-width" />
 
-    <title>企業承認</title>
+    <title>企業承認ダミー</title>
 </head>
 
 <body>
@@ -23,7 +23,7 @@
         </div>
     </header>
 
-    <h2>企業承認画面(ダミー)</h2>
+    <h2>企業承認画面</h2>
 
     <!-- データベース作ってwhileでできればよかった。ダミーデータです -->
     <div class="com">
