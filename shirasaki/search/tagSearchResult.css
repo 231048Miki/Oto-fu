@@ -35,6 +35,12 @@ header{
 }
 
 
+.block{
+    height: 300px;
+    width: 300px;
+    margin-top: 50px;
+    /* background-color: #8E9FEA; */
+}
 .hamburger{
     position: relative; /* 今の位置を基準 */
     bottom: 70px;
@@ -46,13 +52,17 @@ header{
 }
 .mid{
     /* background-color: paleturquoise; */
-   margin-left: 20px;
-   width: 500px;
-   height: 460px;
+    border:  dashed,5px,#CD853F;
+    border-radius: 30px;
+    padding: 10px;
    padding: 10px;
-   border:  dashed,5px,#CD853F;
-   border-radius: 30px;
+
 }
+
+.result{
+    display: flex;
+}
+
 .banner button{
         /* display: block; */
         text-align: center;
@@ -121,33 +131,9 @@ transform: rotate(-45deg);
 transform: translateX(0); 
 }
 
-.block button{
-    text-align: center;
-    vertical-align: middle;
-    text-decoration: none;
-    position: relative;
-    width: 400px;
-    height: 100px;
-    margin: auto;
-    font-weight: bold;
-    border-radius: 0.3rem;
-    background-color: #e9f6fb;
-    border-image-source: repeating-linear-gradient(45deg, #CD853F 0, #CD853F 6px, rgba(0, 0, 0, 0) 6px, rgba(0, 0, 0, 0) 8px);
-    border-image-slice: 4;
-    border-width: 4px;
-    border-image-repeat: round;
-    border-style: solid;
-    color: #CD853F;
+ul{
+    margin-left: 20px;
 }
-.block button:hover {
-    border: 4px solid #CD853F;
-    color: #CD853F;
-}
-    .block{
-        height: 100px;
-        margin-top: 10px;
-        margin-left: 30px;
-    }
 
 @media (min-width: 1000px){
     .hamburger,.slide-menu{
@@ -165,10 +151,16 @@ transform: translateX(0);
     }
     
     .mid{
-        margin-top: 10px;
-        display: block;
-       
-    }
+           display: block;
+           height: 100%;
+           border:none;
+           border-radius: 30px;
+           padding: 10px;
+        }
+    
 
+    .result{
+        display: block;
+    }
 }
 
