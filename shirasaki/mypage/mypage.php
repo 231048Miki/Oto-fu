@@ -11,46 +11,10 @@ $login = login($dbh);
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="../baseLayout.css">
+        <link rel="stylesheet" href="mypage.css">
 
         <title>マイページ</title>
     </head>
-    <style>
-        .block button{
-            box-shadow: 0 5px #8E9FEA;
-            border-radius: 5px;
-            width: 170px;
-            height: 60px;
-            padding: 15px;
-            box-sizing: border-box;
-            background: #C4D9FE;
-            color: #181818;
-            text-decoration: none;
-            text-align: center;
-            margin-left: 20px;
-            color: #181818;
-        }
-        .block{
-            height: 100px;
-        }
-        @media (max-width: 600px){
-
-            .right{
-            /* background-color: lightcoral; */
-            width: 100%;
-            padding-left: 100px;
-            height: 200px;
-            }
-
-            .left{
-            /* background-color: lightcoral; */
-            margin-top: 100px;
-            width: 100%;
-            padding-left: 100px;
-            height: 200px;
-            }
-        }
-    </style>
     <body>
     <div class="main">
         <header>
@@ -58,7 +22,7 @@ $login = login($dbh);
             <button class="btn-gradient-3d-simple" onclick="location.href='../top/top.php'">job hunting</button>
             <button class="btn-gradient-3d-simple" onclick="history.back()">もどる</button>
             <button class="btn-gradient-3d-simple" onclick="location.href='../../fujii/login.php'">ログアウト</button>
-            <button class="btn-gradient-3d-simple" onclick="location.href='#'">閲覧履歴</button>
+            <button class="btn-gradient-3d-simple" onclick="location.href='../../komatsu/browsing.php'">閲覧履歴</button>
             <button class="btn-gradient-3d-simple" onclick="location.href='../quit/quit.php'">退会</button>
             </div>
 
@@ -87,25 +51,18 @@ $login = login($dbh);
         </header>
 
         <div class="mid">
-
-            <div class="right">
-
                 <div class="block" id="b1">
-                <button class="btn-gradient-3d-simple" onclick="location.href='../dummy/offer.html'">オファーリスト</button>
+                <button class="btn" onclick="location.href='../dummy/offer.html'"><h2>『オファーリスト』:受け取ったオファーを閲覧できるでやんす。</h2></button>
                 </div>
                 <div class="block"> 
-                <button class="btn-gradient-3d-simple" onclick="location.href='../dummy/kininaru.html'">気になる企業リスト</button>
-                </div>
-            </div>
-
-            <div class="left">
-                <div class="block"> 
-                <button class="btn-gradient-3d-simple" onclick="location.href='../resume/resumeForm.php'">履歴書</button>
+                <button class="btn" onclick="location.href='../dummy/kininaru.html'"><h2>『気になる企業』:気になる企業を閲覧できるでやんす。</h2></button>
                 </div>
                 <div class="block"> 
-                <button class="btn-gradient-3d-simple" onclick="location.href='../../iizuka/php/stu_info_update.php'">設定</button>
+                <button class="btn" onclick="location.href='../resume/resumeForm.php'"><h2>『履歴書』:履歴書的なものを書いて保管できるでやんす。</h2></button>
                 </div>
-            </div>
+                <div class="block"> 
+                <button class="btn" onclick="location.href='../../iizuka/php/stu_info_update.php'"><h2>『設定』:アカウント情報を変更できるでやんす。</h2></button>
+                </div>
         </div>
     </div>
     <script>

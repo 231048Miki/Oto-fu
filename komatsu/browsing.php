@@ -59,7 +59,7 @@ try {
   FROM company_table c 
   JOIN cominfo_table i ON c.com_id = i.com_id
   ORDER BY c.com_id DESC;'; 
-$stmt = $dbh->query($sql);
+  $stmt = $dbh->query($sql);
   
     while ($record = $stmt->fetch(PDO::FETCH_ASSOC)) {
         echo "<div class='record'>";

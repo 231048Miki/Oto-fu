@@ -5,12 +5,16 @@ session_start();
 if(isset($_POST["company"])){
     $_SESSION['keyword'] = $_POST["company"];
 }
+$startNo = 0;
+if(isset($_GET['startNo'])){
+    $startNo = $_GET['startNo'];
+}
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="../baseLayout.css">
+        <link rel="stylesheet" href="comSearch.css">
 
         <title>検索結果</title>
     </head>
@@ -23,7 +27,7 @@ if(isset($_POST["company"])){
             <button class="btn-gradient-3d-simple" onclick="location.href='../top/top.php'">就活アプリ</button>
             <button class="btn-gradient-3d-simple" onclick="location.href='../mypage/mypage.php'">マイページ</button>
             <button class="btn-gradient-3d-simple" onclick="location.href='#'">閲覧履歴</button>
-            <button class="btn-gradient-3d-simple" onclick="location.href='modoru'">戻る</button>
+            <button class="btn-gradient-3d-simple" onclick="history.back()">戻る</button>
             <button class="btn-gradient-3d-simple" onclick="location.href='../../fujii/login.php'">ログアウト</button>
             </div>
 
@@ -51,31 +55,19 @@ if(isset($_POST["company"])){
         </header>
 
         <div class="mid">
-            <div class="right">
-                <div class="block" id="b1">
-                <form method="POST" action="">
-                <input type="text" name="company"  placeholder="空欄で全て表示">
-                <input type="submit" value="検索">
-                </form>
-                <button class="" onclick="location.href=''">タグで検索</button>
-                <?PHP if(isset($_SESSION['keyword'])){
-                    search($_SESSION['keyword'],$dbh);
-                 } ?>
-                    
-                </div>
-                <div class="block"> 
-            
-                </div>
-            </div>
+                    <div class="forms">
+                    <form method="POST" action="">
+                    <input type="text" name="company"  placeholder="空欄で全て表示">
+                    <input type="submit" value="検索">
+                    </form>
+                    <button class="" onclick="location.href='tagSearch.php'">タグで検索</button>
+                    </div>
 
-            <div class="left">
-                <div class="block"> 
-                    
-                </div>
-                <div class="block"> 
-                    
-                </div>
-            </div>
+                    <div class="result">
+                    <?PHP if(isset($_SESSION['keyword'])){
+                        search($_SESSION['keyword'],$dbh,$startNo);
+                    } ?>
+                    </div>
         </div>
     </div>
     <script>

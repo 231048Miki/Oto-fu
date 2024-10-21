@@ -139,7 +139,7 @@ function imgUpload($dbh,$id){
     }
 
     $imgSave = $dbh->prepare('UPDATE resume_table SET photoID = :photoID where stu_id = :stu_id');
-    $imgSave->bindValue(':stu_id',$id,PDO::PARAM_STR);//テストで１をいれてる、STUID
+    $imgSave->bindValue(':stu_id',$id,PDO::PARAM_STR);
     $imgSave->bindValue(':photoID',$distoinationPath,PDO::PARAM_STR);
     $imgSave->execute();
     echo "<h4>画像保存しました</h4>".$distoinationPath;

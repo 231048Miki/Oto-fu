@@ -197,6 +197,7 @@ for($day = 1; $day <= $day_count; $day++, $youbi++){//1から、その月の日�
             /* background-color: lightcoral; */
             width: 400px;
             height: 250px;
+            background: white;
             aspect-ratio: 5 / 3.8;
 
         }
@@ -204,7 +205,7 @@ for($day = 1; $day <= $day_count; $day++, $youbi++){//1から、その月の日�
         .eventForm {
             width: 200px;
             margin-left: 4px;
-            margin-top: 10px;
+            margin-top: 60px;
             /* position: relative; */
             /* bottom: 200px;
             left: 200px; */
@@ -236,13 +237,20 @@ for($day = 1; $day <= $day_count; $day++, $youbi++){//1から、その月の日�
             width: 25px;
             height: 25px;
         }
-        .calendarHeader{
-            
-        }
         #frame{
             display: flex;
         }
-     
+        @media (max-width: 1000px){
+            .eventForm {
+            width: 200px;
+            margin-top: 3px;
+            margin-left: 200px;
+            }
+            #frame{
+            display: block;
+        }
+
+        }
  
 
 

@@ -5,6 +5,7 @@ html{
 }
 body{
     height: 100%;
+    background-color:#FAEBD7;
 }
 h1{
     margin-left: 2%;
@@ -20,8 +21,20 @@ header{
 }
 .title{
     /* background-color: aliceblue; */
-    height: 50px
+    height: 50px;
+    color: #CD853F;
+    border: dashed,5px,#CD853F;
+    border-radius: 40%;
+    background: #e9f6fb;
+    width: 200px;
+    height: 70px;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 10px;
+    padding-bottom: 5px;
 }
+
+
 .block{
     height: 300px;
     width: 300px;
@@ -41,6 +54,8 @@ header{
     /* background-color: paleturquoise; */
    display: flex;
    height: 100%;
+   border:  dashed,5px,#CD853F;
+   border-radius: 30px;
 }
 .left{
     /* background-color: lightseagreen; */
@@ -55,7 +70,7 @@ header{
     padding: 5px;
 }
 .banner button{
-    box-shadow: 0 5px #8E9FEA;
+    /* box-shadow: 0 5px #8E9FEA;
     border-radius: 5px;
     width: 170px;
     height: 60px;
@@ -66,8 +81,31 @@ header{
     text-decoration: none;
     text-align: center;
     margin-left: 20px;
-    color: #181818;
-}
+    color: #181818; */
+
+        /* display: block; */
+        text-align: center;
+        vertical-align: middle;
+        text-decoration: none;
+        position: relative;
+        width: 170px;
+        height: 80px;
+        margin: auto;
+        font-weight: bold;
+        border-radius: 0.3rem;
+        background-color: #e9f6fb;
+        border-image-source: repeating-linear-gradient(45deg, #CD853F 0, #CD853F 6px, rgba(0, 0, 0, 0) 6px, rgba(0, 0, 0, 0) 8px);
+        border-image-slice: 4;
+        border-width: 4px;
+        border-image-repeat: round;
+        border-style: solid;
+        color: #CD853F;
+    }
+    .banner button:hover {
+        border: 4px solid #CD853F;
+        color: #CD853F;
+    }
+
 
 .hamburger span{
 position: absolute;
