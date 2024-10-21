@@ -12,7 +12,7 @@
 <body>
     <div class="header">
         <h2>
-            <a href="com_top.php" class="web-name">job hunting</a>
+            <a href="../../komatsu/admintop.php" class="web-name">job hunting</a>
         </h2>
         <div class="menu">
             <a onclick="history.back(-1)" class="header-nav">戻る</a>

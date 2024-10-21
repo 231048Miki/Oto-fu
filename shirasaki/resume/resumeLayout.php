@@ -1,17 +1,20 @@
 <?PHP 
-$douki = "あああああああああああああああああああああああああああああああああああああああああ。
-ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ";
-$pr = "私は、とくになんもできません。";
-$syumi = "寝る事";
-$name = "高田健志";
-$hurigana = "たかだけんし";
-$seinengappi = "2001年3月17日生まれ,満(23)歳";
-$seibetu="男";
-$zyusyo = "北海道根室市明治町3-99";
-$furiganazyusyo = "ほっかいどうねむろしめいじちょう";
-$yuubin = "087-0003";
-$denwa = "090-6998-7056";
-$mail = "kakaka111@gmail.com";
+session_start();
+
+$id=$_SESSION['user_id'];
+// $douki = "あああああああああああああああああああああああああああああああああああああああああ。
+// ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ";
+// $pr = "私は、とくになんもできません。";
+// $syumi = "寝る事";
+// $name = "高田健志";
+$hurigana = "たかだけんし(dummy)";
+// $seinengappi = "2001年3月17日生まれ,満(23)歳";
+$seibetu="男(dummy)";
+// $zyusyo = "北海道根室市明治町3-99";
+$furiganazyusyo = "ほっかいどうねむろしめいじちょう(dummy)";
+$yuubin = "087-0003(dummy)";
+// $denwa = "090-6998-7056";
+// $mail = "kakaka111@gmail.com";
 
 // $sikaku1 = "基本情報,取得";
 // $sikaku2 = "乙四,取得";
@@ -23,20 +26,29 @@ $sikaku1Time = "2024年4月";
 $sikaku2Time = "2018年3月";//こいつらを外部から受け取るようにする。
 
 include("../../db_open.php");
-$resumeInfo=[];//ID拾って全データ取り出し
+include("../functions/userCtlFunc.php");
+$user=getUser($id,$dbh);
+$name = $user['name'];
+$seinengappi = $user['birth'];
+$zyusyo = $user['address'];
+$mail = $user['mail'];
+$denwa = $user['tell'];
+
+
 $getRsume = $dbh->prepare('SELECT * FROM resume_table WHERE stu_id = :stu_id');
-$getRsume->bindValue(':stu_id',1,PDO::PARAM_STR);//ユーザーIDを入れる、今はテストで１を入れている
+$getRsume->bindValue(':stu_id',$id,PDO::PARAM_STR);//ユーザーIDを入れる、今はテストで１を入れている
 $getRsume->execute();
 while($resume = $getRsume->fetch(PDO::FETCH_ASSOC)){
             $douki = $resume['reazon'];
             $pr = $resume['pr'];
             $syumi = $resume['skill'];
+            $photoID = $resume['photoID'];
 };
 
 $count = 0;
 
 $get = $dbh->prepare('SELECT * FROM history_table WHERE stu_id = :stu_id');
-$get -> bindValue(':stu_id',1,PDO::PARAM_STR);
+$get -> bindValue(':stu_id',$id,PDO::PARAM_STR);
 $get->execute();
 while($qual = $get->fetch(PDO::FETCH_ASSOC)){
     $quals[$count][] = $qual['history_name'];
@@ -45,14 +57,13 @@ while($qual = $get->fetch(PDO::FETCH_ASSOC)){
 };
 
 $get = $dbh->prepare('SELECT * FROM qual_table WHERE stu_id = :stu_id');
-$get -> bindValue(':stu_id',1,PDO::PARAM_STR);
+$get -> bindValue(':stu_id',$id,PDO::PARAM_STR);
 $get->execute();
 while($qual = $get->fetch(PDO::FETCH_ASSOC)){
     $quals[$count][] = $qual['qual_name'];
     $quals[$count][] = $qual['qual_time'];
     $count++;
 };
-
 
 
 ?>
@@ -256,7 +267,7 @@ while($qual = $get->fetch(PDO::FETCH_ASSOC)){
                 ?>  
                 </div>
                 <div class="kao">
-                    <img src="./20240126040133takadagood.jpg">
+                    <img src="<?php echo $photoID?>">
                 </div>
             </div>    
 

@@ -2,7 +2,8 @@
 //trust me
 // include 'db_open.php';
 include '../db_open.php';
-
+session_start();
+session_destroy();
 $HTML_HEADER = <<<___EOF___
     <!DOCTYPE html>
         <html>

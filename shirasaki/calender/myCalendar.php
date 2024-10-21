@@ -3,9 +3,9 @@ require("../../db_open.php");
 // require("../xssBlock.php");
 $eventList=[];
 
-if(!isset($_SESSION['user_id'])){
-    $_SESSION['user_id']=1;//テスト用後で消せ
-}
+// if(!isset($_SESSION['user_id'])){
+//     $_SESSION['user_id']=1;//テスト用後で消せ
+// }
 
 //完了ボタン押した時用処理
 if(isset($_POST['deleteDate'])){

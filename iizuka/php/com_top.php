@@ -15,7 +15,7 @@
     <div class="main">
         <?php
 
-        require("../../shirasaki/xssBlock.php");
+        require("../../shirasaki/functions/xssBlock.php");
 
         session_start();
 
@@ -72,7 +72,7 @@
             <!-- #のところに遷移するところのパス入れてください -->
             <div class="btn-flex">
                 <button class="tag" onclick="location.href='#'">公開履歴書一覧予定</button><br>
-                <button class="tag" onclick="location.href='#'">タグ追加・更新予定</button>
+                <button class="tag" onclick="location.href='../../shirasaki/search/tagSelect.php'">タグ追加・更新予定</button>
             </div>
         </div>
 
