@@ -6,6 +6,16 @@
   $event = isset($_POST['eventid']) ? $_POST['eventid'] : '';
   $event = $event;
   $com_id = $com_id;
+  if($event == 'event1'){
+    $content = 'event_content1';
+  }elseif($event == 'event2'){
+    $content = 'event_content2';
+  }elseif($event == 'event3'){
+    $content = 'event_content3';
+  }else{
+    echo "なんかエラー";
+  }
+
 ?>
 <!DOCTYPE html>
 <ht>
@@ -86,32 +96,32 @@ try {
       echo "</ul>";
       echo '</div>';
 
-  $sql_events = "SELECT $event FROM cominfo_table WHERE com_id = $com_id";
+  $sql_events = "SELECT $event  FROM cominfo_table WHERE com_id = $com_id";
   $stmt_events = $dbh->prepare($sql_events);
   $stmt_events->execute();
+
+  $sql_content = "SELECT $content FROM cominfo_table WHERE com_id = $com_id";
+  $stmt_content = $dbh->prepare($sql_content);
+  $stmt_content->execute();
+
   
   echo '<div class="event-container">';
   echo '<div class="event-details">';
   echo "<h4>イベント内容・詳細</h4>";
   $event_details_value = ''; 
+  $content_details_value = '';
   while ($row_events = $stmt_events->fetch(PDO::FETCH_ASSOC)) {
     echo "<p>" . htmlspecialchars($row_events[$event], ENT_QUOTES, 'UTF-8') . "</p>";
-    $event_details_value = $row_events[$event] ; 
+    $event_details_value = $row_events[$event] ;
+    while ($row_content = $stmt_content->fetch(PDO::FETCH_ASSOC)) {
+      echo "<p>" . htmlspecialchars($row_content[$content], ENT_QUOTES, 'UTF-8') . "</p>";
+      $content_details_value = $row_content[$content] ;
+    }
   }
   echo '</div>';
   echo '</div>';
 
-  // 予約ボタンが押されたら処理を行う削除予定
-  
-//   if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['booking'])) {
-//     $sql_insert = "INSERT INTO eventbooking_table (stu_id , com_id , EventData) VALUES ( :stu_id, :com_id, CURRENT_DATE)";
-//     $stmt_insert = $dbh->prepare($sql_insert);
-//     $stmt_insert->bindParam(':stu_id', $stu_id, PDO::PARAM_INT);
-//     $stmt_insert->bindParam(':com_id', $com_id, PDO::PARAM_INT);
-//     $stmt_insert->execute();
 
-//     echo "<script>alert('予約しました。'); window.location.href = '../iizuka/php/detail.php';</script>";
-//   }
 
 } catch (PDOException $e) {
   echo "エラー: " . $e->getMessage();
