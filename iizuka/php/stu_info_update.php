@@ -70,37 +70,28 @@ ___EOF___;
             $sql = "SELECT * FROM student_table WHERE stu_id = $userid";
             $sql_res = $dbh->query($sql);
 
-            if (mb_strlen($name) > 10) {
-                echo "<script>";
-                echo "alert('ユーザー名が長すぎます')";
-                echo "</script>";
-                echo '<script>location.href = "infoedit.php";</script>';
-            } elseif (mb_strlen($mail) > 100) {
-                echo "<script>";
-                echo "alert('メールアドレスが長すぎます')";
-                echo "</script>";
-                echo '<script>location.href = "infoedit.php";</script>';
-            // } elseif (mb_strlen($pass) > 8) {
-            //     echo "<script>";
-            //     echo "alert('パスワードが長すぎます')";
-            //     echo "</script>";
-            //     echo '<script>location.href = "infoedit.php";</script>';
-            } elseif (!preg_match('/^[a-zA-Z0-9@._-]+$/u', $mail)) {
-                echo "<script>";
-                echo "alert('無効な文字が含まれています')";
-                echo "</script>";
-                echo '<script>location.href = "infoedit.php";</script>';
-            // } elseif (!preg_match('/^[a-zA-Z0-9]+$/u', $pass)) {
-            //     echo "<script>";
-            //     echo "alert('無効な文字が含まれています')";
-            //     echo "</script>";
-            //     echo '<script>location.href = "infoedit.php";</script>';
-            } elseif (!preg_match('/^[0-9\-]+$/', $tell)) {
-                echo "<script>";
-                echo "alert('無効な文字が含まれています')";
-                echo "</script>";
-                echo '<script>location.href = "infoedit.php";</script>';
-            } elseif ($sql_res) {
+            if(strlen($name) > 100 && strlen($name) != 0){
+                //文字数の判定
+                echo "名前が不適切な形式です";
+                echo "<div class='back'>";
+                echo "<a onclick='history.back(-1)'>戻る</a>";
+                echo "</div>";
+            }elseif(strlen($mail) > 100 && strlen($mail) != 0){    
+                echo "メールアドレスが不適切な形式です";
+                echo "<div class='back'>";
+                echo "<a onclick='history.back(-1)'>戻る</a>";
+                echo "</div>";
+            }elseif(strlen($address) > 100 && strlen($address) != 0){
+                echo "住所が不適切な形式です";
+                echo "<div class='back'>";
+                echo "<a onclick='history.back(-1)'>戻る</a>";
+                echo "</div>";
+            }elseif(strlen($school) > 100 && strlen($school) != 0){
+                echo "学校名が不適切な形式です";
+                echo "<div class='back'>";
+                echo "<a onclick='history.back(-1)'>戻る</a>";
+                echo "</div>";
+            }elseif ($sql_res) {
                 $sql = "UPDATE student_table SET stu_name='{$name}',stu_mail='{$mail}',birth='{$birth}' ,stu_tell='{$tell}', stu_address='{$address}',stu_school='{$school}' where stu_id = $userid";
                 echo $sql;
                 $sql_res = $dbh->query($sql);
