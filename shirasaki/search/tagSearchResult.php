@@ -1,16 +1,21 @@
 <?php 
 require("searchCtl.php");
 require("../../db_open.php");
+
+if(!(isset($_POST['tags']))){
+    header('Location:\otofu\Oto-fu\shirasaki/search/tagSearch.php');
+}
+$startNo = 0;
+if(isset($_GET['startNo'])){
+    $startNo = $_GET['startNo'];
+}
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="../baseLayout.css">
+        <link rel="stylesheet" href="tagSearchResult.css">
         <style>
-            .mid{
-                display: block;
-            }
         </style>
         <title>タイトル</title>
     </head>
@@ -51,14 +56,18 @@ require("../../db_open.php");
         </header>
 
         <div class="mid">
-        <h1>タグ検索したぜ</h1>
+        <div class="selectTag">
+            <h1>タグ検索したぜ</h1>
             <?php 
             $result = searchComOnTag($dbh,$_POST['tags']);
-            echo "絞り込み中使用タグ：<br>";
+            echo "<h3>絞り込み中使用タグ：</h3>";
             outputTagsName($_POST['tags'],$dbh);
-            // var_dump($result);
-            searchByComId($dbh,$result);
+  echo  "</div>";
+
+  echo "<div class='result'>";
+            searchByComId($dbh,$result,$startNo);
             ?>
+        </div>
     </div>
     <script>
         document.querySelector('.hamburger').addEventListener('click', function(){

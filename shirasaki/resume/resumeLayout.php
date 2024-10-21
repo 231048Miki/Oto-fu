@@ -47,7 +47,7 @@ while($resume = $getRsume->fetch(PDO::FETCH_ASSOC)){
 
 $count = 0;
 
-$get = $dbh->prepare('SELECT * FROM history_table WHERE stu_id = :stu_id');
+$get = $dbh->prepare('SELECT * FROM history_table WHERE stu_id = :stu_id');//資格
 $get -> bindValue(':stu_id',$id,PDO::PARAM_STR);
 $get->execute();
 while($qual = $get->fetch(PDO::FETCH_ASSOC)){
@@ -56,7 +56,7 @@ while($qual = $get->fetch(PDO::FETCH_ASSOC)){
     $count++;
 };
 
-$get = $dbh->prepare('SELECT * FROM qual_table WHERE stu_id = :stu_id');
+$get = $dbh->prepare('SELECT * FROM qual_table WHERE stu_id = :stu_id');//経歴
 $get -> bindValue(':stu_id',$id,PDO::PARAM_STR);
 $get->execute();
 while($qual = $get->fetch(PDO::FETCH_ASSOC)){

@@ -6,16 +6,8 @@ require("../../db_open.php");
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="../baseLayout.css">
-        <style>
-            .tagMenu{
-                border: solid,3px,black;
-                margin-left: 10%;
+        <link rel="stylesheet" href="tagSearch.css">
 
-                width: 80%;
-                height: 60%;
-            }
-        </style>
         <title>タイトル</title>
     </head>
 

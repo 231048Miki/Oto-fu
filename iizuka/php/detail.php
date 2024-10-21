@@ -54,15 +54,15 @@
         header("Location:../../fujii/login.php");
         // セッション追加頼む
         exit();
-    } else {
-        
+    } else if(isset($_GET['com_id'])){
+        $_SESSION['com_id'] = $_GET['id'];
+    }else {
+        $userid = $_SESSION['com_id'];
         // echo $userid;  
     }
-    //これ使いたい↓！！！！！！！！！！！！！！！！！！！！！！
-    // $com_id = $_SESSION["com_id"];
-    //検証用
-    $com_id=14;
 
+    // $userid = $_SESSION["com_id"];
+    // echo $_SESSION["com_id"];
     include '../../db_open.php';
 
 
