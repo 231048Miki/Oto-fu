@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 // データベース接続
 try {
     $dsn = 'mysql:dbname=otofu_mydb;host=localhost;charset=utf8';
@@ -17,6 +16,7 @@ try {
     $stmt = $dbh->prepare($sql);
     $stmt->execute([$user_id, $destination_user_id, $destination_user_id, $user_id]);
     $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 } catch (Exception $e) {
     error_log('エラー発生: ' . $e->getMessage());
     exit;
@@ -134,6 +134,8 @@ try {
             <h2>
 
                 <?php
+
+                
                 if ($_SESSION['user_type'] == 'student') {
                     echo "<a href='../../shirasaki/top/top.php' class='web-name'>job hunting</a>";
                 } else {
@@ -190,6 +192,12 @@ try {
         </div>
     </header>
     <h2>メッセージ</h2>
+    <?php if (isset($_GET['name'])) {
+    $name = $_GET['name'];
+    echo  htmlspecialchars($name, ENT_QUOTES, 'UTF-8') . "さんとのチャットです";
+} else {
+    echo "Name parameter is not set.";
+} ?>
     <div id="messages">
         <?php foreach ($messages as $message) : ?>
             <div class="my_message">

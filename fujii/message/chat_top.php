@@ -19,8 +19,10 @@
                 session_start();
                 if ($_SESSION['user_type'] == 'student') {
                     echo "<a href='../../shirasaki/top/top.php' class='web-name'>job hunting</a>";
+
                 } else {
                     echo "<a href='../../iizuka/php/com_top.php' class='web-name'>job hunting";
+
                 }
                 ?>
             </h2>
@@ -86,14 +88,13 @@
                 $id = htmlspecialchars($rec[$idColumn], ENT_QUOTES, 'UTF-8');
                 $name = htmlspecialchars($rec[$nameColumn], ENT_QUOTES, 'UTF-8');
                 $info = htmlspecialchars($additionalInfo ? $rec[$additionalInfo] : '', ENT_QUOTES, 'UTF-8');
-
                 echo "<div class='chat-item'>";  // 個々のチャットリンク用のコンテナ
                 echo "<div class='chat-id'>ID: $id</div>";
                 echo "<div class='chat-name'>Name: $name</div>";
                 if ($info) {
                     echo "<div class='chat-info'>School: $info</div>";  // 学校情報を表示する場合
                 }
-                echo "<a class='chat-link' href='message.php?user_id=$id'>Start Chat</a>";  // チャットリンク
+                echo "<a class='chat-link' href='message.php?user_id=$id&name=$name'>Start Chat</a>";  // チャットリンク
                 echo "</div>";
             }
             echo "</div>";
