@@ -149,3 +149,15 @@ function imgUpload($dbh,$id){
     // echo "(元のファイル名:{$_FILES['img']['name']})";
     
 }
+
+//藤井履歴書の公開非公開に関する関数 
+function changePublic($dbh, $resume_id, $current_public) {
+    // 新しい public の値を計算（トグル）
+    $new_public = ($current_public == 1) ? 0 : 1;
+
+    // public の値を更新
+    $update_stmt = $dbh->prepare("UPDATE resume_table SET public = :new_public WHERE resume_id = :resume_id");
+    $update_stmt->execute([':new_public' => $new_public, ':resume_id' => $resume_id]);
+
+    return $new_public; // 新しい値を返す
+}
