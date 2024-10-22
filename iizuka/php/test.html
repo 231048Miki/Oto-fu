@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1>てすと！</h1>
+        <!-- <p>いいね数: <span id="likecnt">0</span></p> -->
+
+
+        <form class='cnt'>
+            <input type='hidden' name='company'>
+            <input type='button' name='favoritebtn' id='fbtn' value='☆'>
+        </form>
+    
+        <script>
+            let favoriteBtn = document.getElementById('fbtn');
+            let fcnt = 0; // いいね数を管理
+            let fbool = false; // いいねされているかのフラグ
+        
+            // ボタンがクリックされたときの処理
+            favoriteBtn.addEventListener('click', function() {
+                if (fbool) {
+                    // いいねを減らす
+                    fcnt--;
+                    favoriteBtn.value = '☆'; // ボタンのテキストを「☆」に
+                    favoriteBtn.classList.remove('liked'); // likedクラスを削除
+                } else {
+                    // いいねを増やす
+                    fcnt++;
+                    favoriteBtn.value = '★'; // ボタンのテキストを「★」に
+                    favoriteBtn.classList.add('liked'); // likedクラスを追加
+                }
+        
+                // いいね数を表示
+                // document.getElementById('likecnt').textContent = fcnt;
+        
+                // いいね状態を切り替え
+                fbool = !fbool;
+            });
+        </script>
+    </body>
+</html>
