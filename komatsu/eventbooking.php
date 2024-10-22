@@ -74,7 +74,8 @@ if ($event == 'event1') {
       $stmt->bindParam(':com_id', $com_id, PDO::PARAM_INT);
       $stmt->execute();
 
-      $test = "SELECT * FROM company_table WHERE com_id = 20";
+      $test = "SELECT * FROM company_table WHERE com_id = $_POST[com_id]";
+      // $test = "SELECT * FROM company_table WHERE com_id = 20";
       $sql_res = $dbh->query($test);
       $rec = $sql_res->fetch();
 
@@ -84,10 +85,10 @@ if ($event == 'event1') {
       echo "<h3>$name</h3>";
       // echo "<ul>";
       // $company_name = '';
-      if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        echo "<li>" . htmlspecialchars($row['com_name'], ENT_QUOTES, 'UTF-8') . "</li>";
-        $company_name = $row['com_name'];
-      }
+      // if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+      //   echo "<li>" . htmlspecialchars($row['com_name'], ENT_QUOTES, 'UTF-8') . "</li>";
+      //   $company_name = $row['com_name'];
+      // }
       // echo "</ul>";
       echo '</div>';
 
@@ -103,12 +104,12 @@ if ($event == 'event1') {
       // echo '</div>';
 
       // $sql_events = "SELECT $event  FROM cominfo_table WHERE com_id = $com_id";
-      $sql_events = "SELECT $event  FROM cominfo_table WHERE com_id = 20";
+      $sql_events = "SELECT $event  FROM cominfo_table WHERE com_id = $_POST[com_id]";
       $stmt_events = $dbh->prepare($sql_events);
       $stmt_events->execute();
 
       // $sql_content = "SELECT $content FROM cominfo_table WHERE com_id = $com_id";
-      $sql_content = "SELECT $content FROM cominfo_table WHERE com_id = 20";
+      $sql_content = "SELECT $content FROM cominfo_table WHERE com_id = $_POST[com_id]";
       $stmt_content = $dbh->prepare($sql_content);
       $stmt_content->execute();
 
