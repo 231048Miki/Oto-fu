@@ -49,7 +49,7 @@
 
     <?php
     session_start();
-
+    
     if (!isset($_SESSION['login']) && !isset($_SESSION['com_id'])) {
         header("Location:../../fujii/login.php");
         // セッション追加頼む
@@ -65,13 +65,15 @@
     // echo $_SESSION["com_id"];
     include '../../db_open.php';
 
-    $sql = "SELECT * FROM cominfo_table where com_id = $_SESSION[com_id]";
-    // $sql = "SELECT * FROM cominfo_table where com_id = 11";
+
+
+    //com_idをどうにかして持ってくる（多分POST hidden）
+    // $sql = "SELECT * FROM cominfo_table where com_id = $_SESSION[com_id]";
+    $sql = "SELECT * FROM cominfo_table where com_id = 14";
     $sql_res = $dbh->query($sql);
     $rec = $sql_res->fetch();
-
-    $sql2 = "SELECT * FROM company_table where com_id = $_SESSION[com_id]";
-    // $sql2 = "SELECT * FROM company_table where com_id = 11";
+    // $sql2 = "SELECT * FROM company_table where com_id = $_SESSION[com_id]";
+    $sql2 = "SELECT * FROM company_table where com_id = 14";
     $sql_res2 = $dbh->query($sql2);
     $rec2 = $sql_res2->fetch();
 
@@ -122,32 +124,39 @@
 
     // null判定。tuleだと出力なし。
     if (empty($rec['event1'])) {
-        echo "<ul hidden>";
-        echo "<p hidden>$rec[event1]</p>";
+        echo "<p>イベントの予定はありません。</p>";
+        // echo "<ul hidden>";
+        // echo "<p hidden>$rec[event1]</p>";
         echo "</ul>";
     } else {
         // falseだとform　日付クリックでイベント予約に遷移
         echo "<ul>";
         // echo "<p>‣$rec[event1]</p>";
 
+        //name = event で event1~3のどれかを送るようにする
         echo <<<___EOF
             <form action="../../komatsu/eventbooking.php" method="post">
-                <input type="hidden" name="delete" value="$rec[eventdata1]">
+                <input type="hidden" name="event" value="$rec[eventdata1]">
+                <input type="hidden" name="com_id" value="$com_id">
+                <input type="hidden" name="eventid" value="event1">
                 <p>‣$rec[event1]<input type="submit" name="submit" value = "$rec[eventdata1]"></p>
             </form>
 
          ___EOF;
         echo "</ul>";
     }
-    if (isset($rec['event2'])) {
-        echo "<ul hidden>";
-        echo "<p hidden>$rec[event2]</p>";
-        echo "</ul>";
+    if (!isset($rec['event2'])) {
+        //↓いらない説
+        // echo "<ul hidden>";
+        // echo "<p hidden>$rec[event2]</p>";
+        // echo "</ul>";
     } else {
         echo "<ul>";
         echo <<<___EOF
-            <form action="../../komatsu/eventbooking.php" method="post">
+            <form action="../../komatsu/eventbooking.php" method="POST">
                 <input type="hidden" name="delete" value="$rec[eventdata2]">
+                <input type="hidden" name="com_id" value="$com_id">
+                <input type="hidden" name="eventid" value="event2">
                 <p>‣$rec[event2]<input type="submit" name="submit" value = "$rec[eventdata2]"></p>
             </form>
 
@@ -156,15 +165,18 @@
         // echo "<a>$rec[eventdata2]</a>";
         echo "</ul>";
     }
-    if (isset($rec['event3'])) {
-        echo "<ul hidden>";
-        echo "<p hidden>$rec[event3]</p>";
-        echo "</ul>";
+    if (!isset($rec['event3'])) {
+        //↓いらない説
+        // echo "<ul hidden>";
+        // echo "<p hidden>$rec[event3]</p>";
+        // echo "</ul>";
     } else {
         echo "<ul>";
         echo <<<___EOF
             <form action="../../komatsu/eventbooking.php" method="post">
                 <input type="hidden" name="event" value="$rec[eventdata3]">
+                <input type="hidden" name="com_id" value="$com_id">
+                <input type="hidden" name="eventid" value="event3">
                 <p>‣$rec[event3]<input type="submit" name="submit" value = "$rec[eventdata3]"></p>
             </form>
 
