@@ -1,82 +1,19 @@
 @charset "UTF-8";
 
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* 中央揃え */
+.company-details{
+  /* margin-left: 150px; */
 }
 
-.aaa {
-  border: 2px solid #000000;
-  width: 100px;
+.event-details{
   text-align: center;
 }
 
-.aaa p {
-  margin: 0; /* マージンを削除 */
-}
-
-ul {
-  list-style-type: none;
-  padding: 0; /* パディングを削除 */
-}
-
-li {
-  margin-bottom: 10px; /* リスト項目の間隔 */
-}
-
-.company-details,
-.company-details2,
-.event-details {
-  border: 2px solid #000;
+.booking{
   text-align: center;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-  width: 80%; /* 幅を80%に設定 */
-  max-width: 300px; /* 最大幅を300pxに設定 */
-  margin: 10px 0; /* 上下のスペースを確保 */
 }
 
-.event-container {
-  display: flex;
-  flex-direction: column; /* 縦に並べる */
-  align-items: center; /* 中央揃え */
-  margin-top: 30px;
-}
-
-.button {
-  padding: 10px 20px;
-  color: black;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  border: 2px solid #000000;
-  margin: 20px 0; /* 上下マージンを追加 */
-}
-
-/* レスポンシブ */
-@media (max-width: 768px) {
-  .company-details,
-  .company-details2,
-  .event-details {
-    width: 90%; /* 幅を90%に */
-    position: relative; /* 相対位置 */
-    top: auto; /* 固定位置を解除 */
-  }
-
-  .button {
-    width: 90%; /* 幅を90%に */
-    position: relative; /* 相対位置 */
-  }
-}
-
-@media (min-width: 769px) {
-  .company-details,
-  .company-details2,
-  .event-details {
-    position: relative; /* 相対位置に設定 */
-    margin: 20px 0; /* スペースを確保 */
+@media screen and (max-width: 768px) {
+  .company-details{
+    text-align: center;
   }
 }
