@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '../db_open.php';
 //trust me
 $resume_id = $_GET["resume_id"];
@@ -80,9 +81,12 @@ $rec = $sql_res->fetch();
             <p><?php echo htmlspecialchars($rec['skill']); ?></p>
         </div>
 
-        <footer>
-            © 2024 豆腐テクノロジーズ
-        </footer>
+        <form  method="post" action="resume_review.php">
+            <input type="text" name="review">
+            <input type="hidden" name="resume_id" value="<?php echo $resume_id ?>">
+            <input type="hidden" name="com_id" value="<?php echo $_SESSION['com_id'] ?>">
+            <input type="submit" value="送信">
+        </form>
     </main>
 </body>
 </html>

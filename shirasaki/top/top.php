@@ -8,7 +8,6 @@ session_start();
 $login = login($dbh);
 // var_dump($login);
 ?>
-<!DOCTYPE html>
 <html>
 
 <head>
@@ -71,7 +70,7 @@ $login = login($dbh);
                         </div>
 
                         <div class="block"> 
-                            <button class="btn-gradient-3d-simple" onclick="location.href='../dummy/itiran.html'">掲示板一覧(はりぼて)へ</button>
+                            <button class="btn-gradient-3d-simple" onclick="location.href='../keiziban/selectKeiziban.html'">掲示板一覧(はりぼて)へ</button>
                         </div>
 
             </div>
