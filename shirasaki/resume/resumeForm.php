@@ -7,6 +7,8 @@ $getSuccess = false;
 $reazon="";
 $pr="";
 $skill="";
+$public="2";
+$status="未作成";
 
 
 $resumeInfo=[];//ID拾って全データ取り出し
@@ -20,6 +22,7 @@ while($resume = $getRsume->fetch(PDO::FETCH_ASSOC)){
             $reazon = $resume['reazon'];
             $pr = $resume['pr'];
             $skill = $resume['skill'];
+            $public = $resume['public'];
 };
 
 //保存が押された時の処理
@@ -138,6 +141,56 @@ if(isset($_POST['hdl'])){
     <input type="submit" value="画像保存">
     </form>
     <button onclick="location.href='resumeLayout.php'">履歴書もどき</button>
+
+    <!-- 藤井 -->
+    <!-- ファンクションを白崎さんのとこに書いとく -->
+    <!-- 公開中非公開中を出せるように -->
+    <?php
+    if($public == 0){
+        $status = "非公開";
+    }elseif($public == 1){
+        $status = "公開中";
+    }else{
+    }
+    ?>
+     <br>
+     <br>
+     ・履歴書の公開
+    <p>　現在:<?php echo $status; ?></p>
+    <form method="post" action="">
+    <input type="hidden" name="changeP" value="<?php echo $_SESSION['stu_id']; ?>">
+    <input type="submit" value="変更する">
+    </form>
+    <?php
+    if (isset($_POST['changeP'])) {
+        // セッションから stu_id を取得
+        $stu_id = $_SESSION['stu_id'];
+    
+        // stu_id に基づいて resume_id を取得
+        $resume_stmt = $dbh->prepare("SELECT resume_id, public FROM resume_table WHERE stu_id = :stu_id LIMIT 1");
+        $resume_stmt->execute([':stu_id' => $stu_id]);
+        $resume = $resume_stmt->fetch();
+    
+        if ($resume) {
+
+
+            $resume_id = $resume['resume_id'];
+            $current_public = $resume['public'];
+            // changePublic 関数を呼び出して public の値を変更
+            $new_public = changePublic($dbh, $resume_id, $current_public);
+            // JavaScript アラートを表示
+            echo "<script>alert('状態を変更しました。')
+                window.location.href = '';
+                </script>";
+        } else {
+            // JavaScript アラートを表示
+            echo "<script>alert('指定された学生IDの履歴書が見つかりません。');
+            
+            </script>";
+        }
+    }
+    ?>
+    <!-- 藤井ここまで -->
     </div>
     </div>
     </body>

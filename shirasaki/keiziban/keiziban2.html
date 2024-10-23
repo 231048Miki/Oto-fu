@@ -1,0 +1,102 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="keiziban.css">
+  
+</head>
+<body>
+    <div id="scroll">
+        <div id="result"></div>
+
+        <div class="forms">
+            <h1>掲示板 room2</h1>
+            好きな名前:<input type="text" id="name" value="匿名"><br>
+            内容：<br><textarea id="message"></textarea>
+            <button id="sendbutton">send</button>
+            <button class="btn-gradient-3d-simple" onclick="location.href='../top/top.php'">もどる</button>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+{   
+    const roomNo = 2; //掲示板ナンバー
+    const name = document.getElementById('name');
+    const sendbutton = document.getElementById('sendbutton');
+    const messege = document.getElementById('message');
+    const result = document.getElementById('result');
+    // WebSocketへの接続
+    const con = new WebSocket('ws:localhost:3002');
+
+    con.addEventListener('open', (e)=>{
+        console.log('socket open');
+    })
+
+    function show(arrayMessage){//表示用のメソッド,JSON形式のメッセージを入れた配列を引数へ
+        startNo = 0;
+        if(arrayMessage.length>30){
+            startNo = arrayMessage.length - 30;
+        }
+        for(let i=startNo;i<arrayMessage.length;i++){ //配列全部回す
+            if(arrayMessage[i].roomNo == 2){
+            const msg=arrayMessage[i].message;
+            const div = document.createElement('div');
+            div.setAttribute('class','msg');
+
+            const name = document.createElement('span');
+            name.innerHTML=arrayMessage[i].name+":";
+
+            const p = document.createElement('p');
+            p.innerHTML=msg;
+
+            const time = document.createElement('span');
+            time.innerHTML=arrayMessage[i].time;
+            time.setAttribute('class','time');
+
+
+            div.appendChild(p);
+            div.appendChild(time);
+            result.appendChild(name)
+            result.appendChild(div);
+            };        //<div><p>内容</p></div>をresultに入れてる事になってる
+        }
+        result.scrollTop = result.scrollHeight;
+    }
+
+    window.addEventListener('load',()=>{
+    result.innerHTML="";//送る度に多重表示されない為のリセット
+    fetch("http://localhost:3001/show")
+        .then((response) => response.json())
+        .then((arrayMessage) => {
+            show(arrayMessage);
+            let target = document.getElementById('scroll');
+            target.scrollIntoView(false);
+        })
+    });
+
+      //sendされた時呼ばれる、
+      con.addEventListener('message',(e)=>{
+        console.log(e.data);//e.dataは文字列
+        result.innerHTML="";//送る度に多重表示されない為のリセット
+    let arrayMessage = JSON.parse(e.data);//文字列->配列
+        show(arrayMessage);
+        let target = document.getElementById('scroll');
+        target.scrollIntoView(false);
+    })
+
+    sendbutton.addEventListener('click', () => {
+        if(messege.value && name.value){//JSONの文字列=>サーバーへ
+            let now = new Date();
+                let y = now.getFullYear()+'-';
+                let m = ('0' + (now.getMonth() + 1)).slice(-2)   + '-';
+                let d = ('0' +now.getDay()).slice(-2) ;
+                let time = y+m+d;
+                console.log(time);
+        let sendValue = {name:name.value,message:messege.value,roomNo:roomNo,time:time};
+        con.send(JSON.stringify(sendValue));
+        }else{
+            alert("入力されてない");
+        }
+    })
+}    
+</script>
