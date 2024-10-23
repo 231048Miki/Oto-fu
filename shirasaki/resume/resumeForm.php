@@ -7,6 +7,8 @@ $getSuccess = false;
 $reazon="";
 $pr="";
 $skill="";
+$public="2";
+$status="未作成";
 
 
 $resumeInfo=[];//ID拾って全データ取り出し
@@ -149,7 +151,6 @@ if(isset($_POST['hdl'])){
     }elseif($public == 1){
         $status = "公開中";
     }else{
-        echo "その他の値";
     }
     ?>
      <br>
@@ -184,7 +185,7 @@ if(isset($_POST['hdl'])){
         } else {
             // JavaScript アラートを表示
             echo "<script>alert('指定された学生IDの履歴書が見つかりません。');
-            window.location.href = '';
+            
             </script>";
         }
     }

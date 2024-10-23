@@ -57,7 +57,8 @@
     } else if(isset($_GET['com_id'])){
         $_SESSION['com_id'] = $_GET['id'];
     }else {
-        $userid = $_SESSION['com_id'];
+        // $userid = $_SESSION['com_id'];
+        $com_id=14;
         // echo $userid;  
     }
 
@@ -154,7 +155,7 @@
         echo "<ul>";
         echo <<<___EOF
             <form action="../../komatsu/eventbooking.php" method="POST">
-                <input type="hidden" name="delete" value="$rec[eventdata2]">
+                <input type="hidden" name="event" value="$rec[eventdata2]">
                 <input type="hidden" name="com_id" value="$com_id">
                 <input type="hidden" name="eventid" value="event2">
                 <p>‣$rec[event2]<input type="submit" name="submit" value = "$rec[eventdata2]"></p>
