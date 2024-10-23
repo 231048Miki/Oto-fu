@@ -81,6 +81,7 @@ $login = login($dbh);
             this.classList.toggle('active');
             document.querySelector('.slide-menu').classList.toggle('active');
         });
+
     </script>
 </body>
 

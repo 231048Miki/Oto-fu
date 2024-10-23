@@ -17,7 +17,7 @@
             if($i != 0 && $i % 8 == 0 ){
                 echo "</ul><ul>";
             }
-            echo "<li><a href='#'>".$result[$i][1]."</a>";
+            echo "<li><a href='../../iizuka/php/detail.php?com_id={$result[$i][0]}'>".$result[$i][1]."</a>";
             echo  "<br><b>企業理念：".$result[$i][2]."</b></li><br>";
 
             if($i == 23){
