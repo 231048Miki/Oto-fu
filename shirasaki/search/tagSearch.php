@@ -1,6 +1,9 @@
 <?php 
 require("searchCtl.php");
 require("../../db_open.php");
+if(isset($_SESSION['tags'])){
+    unset($_SESSION['tags']);
+}
 ?>
 <!DOCTYPE html>
 <html>

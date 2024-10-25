@@ -19,22 +19,25 @@ header{
     /* background-color: blue; */
     height: 25%;
 }
+
+.banner{
+    margin-top: 10px;
+}
 .title{
     /* background-color: aliceblue; */
+    
     height: 50px;
     color: #CD853F;
     border: dashed,5px,#CD853F;
     border-radius: 40%;
     background: #e9f6fb;
-    width: 200px;
+    width: 300px;
     height: 70px;
     text-align: center;
     margin-top: 10px;
     margin-left: 10px;
     padding-bottom: 5px;
 }
-
-
 .block{
     height: 300px;
     width: 300px;
@@ -53,39 +56,39 @@ header{
 .mid{
     /* background-color: paleturquoise; */
    height: 100%;
-   border:  dashed,5px,#CD853F;
-   border-radius: 30px;
-   padding: 10px;
 }
-
-.result{
-    display: flex;
+.msg{
+    margin:  0 auto; 
+    margin-top: 10px;
+    height: 20%;
+    width: 600px;
+    border: dashed,5px,#CD853F;
 }
 
 .banner button{
-        /* display: block; */
-        text-align: center;
-        vertical-align: middle;
-        text-decoration: none;
-        position: relative;
-        width: 170px;
-        height: 80px;
-        margin: auto;
-        font-weight: bold;
-        border-radius: 0.3rem;
-        background-color: #e9f6fb;
-        border-image-source: repeating-linear-gradient(45deg, #CD853F 0, #CD853F 6px, rgba(0, 0, 0, 0) 6px, rgba(0, 0, 0, 0) 8px);
-        border-image-slice: 4;
-        border-width: 4px;
-        border-image-repeat: round;
-        border-style: solid;
-        color: #CD853F;
-    }
-    .banner button:hover {
-        border: 4px solid #CD853F;
-        color: #CD853F;
-    }
 
+    /* display: block; */
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    position: relative;
+    width: 170px;
+    height: 80px;
+    margin: auto;
+    font-weight: bold;
+    border-radius: 0.3rem;
+    background-color: #e9f6fb;
+    border-image-source: repeating-linear-gradient(45deg, #CD853F 0, #CD853F 6px, rgba(0, 0, 0, 0) 6px, rgba(0, 0, 0, 0) 8px);
+    border-image-slice: 4;
+    border-width: 4px;
+    border-image-repeat: round;
+    border-style: solid;
+    color: #CD853F;
+}
+.banner button:hover {
+    border: 4px solid #CD853F;
+    color: #CD853F;
+}
 
 .hamburger span{
 position: absolute;
@@ -129,13 +132,6 @@ transform: rotate(-45deg);
 .slide-menu.active{
 transform: translateX(0); 
 }
-.hoshi{
-    display: none;
-}
-.flex{
-    display: flex;
-}
-
 
 @media (min-width: 600px){
     .hamburger,.slide-menu{
@@ -153,16 +149,21 @@ transform: translateX(0);
     }
     
     .mid{
-           display: block;
-           height: 100%;
-           border:none;
-           border-radius: 30px;
-           padding: 10px;
-        }
-    
-
-    .result{
         display: block;
+    }
+
+    .right{
+    /* background-color: lightcoral; */
+    width: 100%;
+    padding-left: 100px;
+    height: 100%;
+    }
+
+    .left{
+    /* background-color: lightseagreen; */
+    width: 100%;
+    padding-left: 100px;
+    height:100%
     }
 }
 

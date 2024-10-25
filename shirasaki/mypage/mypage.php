@@ -55,7 +55,7 @@ $login = login($dbh);
                 <button class="btn" onclick="location.href='../dummy/offer.html'"><h2>『オファーリスト』:受け取ったオファーを閲覧できるでやんす。</h2></button>
                 </div>
                 <div class="block"> 
-                <button class="btn" onclick="location.href='../dummy/kininaru.html'"><h2>『気になる企業』:気になる企業を閲覧できるでやんす。</h2></button>
+                <button class="btn" onclick="location.href='../kininaru/kininaru.php'"><h2>『気になる企業』:気になる企業を閲覧できるでやんす。</h2></button>
                 </div>
                 <div class="block"> 
                 <button class="btn" onclick="location.href='../resume/resumeForm.php'"><h2>『履歴書』:履歴書的なものを書いて保管できるでやんす。</h2></button>
