@@ -41,10 +41,10 @@ $login = login($dbh);
                 <!-- /ハンバーガーメニューの線 -->
             </div>
             <ul class="slide-menu">
-                <li><a href="">マイページ</a></li>
-                <li><a href="">閲覧履歴</a></li>
-                <li><a href="">戻る</a></li>
-                <li><a href="">ログアウト</a></li>
+                <li><a href="../top/top.php">top</a></li>
+                <li><a href="../../fujii/login.php">ログアウト</a></li>
+                <li><a href="../../komatsu/browsing.php">閲覧履歴</a></li>
+                <li><a href="../quit/quit.php">退会</a></li>
             </ul>
         </header>
 

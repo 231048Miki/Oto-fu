@@ -45,18 +45,10 @@ if(isset($_GET['likeId'])){
                 <!-- /ハンバーガーメニューの線 -->
             </div>
             <ul class="slide-menu">
-                <li><a href="">aaa</a></li>
-                <li><a href="">iii</a></li>
-                <li><a href="">uuu</a></li>
-                <li><a href="">eee</a></li>
-                <li><a href="">aaa</a></li>
-                <li><a href="">iii</a></li>
-                <li><a href="">uuu</a></li>
-                <li><a href="">eee</a></li>
-                <li><a href="">aaa</a></li>
-                <li><a href="">iii</a></li>
-                <li><a href="">uuu</a></li>
-                <li><a href="">eee</a></li>
+                <li><a href="../top/top.php">top</a></li>
+                <li><a href="../../fujii/login.php">ログアウト</a></li>
+                <li><a href="../../komatsu/browsing.php">閲覧履歴</a></li>
+                <li><a href="../quit/quit.php">退会</a></li>
             </ul>
         </header>
 
