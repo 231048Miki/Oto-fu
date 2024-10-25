@@ -42,7 +42,6 @@ if(isset($_POST['qual'])){
     header("Location:./resumeForm.php");
     exit(); 
 }
-
 if(isset($_POST['history'])){
     historyAdd($dbh,$_POST['history'],$_POST['timeH'],$id);
     header("Location:./resumeForm.php");
@@ -128,7 +127,7 @@ if(isset($_POST['hdl'])){
     <input type="text" name="history"><br>
     <label for="qualH">年月:
     </label>
-    <input type="month" name="timehH">
+    <input type="month" name="timeH">
     <input type="submit" value="追加">
     </form>
     <?php getHistory($dbh,$id)?>
