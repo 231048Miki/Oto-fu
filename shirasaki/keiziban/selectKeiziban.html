@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="keizibanHome.css">
 
-        <title>掲示板ホーム</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="keizibanHome.css">
 
-    <body>
+    <title>掲示板ホーム</title>
+</head>
+
+<body>
     <div class="main">
         <header>
-            <div class="title"><h1>掲示板ホーム</h1></div>
             <div class="banner">
                 <button class="btn-gradient-3d-simple" onclick="location.href='../top/top.php'">job hunting</button>
-            <button class="btn-gradient-3d-simple" onclick="location.href='../mypage/mypage.php'">マイページ</button>
-            <button class="btn-gradient-3d-simple" onclick="location.href='#'">閲覧履歴</button>
-            <button class="btn-gradient-3d-simple" onclick="location.href='../top/top.php'">戻る</button>
-            <button class="btn-gradient-3d-simple" onclick="location.href='../../fujii/login.php'">ログアウト</button>
+                <button class="btn-gradient-3d-simple" onclick="location.href='../mypage/mypage.php'">マイページ</button>
+                <button class="btn-gradient-3d-simple" onclick="location.href='../../komatsu/browsing.php'">閲覧履歴</button>
+                <button class="btn-gradient-3d-simple" onclick="location.href='../top/top.php'">戻る</button>
+                <button class="btn-gradient-3d-simple" onclick="location.href='../../fujii/login.php'">ログアウト</button>
+            </div>
+
+            <div class="title">
+                <h2>掲示板ホーム</h2>
             </div>
 
             <div class="hamburger">
@@ -45,25 +49,26 @@
         <div class="mid">
             <div class="msg">
                 <h3>掲示板１</h3>
-                    <a href="keiziban.html">しゃべる</a>
+                <a href="keiziban.html">しゃべる</a>
             </div>
             <div class="msg">
                 <h3>掲示板２</h3>
 
-                    <a href="keiziban2.html">しゃべる</a>
+                <a href="keiziban2.html">しゃべる</a>
             </div>
             <div class="msg">
                 <h3>掲示板３</h3>
 
-                    <a href="keiziban3.html">しゃべる</a>
+                <a href="keiziban3.html">しゃべる</a>
             </div>
         </div>
     </div>
     <script>
-        document.querySelector('.hamburger').addEventListener('click', function(){
-        this.classList.toggle('active');
-        document.querySelector('.slide-menu').classList.toggle('active');
+        document.querySelector('.hamburger').addEventListener('click', function () {
+            this.classList.toggle('active');
+            document.querySelector('.slide-menu').classList.toggle('active');
         });
     </script>
-    </body>
+</body>
+
 </html>

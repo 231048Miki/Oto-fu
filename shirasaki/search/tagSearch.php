@@ -1,30 +1,35 @@
-<?php 
+<?php
 require("searchCtl.php");
 require("../../db_open.php");
 session_start();
-if(isset($_SESSION['tags'])){
+if (isset($_SESSION['tags'])) {
     unset($_SESSION['tags']);
 }
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="tagSearch.css">
 
-        <title>タイトル</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="tagSearch.css">
 
-    <body>
+    <title>タイトル</title>
+</head>
+
+<body>
     <div class="main">
         <header>
-            <div class="title"><h1>タグ検索</h1></div>
+
             <div class="banner">
-            <button class="btn-gradient-3d-simple" onclick="location.href='../top/top.php'">就活アプリ</button>
-            <button class="btn-gradient-3d-simple" onclick="location.href='../mypage/mypage.php'">マイページ</button>
-            <button class="btn-gradient-3d-simple" onclick="location.href='#'">閲覧履歴</button>
-            <button class="btn-gradient-3d-simple" onclick="history.back()">戻る</button>
-            <button class="btn-gradient-3d-simple" onclick="location.href='../../fujii/login.php'">ログアウト</button>
+                <button class="btn-gradient-3d-simple" onclick="location.href='../top/top.php'">job hunting</button>
+                <button class="btn-gradient-3d-simple" onclick="location.href='../mypage/mypage.php'">マイページ</button>
+                <button class="btn-gradient-3d-simple" onclick="location.href='../../komatsu/browsing.php'">閲覧履歴</button>
+                <button class="btn-gradient-3d-simple" onclick="history.back()">戻る</button>
+                <button class="btn-gradient-3d-simple" onclick="location.href='../../fujii/login.php'">ログアウト</button>
+            </div>
+
+            <div class="title">
+                <h2>タグ検索</h2>
             </div>
 
             <div class="hamburger">
@@ -54,16 +59,16 @@ if(isset($_SESSION['tags'])){
             <div class="tagMenu">
                 <h3>・タグ一覧</h3>
                 <form method="post" action="tagSearchResult.php">
-                <?php makeTagForm($dbh); ?>
-                <input type="submit"value="検索">
+                    <?php makeTagForm($dbh); ?>
+                    <input type="submit" value="検索">
                 </form>
             </div>
         </div>
     </div>
     <script>
-        document.querySelector('.hamburger').addEventListener('click', function(){
-        this.classList.toggle('active');
-        document.querySelector('.slide-menu').classList.toggle('active');
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('.slide-menu').classList.toggle('active');
         });
     </script>
-    </body>
+</body>
