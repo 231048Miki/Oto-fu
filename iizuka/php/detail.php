@@ -50,16 +50,15 @@
     <?php
     session_start();
     
-    if (!isset($_SESSION['login']) && !isset($_SESSION['com_id'])) {
+    if (!isset($_SESSION['login']) && !isset($_SESSION['stu_id'])) {
         header("Location:../../fujii/login.php");
-        // セッション追加頼む
         exit();
-    } else if(isset($_GET['com_id'])){
-        $_SESSION['com_id'] = $_GET['id'];
-    }else {
-        // $userid = $_SESSION['com_id'];
-        $com_id=14;
-        // echo $userid;  
+    } else if (isset($_GET['com_id'])) {
+        $_SESSION['com_id'] = $_GET['com_id'];  // GETパラメータが存在する場合はセッションに保存
+    } else if (!isset($_SESSION['com_id'])) {  
+        // セッションにもcom_idがない場合はエラー処理
+        echo "ないよ！！";
+        exit();
     }
 
     // $userid = $_SESSION["com_id"];
@@ -70,17 +69,49 @@
 
     //com_idをどうにかして持ってくる（多分POST hidden）
     // $sql = "SELECT * FROM cominfo_table where com_id = $_SESSION[com_id]";
-    $sql = "SELECT * FROM cominfo_table where com_id = 14";
+    $sql = "SELECT * FROM cominfo_table where com_id = " .  $_SESSION['com_id'];
     $sql_res = $dbh->query($sql);
     $rec = $sql_res->fetch();
     // $sql2 = "SELECT * FROM company_table where com_id = $_SESSION[com_id]";
-    $sql2 = "SELECT * FROM company_table where com_id = 14";
+    $sql2 = "SELECT * FROM company_table where com_id =" .  $_SESSION['com_id'];
     $sql_res2 = $dbh->query($sql2);
     $rec2 = $sql_res2->fetch();
 
-    echo <<<___EOF
-    <h2 class='company'>$rec2[com_name]</h2>
+    // echo <<<___EOF
+    // <h2 class='company'>$rec2[com_name]</h2>
+
+    // <form class='cnt'>
+    //         <input type='hidden' name='company'>
+    //         <input type='button' name='favoritebtn' id='fbtn' value='☆'>
+    //     </form>
     
+    //     <script>
+    //         let favoriteBtn = document.getElementById('fbtn');
+    //         let fcnt = 0; // いいね数を管理
+    //         let fbool = false; // いいねされているかのフラグ
+        
+    //         // ボタンがクリックされたときの処理
+    //         favoriteBtn.addEventListener('click', function() {
+    //             if (fbool) {
+    //                 // いいねを減らす
+    //                 fcnt--;
+    //                 favoriteBtn.value = '☆'; // ボタンのテキストを「☆」に
+    //                 favoriteBtn.classList.remove('liked'); // likedクラスを削除
+    //             } else {
+    //                 // いいねを増やす
+    //                 fcnt++;
+    //                 favoriteBtn.value = '★'; // ボタンのテキストを「★」に
+    //                 favoriteBtn.classList.add('liked'); // likedクラスを追加
+    //             }
+        
+    //             // いいね数を表示
+    //             // document.getElementById('likecnt').textContent = fcnt;
+        
+    //             // いいね状態を切り替え
+    //             fbool = !fbool;
+    //         });
+    //     </script>
+    echo <<<___EOF
     <div class='info'>
 
     <h4>企業理念</h4>
@@ -138,9 +169,9 @@
         echo <<<___EOF
             <form action="../../komatsu/eventbooking.php" method="post">
                 <input type="hidden" name="event" value="$rec[eventdata1]">
-                <input type="hidden" name="com_id" value="$com_id">
+                <input type="hidden" name="com_id" value="$_SESSION[com_id]">
                 <input type="hidden" name="eventid" value="event1">
-                <p>‣$rec[event1]<input type="submit" name="submit" value = "$rec[eventdata1]"></p>
+                <p>$rec[event1]<input type="submit" name="submit" value = "$rec[eventdata1]"></p>
             </form>
 
          ___EOF;
@@ -155,10 +186,10 @@
         echo "<ul>";
         echo <<<___EOF
             <form action="../../komatsu/eventbooking.php" method="POST">
-                <input type="hidden" name="event" value="$rec[eventdata2]">
-                <input type="hidden" name="com_id" value="$com_id">
+                <input type="hidden" name="delete" value="$rec[eventdata2]">
+                <input type="hidden" name="com_id" value="$_SESSION[com_id]">
                 <input type="hidden" name="eventid" value="event2">
-                <p>‣$rec[event2]<input type="submit" name="submit" value = "$rec[eventdata2]"></p>
+                <p>$rec[event2]<input type="submit" name="submit" value = "$rec[eventdata2]"></p>
             </form>
 
          ___EOF;
@@ -176,9 +207,9 @@
         echo <<<___EOF
             <form action="../../komatsu/eventbooking.php" method="post">
                 <input type="hidden" name="event" value="$rec[eventdata3]">
-                <input type="hidden" name="com_id" value="$com_id">
+                <input type="hidden" name="com_id" value="$_SESSION[com_id]">
                 <input type="hidden" name="eventid" value="event3">
-                <p>‣$rec[event3]<input type="submit" name="submit" value = "$rec[eventdata3]"></p>
+                <p>$rec[event3]<input type="submit" name="submit" value = "$rec[eventdata3]"></p>
             </form>
 
          ___EOF;
