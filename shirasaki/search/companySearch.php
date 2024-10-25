@@ -9,6 +9,9 @@ $startNo = 0;
 if(isset($_GET['startNo'])){
     $startNo = $_GET['startNo'];
 }
+if(isset($_GET['likeId'])){
+    likeCtl($dbh,$_SESSION['stu_id'],$_GET['likeId']);
+}
 ?>
 <!DOCTYPE html>
 <html>

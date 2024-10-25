@@ -1,13 +1,16 @@
 <?php 
 require("searchCtl.php");
 require("../../db_open.php");
-
-if(!(isset($_POST['tags']))){
-    header('Location:\otofu\Oto-fu\shirasaki/search/tagSearch.php');
+session_start();
+if((isset($_POST['tags']))){
+   $_SESSION['tags'] = $_POST['tags']; 
 }
 $startNo = 0;
 if(isset($_GET['startNo'])){
     $startNo = $_GET['startNo'];
+}
+if(isset($_GET['likeId'])){
+    likeCtl($dbh,$_SESSION['stu_id'],$_GET['likeId']);
 }
 ?>
 <!DOCTYPE html>
@@ -59,9 +62,10 @@ if(isset($_GET['startNo'])){
         <div class="selectTag">
             <h1>タグ検索したぜ</h1>
             <?php 
-            $result = searchComOnTag($dbh,$_POST['tags']);
+            $result = searchComOnTag($dbh,$_SESSION['tags']);
+            // var_dump($result);
             echo "<h3>絞り込み中使用タグ：</h3>";
-            outputTagsName($_POST['tags'],$dbh);
+            outputTagsName($_SESSION['tags'],$dbh);
   echo  "</div>";
 
   echo "<div class='result'>";

@@ -6,6 +6,9 @@
             .buttonSpace{
                 display: flex;
             }
+            body{
+                
+            }
         </style>
     </head>
     <body>
