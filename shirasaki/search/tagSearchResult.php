@@ -2,6 +2,8 @@
 require("searchCtl.php");
 require("../../db_open.php");
 session_start();
+
+
 if((isset($_POST['tags']))){
    $_SESSION['tags'] = $_POST['tags']; 
 }
