@@ -53,9 +53,9 @@ if(isset($_SESSION['tags'])){
         <div class="mid">
             <div class="tagMenu">
                 <h3>・タグ一覧</h3>
-                <form method="post" action="tagSearchResult.php">
+                <form  id="tagForm"  method="post" action="tagSearchResult.php">
                 <?php makeTagForm($dbh); ?>
-                <input type="submit"value="検索">
+                <input id="btn" type="submit"value="検索" disabled>
                 </form>
             </div>
         </div>
@@ -65,5 +65,15 @@ if(isset($_SESSION['tags'])){
         this.classList.toggle('active');
         document.querySelector('.slide-menu').classList.toggle('active');
         });
+        function change(){
+            const btn = document.getElementById('btn');
+            const checkboxes = document.querySelectorAll('input[name="tags[]"]:checked');
+            if (checkboxes.length === 0) {
+                btn.disabled = true;
+            } else {
+                btn.disabled = false;
+            }
+        }
+        
     </script>
     </body>

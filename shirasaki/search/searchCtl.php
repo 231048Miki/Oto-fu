@@ -44,7 +44,7 @@
         // var_dump($total);
         $count = 0;
         while($count < $total){
-                echo "<p>・{$tags[$count][1]}<input type='checkbox' name='tags[]' value='{$tags[$count][0]}'></p>";
+                echo "<p>・{$tags[$count][1]}<input type='checkbox' onchange='change()' id='tag' name='tags[]' value='{$tags[$count][0]}'></p>";
 
                 $count = $count + 1;   
         }
