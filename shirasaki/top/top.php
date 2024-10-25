@@ -22,7 +22,7 @@ $login = login($dbh);
         <header>
 
             <div class="banner">
-                <button class="btn-gradient-3d-simple" onclick="location.href=''">就活アプリ</button>
+                <button class="btn-gradient-3d-simple" onclick="location.href=''">job hunting</button>
                 <button class="btn-gradient-3d-simple" onclick="location.href='../mypage/mypage.php'">マイページ</button>
                 <button class="btn-gradient-3d-simple" onclick="location.href='../../komatsu/browsing.php'">閲覧履歴</button>
                 <button class="btn-gradient-3d-simple" onclick="history.back()">戻る</button>
@@ -30,7 +30,7 @@ $login = login($dbh);
             </div>
 
             <div class="title">
-                <h1>トップページ</h1>
+                <h2>トップページ</h2>
             </div>
 
             <div class="hamburger">
