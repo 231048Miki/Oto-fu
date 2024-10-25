@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" , href="../css/stu_info_update.css">
-    <link rel="stylesheet" , href="../header.css">
+    <!-- <link rel="stylesheet" , href="../header.css"> -->
     <title>学生情報更新</title>
 </head>
 
