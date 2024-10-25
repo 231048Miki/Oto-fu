@@ -17,7 +17,7 @@
             if($i != 0 && $i % 8 == 0 ){
                 echo "</ul><ul>";
             }
-            echo "<li><div class='flex'><a href='../../iizuka/php/detail.php?com_id={$result[$i][0]}'>".$result[$i][1]."</a>";
+            echo "<li><div class='flex'><a href='../../iizuka/php/detail.php?id={$result[$i][0]}'>".$result[$i][1]."</a>";
             echo "<form method='get' action=''>";
             echo "<input type='hidden' name='likeId' value='{$result[$i][0]}'>";
             echo "<input type='submit' class='hoshi' id='{$result[$i][0]}' value='送信'>";
