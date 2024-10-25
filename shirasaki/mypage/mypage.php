@@ -35,18 +35,10 @@ $login = login($dbh);
                 <!-- /ハンバーガーメニューの線 -->
             </div>
             <ul class="slide-menu">
-                <li><a href="">aaa</a></li>
-                <li><a href="">iii</a></li>
-                <li><a href="">uuu</a></li>
-                <li><a href="">eee</a></li>
-                <li><a href="">aaa</a></li>
-                <li><a href="">iii</a></li>
-                <li><a href="">uuu</a></li>
-                <li><a href="">eee</a></li>
-                <li><a href="">aaa</a></li>
-                <li><a href="">iii</a></li>
-                <li><a href="">uuu</a></li>
-                <li><a href="">eee</a></li>
+                <li><a href="../top/top.php">top</a></li>
+                <li><a href="../../fujii/login.php">ログアウト</a></li>
+                <li><a href="../../komatsu/browsing.php">閲覧履歴</a></li>
+                <li><a href="../quit/quit.php">退会</a></li>
             </ul>
         </header>
         <div class="flex">
@@ -68,21 +60,6 @@ $login = login($dbh);
                 </div>
         </div>
 
-        <!-- <div class="paint">
-        <div>
-            <input type="radio" id="draw" name="mode">
-            <label for="draw">ペン</label>
-            <input type="radio" id="erase" name="mode">
-            <label for="draw">消しゴム</label>
-        </div>
-        <div>
-            <input type="button" id="downloadPng" value="保存">
-        </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.0/fabric.min.js"></script>
-        <canvas id="canvas" height="500" width="500" style="border-style: solid; border-color: black;"></canvas>
-        </div>
-        </div> -->
-
     </div>
     <script>
         document.querySelector('.hamburger').addEventListener('click', function(){
@@ -90,34 +67,7 @@ $login = login($dbh);
         document.querySelector('.slide-menu').classList.toggle('active');
         });
         
-    //此処から下ごみです
-        // const canvas = new fabric.Canvas("canvas");
-
-        // document.getElementById("draw").addEventListener("click", function () {
-        //     canvas.freeDrawingBrush = new fabric.PencilBrush(canvas);
-        //     canvas.freeDrawingBrush.width=5;
-        //     canvas.freeDrawingBrush.color="black";
-        //     canvas.isDrawingMode = true;
-        // });
-
-        // canvas.backgroundColor="white";
-
-        // document.getElementById("erase").addEventListener("click", function () {
-        // canvas.freeDrawingBrush = new fabric.PencilBrush(canvas);
-        // canvas.freeDrawingBrush.width=10;
-        // canvas.freeDrawingBrush.color="white";
-        // canvas.isDrawingMode = true;
-        // });
-
-        // document.getElementById("downloadPng").addEventListener("click", function () {
-        // const base64 = canvas.toDataURL({
-        //     format: "png",
-        // });
-        // const link = document.createElement("a");
-        // link.href = base64;
-        // link.download = "イラスト.png";
-        // link.click();
-        // });
+ 
             </script>
     </body>
 </html>

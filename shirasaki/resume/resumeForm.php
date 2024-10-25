@@ -66,6 +66,7 @@ if(isset($_POST['hdl'])){
 <html>
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="resumeForm.css">
         <style>
             textarea{
                 vertical-align:top;
@@ -87,7 +88,7 @@ if(isset($_POST['hdl'])){
     <body>
     <div class="main">
     <div class="left">
-    <h1>履歴書コピペ保存場所</h1>
+    <div class='title'><h1>履歴書保存場所</h1></div>
     <button onclick="location.href='../mypage/mypage.php'">もどる</button>
     <form method="post"  action="" >
     <br>

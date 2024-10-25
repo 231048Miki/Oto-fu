@@ -17,9 +17,10 @@ while($get = $getReview->fetch(PDO::FETCH_ASSOC)){
 <html>
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="resumeReview.css">
     </head>
     <body>
-        <h1>履歴書のレビュー</h1>
+        <div class="title"><h1>履歴書のレビュー</h1></div>
         <button class="btn" onclick="location.href='../mypage/mypage.php'">戻る</button>
             <?php 
                 foreach($reviewArray as $review){
