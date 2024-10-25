@@ -49,31 +49,37 @@
 
     <?php
     session_start();
-    
+    // var_dump($_GET['id']);
     if (!isset($_SESSION['login']) && !isset($_SESSION['stu_id'])) {
         header("Location:../../fujii/login.php");
         exit();
-    } else if (isset($_GET['com_id'])) {
-        $_SESSION['com_id'] = $_GET['com_id'];  // GETパラメータが存在する場合はセッションに保存
-    } else if (!isset($_SESSION['com_id'])) {  
+    } else if (isset($_GET['id'])) {
+        $id = $_GET['id'];  // GETパラメータが存在する場合はセッションに保存
+    } else {  
+        
+        if( isset($_SESSION['com_id'])){
+            $id=$_SESSION['com_id'];
+        } else {
+
         // セッションにもcom_idがない場合はエラー処理
         echo "ないよ！！";
         exit();
+        }
     }
-
+    
     // $userid = $_SESSION["com_id"];
     // echo $_SESSION["com_id"];
     include '../../db_open.php';
-
+    
 
 
     //com_idをどうにかして持ってくる（多分POST hidden）
     // $sql = "SELECT * FROM cominfo_table where com_id = $_SESSION[com_id]";
-    $sql = "SELECT * FROM cominfo_table where com_id = " .  $_SESSION['com_id'];
+    $sql = "SELECT * FROM cominfo_table where com_id = " .  $id;
     $sql_res = $dbh->query($sql);
     $rec = $sql_res->fetch();
     // $sql2 = "SELECT * FROM company_table where com_id = $_SESSION[com_id]";
-    $sql2 = "SELECT * FROM company_table where com_id =" .  $_SESSION['com_id'];
+    $sql2 = "SELECT * FROM company_table where com_id =" .  $id;
     $sql_res2 = $dbh->query($sql2);
     $rec2 = $sql_res2->fetch();
 
@@ -169,7 +175,7 @@
         echo <<<___EOF
             <form action="../../komatsu/eventbooking.php" method="post">
                 <input type="hidden" name="event" value="$rec[eventdata1]">
-                <input type="hidden" name="com_id" value="$_SESSION[com_id]">
+                <input type="hidden" name="com_id" value="$id">
                 <input type="hidden" name="eventid" value="event1">
                 <p>$rec[event1]<input type="submit" name="submit" value = "$rec[eventdata1]"></p>
             </form>
@@ -187,7 +193,7 @@
         echo <<<___EOF
             <form action="../../komatsu/eventbooking.php" method="POST">
                 <input type="hidden" name="delete" value="$rec[eventdata2]">
-                <input type="hidden" name="com_id" value="$_SESSION[com_id]">
+                <input type="hidden" name="com_id" value="$id">
                 <input type="hidden" name="eventid" value="event2">
                 <p>$rec[event2]<input type="submit" name="submit" value = "$rec[eventdata2]"></p>
             </form>
@@ -207,7 +213,7 @@
         echo <<<___EOF
             <form action="../../komatsu/eventbooking.php" method="post">
                 <input type="hidden" name="event" value="$rec[eventdata3]">
-                <input type="hidden" name="com_id" value="$_SESSION[com_id]">
+                <input type="hidden" name="com_id" value="$id">
                 <input type="hidden" name="eventid" value="event3">
                 <p>$rec[event3]<input type="submit" name="submit" value = "$rec[eventdata3]"></p>
             </form>
