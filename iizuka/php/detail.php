@@ -163,8 +163,6 @@
     // null判定。tuleだと出力なし。
     if (empty($rec['event1'])) {
         echo "<p>イベントの予定はありません。</p>";
-        // echo "<ul hidden>";
-        // echo "<p hidden>$rec[event1]</p>";
         echo "</ul>";
     } else {
         // falseだとform　日付クリックでイベント予約に遷移
@@ -183,11 +181,7 @@
          ___EOF;
         echo "</ul>";
     }
-    if (!isset($rec['event2'])) {
-        //↓いらない説
-        // echo "<ul hidden>";
-        // echo "<p hidden>$rec[event2]</p>";
-        // echo "</ul>";
+    if (empty($rec['event2'])) {
     } else {
         echo "<ul>";
         echo <<<___EOF
@@ -203,11 +197,7 @@
         // echo "<a>$rec[eventdata2]</a>";
         echo "</ul>";
     }
-    if (!isset($rec['event3'])) {
-        //↓いらない説
-        // echo "<ul hidden>";
-        // echo "<p hidden>$rec[event3]</p>";
-        // echo "</ul>";
+    if (empty($rec['event3'])){
     } else {
         echo "<ul>";
         echo <<<___EOF
