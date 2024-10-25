@@ -17,8 +17,13 @@
             if($i != 0 && $i % 8 == 0 ){
                 echo "</ul><ul>";
             }
-            echo "<li><a href='#'>".$result[$i][1]."</a>";
-            echo  "<br><b>企業理念：".$result[$i][2]."</b></li><br>";
+            echo "<li><div class='flex'><a href='../../iizuka/php/detail.php?com_id={$result[$i][0]}'>".$result[$i][1]."</a>";
+            echo "<form method='get' action=''>";
+            echo "<input type='hidden' name='likeId' value='{$result[$i][0]}'>";
+            echo "<input type='submit' class='hoshi' id='{$result[$i][0]}' value='送信'>";
+            starColorCtl($dbh,$_SESSION['user_id'],$result[$i][0]);
+            echo "</form></div>";
+            echo  "<b>企業理念：".$result[$i][2]."</b></li><br>";
 
             if($i == 23){
                 echo "<a href='?startNo={$result[$i][0]}'> >> </a>";
@@ -67,6 +72,7 @@
             $sql = "SELECT com_id  FROM selecttags WHERE tag_id = ".$tagID;
             array_push($searchSQLs,$sql);
         }
+        // var_dump($searchSQLs);
         $sql ="";
         for($i=0;$i<count($searchSQLs);$i++){//$sql変数に作ったSQL達をつなげて融合
                 if($i == 0){
@@ -99,9 +105,21 @@
                 if($i != 0 && $i % 8 == 0 ){
                     echo "</ul><ul>";
                 }
-                echo "<li><a href='#'>".$result[$i][1]."</a>";
+                echo "<li><div class='flex'><a href='../../iizuka/php/detail.php?com_id={$result[$i][0]}'>".$result[$i][1]."</a>";
+                echo "<form method='get' action=''>";
+                echo "<input type='hidden' name='likeId' value='{$result[$i][0]}'>";
+                echo "<input type='submit' class='hoshi' id='{$result[$i][0]}' value='送信'>";
+                starColorCtl($dbh,$_SESSION['user_id'],$result[$i][0]);
+                echo "</form></div>";
                 echo  "<br><b>企業理念：".$result[$i][2]."</b></li><br>";
-    
+                
+                // echo "<li><div class='flex'><a href='../../iizuka/php/detail.php?com_id={$result[$i][0]}'>".$result[$i][1]."</a>";
+                // echo "<form method='get' action=''>";
+                // echo "<input type='hidden' name='likeId' value='{$result[$i][0]}'>";
+                // echo "<input type='submit' class='hoshi' id='{$result[$i][0]}' value='送信'>";
+                // starColorCtl($dbh,$_SESSION['user_id'],$result[$i][0]);
+                // echo "</form></div>";
+                // echo  "<b>企業理念：".$result[$i][2]."</b></li><br>";
                 if($i == 23){
                     echo "<a href='?startNo={$result[$i][0]}'> >> </a>";
                 }
@@ -112,5 +130,45 @@
         //         echo "<li><a href='../../iizuka/php/detail.php?com_id={$com['com_id']}'>".$com['com_name']."</a>";
         //         echo "<br><b>企業理念：".$com['com_rinen']."</b></li><br>";
         // echo"</ul>";
+    }
+
+    function addLike($dbh,$stuID,$comID){
+        $get = $dbh->prepare('INSERT INTO likes_table (stu_id,com_id,check_flag) VALUES (:stu_id,:com_id,1)');
+        $get->bindValue(':stu_id',$stuID,PDO::PARAM_INT);
+        $get->bindValue(':com_id',$comID,PDO::PARAM_INT);
+        $get->execute();
+    }
+
+    function removeLike($dbh,$stuID,$comID){
+        $get = $dbh->prepare('DELETE FROM likes_table  WHERE stu_id = :stu_id and com_id = :com_id');
+        $get->bindValue(':stu_id',$stuID,PDO::PARAM_INT);
+        $get->bindValue(':com_id',$comID,PDO::PARAM_INT);
+        $get->execute();
+    }
+
+    function likeCtl($dbh,$stuID,$comID){
+        $get = $dbh->prepare('SELECT * FROM likes_table WHERE stu_id = :stu_id and com_id = :com_id');
+        $get->bindValue(':stu_id',$stuID,PDO::PARAM_INT);
+        $get->bindValue(':com_id',$comID,PDO::PARAM_INT);
+        $get->execute();
+        $check = $get->fetch();
+        if($check){
+            removeLike($dbh,$stuID,$comID);
+        }else{
+            addLike($dbh,$stuID,$comID);
+        }
+    };
+
+    function starColorCtl($dbh,$stuID,$comID){
+        $get = $dbh->prepare('SELECT * FROM likes_table WHERE stu_id = :stu_id and com_id = :com_id');
+        $get->bindValue(':stu_id',$stuID,PDO::PARAM_INT);
+        $get->bindValue(':com_id',$comID,PDO::PARAM_INT);
+        $get->execute();
+        $check = $get->fetch();
+        if($check){
+            echo "<label for='$comID'>★</label>";
+        }else{
+            echo "<label for='$comID'>☆</label>";
+        }
     }
 ?>
