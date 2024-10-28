@@ -10,7 +10,7 @@ function getKinanru($dbh, $stuID)
         echo <<<___EOF___
                 <div class='msg'>
                     <h3>{$rec['com_name']}</h3>
-                        <a href='../../iizuka/php/detail.php?com_id={$rec['com_id']}'>企業情報を見る</a>
+                        <a href='../../iizuka/php/detail.php?id={$rec['com_id']}'>企業情報を見る</a>
                 </div>
             ___EOF___;
     }
