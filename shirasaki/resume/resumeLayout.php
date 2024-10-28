@@ -1,6 +1,8 @@
 <?PHP 
 session_start();
-
+require("../functions/userCtlFunc.php");
+require("../../db_open.php");
+login($dbh);
 $id=$_SESSION['user_id'];
 
 $quals = [];

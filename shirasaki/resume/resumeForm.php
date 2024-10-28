@@ -2,6 +2,8 @@
 session_start();
 include("../../db_open.php");
 include("resumeFunc.php");
+require("../functions/userCtlFunc.php");
+login($dbh);
 $id=$_SESSION['user_id'];
 $getSuccess = false;
 $reazon="";

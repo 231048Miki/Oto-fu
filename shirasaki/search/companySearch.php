@@ -27,7 +27,7 @@ if(isset($_GET['likeId'])){
         <header>
             <div class="title"><h1>企業検索</h1></div>
             <div class="banner">
-            <button class="btn-gradient-3d-simple" onclick="location.href='../top/top.php'">就活アプリ</button>
+            <button class="btn-gradient-3d-simple" onclick="location.href='../top/top.php'">job hunting</button>
             <button class="btn-gradient-3d-simple" onclick="location.href='../mypage/mypage.php'">マイページ</button>
             <button class="btn-gradient-3d-simple" onclick="location.href='#'">閲覧履歴</button>
             <button class="btn-gradient-3d-simple" onclick="history.back()">戻る</button>

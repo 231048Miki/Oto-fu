@@ -1,25 +1,49 @@
 @charset "UTF-8";
-
+html{
+    height: 100%;
+    overflow-x: hidden;
+}
+body{
+    height: 100%;
+    background-color:#FAEBD7;
+}
 #wrapper {
+    margin-top: 30px;
     height: 400px;
     width: 600px;
     overflow-y: scroll;
     font-size: 20px;
 }
 
-.aaa {
-    padding: 0.5em 1em;
-    margin: 2em 0;
-    font-weight: bold;
-    border: 2px solid #000000;
-    width: 100px;
+.title{
+    /* background-color: aliceblue; */
+    height: 50px;
+    color: #CD853F;
+    border: dashed,5px,#CD853F;
+    border-radius: 40%;
+    background: #e9f6fb;
+    width: 200px;
+    height: 70px;
     text-align: center;
-    margin-left: 0;
+    margin-top: 10px;
+    margin-left: 10px;
+    padding-bottom: 5px;
 }
 
-.aaa p {
-    margin: 0;
-    padding: 0;
+
+.hamburger{
+    position: relative; /* 今の位置を基準 */
+    bottom: 70px;
+    right: 10px; 
+    /* background-color: green; */
+    margin-left: 90%;
+    width: 50px;
+    height: 50px;
+}
+
+body{
+    height: 100%;
+    background-color:#FAEBD7;
 }
 
 .record {
@@ -60,4 +84,98 @@
     display: flex;
     justify-content: center;
     margin: 20px;
+}
+
+.banner button{
+    /* display: block; */
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    position: relative;
+    width: 170px;
+    height: 80px;
+    margin: auto;
+    font-weight: bold;
+    border-radius: 0.3rem;
+    background-color: #e9f6fb;
+    border-image-source: repeating-linear-gradient(45deg, #CD853F 0, #CD853F 6px, rgba(0, 0, 0, 0) 6px, rgba(0, 0, 0, 0) 8px);
+    border-image-slice: 4;
+    border-width: 4px;
+    border-image-repeat: round;
+    border-style: solid;
+    color: #CD853F;
+}
+.banner button:hover {
+    border: 4px solid #CD853F;
+    color: #CD853F;
+}
+
+.hamburger span{
+position: absolute;
+width: 40px;
+height: 2px;
+background-color: black;
+}
+.hamburger span:first-of-type{/* ハンバーガーメニューの1番目の線 */
+top: 15px;
+}
+.hamburger span:nth-of-type(2){/* ハンバーガーメニューの2番目の線 */
+top: 30px;
+}
+.hamburger span:last-of-type{/* ハンバーガーメニューの3番目の線 */
+top: 45px;
+}
+.slide-menu{
+position: relative; /* 今の位置を基準 */
+bottom: 90px;
+right: 10px; 
+transform: translateX(200%);
+/* height: 300px; */
+transition: .5s;
+margin-left: 78%;
+background-color: white;
+width: 100px;
+z-index: 10000;
+border:  2px solid #CD853F;
+}
+.slide-menu li{
+border-bottom: so 1px black;
+}
+
+.hamburger.active span:first-of-type{/* ハンバーガーメニューの1番目の線 */
+top: 30px;
+transform: rotate(45deg);
+}
+
+.hamburger.active span:nth-of-type(2){/* ハンバーガーメニューの2番目の線 */
+opacity: 0;/* 透明にする */
+}
+.hamburger.active span:last-of-type{/* ハンバーガーメニューの3番目の線 */
+top: 30px;
+transform: rotate(-45deg);
+}
+.slide-menu.active{
+transform: translateX(0); 
+}
+
+@media (min-width: 1000px){
+    .hamburger,.slide-menu{
+        display: none;
+    }
+}
+
+@media (max-width: 1000px){
+    .banner{
+        display: none;
+    }
+
+    header{
+        height: 10%;
+    }
+    
+    .mid{
+        margin-top: 10px;
+        display: block;
+       
+    }
 }

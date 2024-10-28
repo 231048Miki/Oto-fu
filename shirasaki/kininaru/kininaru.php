@@ -1,6 +1,9 @@
 <?php 
     include("../../db_open.php");
+    require("../functions/userCtlFunc.php");
     session_start();
+    login($dbh);
+    
     function getKinanru($dbh,$stuID){
         $sql = $dbh->prepare('SELECT com_id,com_name FROM company_table WHERE com_id IN(SELECT com_id FROM likes_table WHERE stu_id = :stu_id)');
         $sql->bindValue(':stu_id',$stuID,PDO::PARAM_INT);
@@ -29,9 +32,9 @@
         <header>
             <div class="title"><h1>気になるリスト</h1></div>
             <div class="banner">
-            <button class="btn-gradient-3d-simple" onclick="location.href='../top/top.php'">就活アプリ</button>
+            <button class="btn-gradient-3d-simple" onclick="location.href='../top/top.php'">job hunting</button>
             <button class="btn-gradient-3d-simple" onclick="location.href='../mypage/mypage.php'">マイページ</button>
-            <button class="btn-gradient-3d-simple" onclick="location.href='#'">閲覧履歴</button>
+            <button class="btn-gradient-3d-simple" onclick="location.href='../../komatsu/browsing.php'">閲覧履歴</button>
             <button class="btn-gradient-3d-simple" onclick="location.href='../top/top.php'">戻る</button>
             <button class="btn-gradient-3d-simple" onclick="location.href='../../fujii/login.php'">ログアウト</button>
             </div>

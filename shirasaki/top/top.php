@@ -6,7 +6,6 @@ require("../functions/userCtlFunc.php");
 session_start();
 
 $login = login($dbh);
-// var_dump($login);
 ?>
 <html>
 
