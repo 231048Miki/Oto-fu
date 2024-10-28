@@ -63,16 +63,16 @@ try {
   ORDER BY c.com_id DESC;'; 
   $stmt = $dbh->query($sql);
   
-    while ($record = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        echo "<div class='record'>";
-        echo "<div class='com-name'><strong>" . htmlspecialchars($record['com_name'], ENT_QUOTES, 'UTF-8') . "</strong></div>";
-        echo "<div class='com-rinen'>" . htmlspecialchars($record['com_rinen'], ENT_QUOTES, 'UTF-8') . "</div>";
-        echo "</div>";
-    }
-} catch (PDOException $e) {
-    echo "エラー: " . $e->getMessage();
-}
-?>
+//     while ($record = $stmt->fetch(PDO::FETCH_ASSOC)) {
+//         echo "<div class='record'>";
+//         echo "<div class='com-name'><strong>" . htmlspecialchars($record['com_name'], ENT_QUOTES, 'UTF-8') . "</strong></div>";
+//         echo "<div class='com-rinen'>" . htmlspecialchars($record['com_rinen'], ENT_QUOTES, 'UTF-8') . "</div>";
+//         echo "</div>";
+//     }
+// } catch (PDOException $e) {
+//     echo "エラー: " . $e->getMessage();
+// }
+
 
 
         // $sql = 'SELECT c.com_id, c.com_name, i.com_rinen, b.LastDate
@@ -89,9 +89,11 @@ try {
         $stmt = $dbh->query($sql);
 
         while ($record = $stmt->fetch(PDO::FETCH_ASSOC)) {
+          $id=htmlspecialchars($record['com_id'], ENT_QUOTES, 'UTF-8');
+          // var_dump($id);
           echo "<div class='record'>";
           // 会社名をクリックできるリンクにする
-          echo "<div class='com-name'><a href='../iizuka/php/detail.php?com_id=" . htmlspecialchars($record['com_id'], ENT_QUOTES, 'UTF-8') . "'><strong>" . htmlspecialchars($record['com_name'], ENT_QUOTES, 'UTF-8') . "</strong></a></div>";
+          echo "<div class='com-name'><a href='../iizuka/php/detail.php?id=$id'><strong>" . htmlspecialchars($record['com_name'], ENT_QUOTES, 'UTF-8') . "</strong></a></div>";
           echo "<div class='com-rinen'>" . htmlspecialchars($record['com_rinen'], ENT_QUOTES, 'UTF-8') . "</div>";
           echo "</div>";
         }

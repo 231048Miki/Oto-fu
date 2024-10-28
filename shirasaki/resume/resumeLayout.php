@@ -2,22 +2,6 @@
 session_start();
 
 $id=$_SESSION['user_id'];
-// $douki = "あああああああああああああああああああああああああああああああああああああああああ。
-// ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ";
-// $pr = "私は、とくになんもできません。";
-// $syumi = "寝る事";
-// $name = "高田健志";
-$hurigana = "たかだけんし(dummy)";
-// $seinengappi = "2001年3月17日生まれ,満(23)歳";
-$seibetu="男(dummy)";
-// $zyusyo = "北海道根室市明治町3-99";
-$furiganazyusyo = "ほっかいどうねむろしめいじちょう(dummy)";
-$yuubin = "087-0003(dummy)";
-// $denwa = "090-6998-7056";
-// $mail = "kakaka111@gmail.com";
-
-// $sikaku1 = "基本情報,取得";
-// $sikaku2 = "乙四,取得";
 
 $quals = [];
 
@@ -104,6 +88,7 @@ while($qual = $get->fetch(PDO::FETCH_ASSOC)){
             border: solid 3px black ;
             padding-left: 1px;
             padding-right: 1px;
+            overflow-y: scroll;
 
         }
 
@@ -113,6 +98,7 @@ while($qual = $get->fetch(PDO::FETCH_ASSOC)){
             border: solid 3px black ;
             padding-left: 1px;
             padding-right: 1px;
+            overflow-y: scroll;
         }
 
         .syumi{
@@ -121,6 +107,7 @@ while($qual = $get->fetch(PDO::FETCH_ASSOC)){
             border: solid 3px black ;
             padding-left: 1px;
             padding-right: 1px;
+            overflow-y: scroll;
         }
 
         .me{
@@ -177,7 +164,7 @@ while($qual = $get->fetch(PDO::FETCH_ASSOC)){
         }
         .sikaku{
             margin-top: 1px;
-            height: 61%;
+            height: 68%;
             border: solid 3px black ;
             padding-left: 1px;
             padding-right: 1px;
@@ -194,8 +181,6 @@ while($qual = $get->fetch(PDO::FETCH_ASSOC)){
             margin-top: 2px;
             height: 91%;
             border: solid 3px black ;
-
-           
         }
         .sikakuOutput{
             margin-top: 1px;
@@ -229,8 +214,11 @@ while($qual = $get->fetch(PDO::FETCH_ASSOC)){
             margin-top: 1px;
             border-right: dotted 3px black;
         }
+
         button{
-            margin-left: 93%;
+            width: 100px;
+            height: 25px;
+            margin-left: 86%;
         }
     @media (max-width: 600px){
         body{
@@ -255,11 +243,6 @@ while($qual = $get->fetch(PDO::FETCH_ASSOC)){
     </style>
     <body>
         <div class="resumeL">
-            <div class="hurigana">
-            <?php 
-                echo "フリガナ:　".$hurigana;
-            ?>  
-            </div>   
             <div class="me">
                 <div class="name">
                 <?php 
@@ -274,18 +257,13 @@ while($qual = $get->fetch(PDO::FETCH_ASSOC)){
             <div class="seinengappi">
             <?php 
                 echo "<div class='seinengappiOutput'>生年月日：".$seinengappi."</div>";
-                echo "性別：".$seibetu;
             ?>  
             </div>
 
-            <div class="furiganazyusyo">
-            <?php 
-                echo "フリガナ:".$furiganazyusyo;
-            ?>  
-            </div>
+ 
             <div class="zyusyo">
             <?php 
-                echo "〒".$yuubin;
+
                 echo "<br>住所".$zyusyo;
             ?>  
             </div>

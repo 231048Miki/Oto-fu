@@ -129,6 +129,13 @@ transform: rotate(-45deg);
 .slide-menu.active{
 transform: translateX(0); 
 }
+.hoshi{
+    display: none;
+}
+.flex{
+    display: flex;
+}
+
 
 @media (min-width: 600px){
     .hamburger,.slide-menu{

@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="baseLayout.css">
 
-        <title>タイトル</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="baseLayout.css">
 
-    <body>
+    <title>タイトル</title>
+</head>
+
+<body>
     <div class="main">
         <header>
-            <div class="title"><h1>オファーdummy</h1></div>
+
             <div class="banner">
-            <button class="btn-gradient-3d-simple" onclick="location.href=''">就活アプリ</button>
-            <button class="btn-gradient-3d-simple" onclick="location.href='../mypage/mypage.php'">マイページ</button>
-            <button class="btn-gradient-3d-simple" onclick="location.href='#'">閲覧履歴</button>
-            <button class="btn-gradient-3d-simple" onclick="location.href='../top/top.php'">戻る</button>
-            <button class="btn-gradient-3d-simple" onclick="location.href='../../fujii/login.php'">ログアウト</button>
+                <button class="btn-gradient-3d-simple" onclick="location.href='../top/top.php'">job hunting</button>
+                <button class="btn-gradient-3d-simple" onclick="location.href='../mypage/mypage.php'">マイページ</button>
+                <button class="btn-gradient-3d-simple" onclick="location.href='../../komatsu/browsing.php'">閲覧履歴</button>
+                <button class="btn-gradient-3d-simple" onclick="location.href='../top/top.php'">戻る</button>
+                <button class="btn-gradient-3d-simple" onclick="location.href='../../fujii/login.php'">ログアウト</button>
+            </div>
+
+            <div class="title">
+                <h2>オファーdummy</h2>
             </div>
 
             <div class="hamburger">
@@ -46,25 +51,26 @@
             <h3 style="margin-left: 30%;">・受け取ったオファー一覧</h3>
             <div class="msg">
                 <h3>会社A</h3>
-                    <a href="">企業情報を見る</a>
+                <a href="">企業情報を見る</a>
             </div>
             <div class="msg">
                 <h3>会社B</h3>
 
-                    <a href="">企業情報を見る</a>
+                <a href="">企業情報を見る</a>
             </div>
             <div class="msg">
                 <h3>会社C</h3>
 
-                    <a href="">企業情報を見る</a>
+                <a href="">企業情報を見る</a>
             </div>
         </div>
     </div>
     <script>
-        document.querySelector('.hamburger').addEventListener('click', function(){
-        this.classList.toggle('active');
-        document.querySelector('.slide-menu').classList.toggle('active');
+        document.querySelector('.hamburger').addEventListener('click', function () {
+            this.classList.toggle('active');
+            document.querySelector('.slide-menu').classList.toggle('active');
         });
     </script>
-    </body>
+</body>
+
 </html>

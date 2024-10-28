@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '../db_open.php';
 //trust me
 $resume_id = $_GET["resume_id"];
@@ -59,6 +60,14 @@ $rec = $sql_res->fetch();
             text-align: center;
             color: #aaa;
         }
+        .rev {
+            width: 500px;
+            height: 200px;
+        }
+        .submit{
+            text-align: center;
+        }
+        
     </style>
 </head>
 <body>
@@ -79,10 +88,15 @@ $rec = $sql_res->fetch();
             <h2>趣味・特技</h2>
             <p><?php echo htmlspecialchars($rec['skill']); ?></p>
         </div>
-
-        <footer>
-            © 2024 豆腐テクノロジーズ
-        </footer>
+        <div class="form">
+        <h3>添削はこちらへ</h3>
+        <form  method="post" action="resume_review.php">
+            <input type="text" name="review" class="rev">
+            <input type="hidden" name="resume_id" value="<?php echo $resume_id ?>">
+            <input type="hidden" name="com_id" value="<?php echo $_SESSION['com_id'] ?>">
+            <input type="submit"  class="submit" value="送信">
+        </form>
+        </div>
     </main>
 </body>
 </html>
