@@ -1,0 +1,181 @@
+html{
+    height: 100%;
+}
+body{
+    height: 100%;
+    display: flex;
+    
+}
+
+.resumeR{
+    border: solid 3px black ;
+    height: 90%;
+    width: 49%;
+    padding: 1px;
+    margin-left: 1%;
+}
+.resumeL{
+    border: solid 3px black ;
+    height: 90%;
+    width: 49%;
+    padding: 1px;
+}
+
+
+.douki{
+    margin-top: 1px;
+    height: 35%;
+    border: solid 3px black ;
+    padding-left: 1px;
+    padding-right: 1px;
+    overflow-y: scroll;
+
+}
+
+.pr{
+    margin-top: 1px;
+    height: 39%;
+    border: solid 3px black ;
+    padding-left: 1px;
+    padding-right: 1px;
+    overflow-y: scroll;
+}
+
+.syumi{
+    margin-top: 1px;
+    height: 20%;
+    border: solid 3px black ;
+    padding-left: 1px;
+    padding-right: 1px;
+    overflow-y: scroll;
+}
+
+.me{
+    margin-top: 1px;
+    height: 10%;
+    border: solid 3px black ;
+    padding-left: 1px;
+    padding-right: 1px;
+    display: flex;
+}
+.hurigana{
+    margin-top: 1px;
+    height: 3%;
+    border: solid 3px black ;
+    padding-left: 1px;
+    padding-right: 1px;
+}
+
+.seinengappi{
+    margin-top: 1px;
+    height: 3%;
+    border: solid 3px black ;
+    padding-left: 1px;
+    padding-right: 1px;
+    display: flex;
+}
+.furiganazyusyo{
+    margin-top: 1px;
+    height: 3%;
+    border: solid 3px black ;
+    padding-left: 1px;
+    padding-right: 1px;
+}
+.zyusyo{
+    margin-top: 1px;
+    height: 7%;
+    border: solid 3px black ;
+    padding-left: 1px;
+    padding-right: 1px;
+}
+.denwa{
+    margin-top: 1px;
+    height: 3%;
+    border: solid 3px black ;
+    padding-left: 1px;
+    padding-right: 1px;
+}
+.mail{
+    margin-top: 1px;
+    height: 3%;
+    border: solid 3px black ;
+    padding-left: 1px;
+    padding-right: 1px;
+}
+.sikaku{
+    margin-top: 1px;
+    height: 68%;
+    border: solid 3px black ;
+    padding-left: 1px;
+    padding-right: 1px;
+}
+.sikakuTitle{
+    margin-top: 1px;
+    height: 5%;
+    border: solid 3px black ;
+    padding-left: 1px;
+    padding-right: 1px;
+    text-align: center;
+}
+.sikakuMain{
+    margin-top: 2px;
+    height: 91%;
+    border: solid 3px black ;
+}
+.sikakuOutput{
+    margin-top: 1px;
+    height: 6%;
+    border-bottom: solid 2px black;
+    display: flex;
+}
+
+.syutokubi{
+    margin-top: 1px;
+    border-right: dotted 3px black;
+    display: flex;
+}
+.kao{
+    padding-left: 10px;
+    margin-top: 1px;
+    text-align: center;
+}
+.name{
+    width: 90%;
+    margin-top: 1px;
+    border-right: dotted 3px black;
+}
+img{
+    /*コレ*/object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+.seinengappiOutput{
+    width: 85%;
+    margin-top: 1px;
+    border-right: dotted 3px black;
+}
+
+button{
+    width: 100px;
+    height: 25px;
+    margin-left: 86%;
+}
+@media (max-width: 600px){
+body{
+    display: block;
+}
+.resumeR{
+    margin-top: 3px;
+    border: solid 3px black ;
+    height: 90%;
+    width: 100%;
+    padding: 1px;
+    margin-left: 0px;
+}
+.resumeL{
+    border: solid 3px black ;
+    height: 90%;
+    width: 100%;
+    padding: 1px;
+}
+}

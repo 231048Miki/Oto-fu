@@ -7,5 +7,4 @@ foreach($POST['tags'] as $tag_id){
     $sql->bindValue(':com_id',$comID,PDO::PARAM_INT);
     $sql->bindValue(':tag_id',$tag_id,PDO::PARAM_INT);
 }
-
 $sql->execute();

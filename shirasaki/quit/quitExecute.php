@@ -15,7 +15,9 @@
 </html>
 
 <?php 
-    include "../../db_open.php";
+    require("../functions/userCtlFunc.php");
+    require("../../db_open.php");
+    login($dbh);
     session_start();
     $sql = $dbh->prepare('DELETE from student_table WHERE stu_id = :stu_id');
     $sql->bindValue(':stu_id',$_SESSION['user_id'],PDO::PARAM_INT);

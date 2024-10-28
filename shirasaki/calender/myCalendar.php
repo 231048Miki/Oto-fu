@@ -206,7 +206,7 @@ for($day = 1; $day <= $day_count; $day++, $youbi++){//1から、その月の日�
             width: 200px;
             margin-left: 4px;
             margin-top: 60px;
-            /* position: relative; */
+            position: relative;
             /* bottom: 200px;
             left: 200px; */
             display:none;

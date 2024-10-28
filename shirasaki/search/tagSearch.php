@@ -40,18 +40,10 @@ if (isset($_SESSION['tags'])) {
                 <!-- /ハンバーガーメニューの線 -->
             </div>
             <ul class="slide-menu">
-                <li><a href="">aaa</a></li>
-                <li><a href="">iii</a></li>
-                <li><a href="">uuu</a></li>
-                <li><a href="">eee</a></li>
-                <li><a href="">aaa</a></li>
-                <li><a href="">iii</a></li>
-                <li><a href="">uuu</a></li>
-                <li><a href="">eee</a></li>
-                <li><a href="">aaa</a></li>
-                <li><a href="">iii</a></li>
-                <li><a href="">uuu</a></li>
-                <li><a href="">eee</a></li>
+                <li><a href="../top/top.php">top</a></li>
+                <li><a href="../../fujii/login.php">ログアウト</a></li>
+                <li><a href="../../komatsu/browsing.php">閲覧履歴</a></li>
+                <li><a href="../quit/quit.php">退会</a></li>
             </ul>
         </header>
 
@@ -70,5 +62,15 @@ if (isset($_SESSION['tags'])) {
             this.classList.toggle('active');
             document.querySelector('.slide-menu').classList.toggle('active');
         });
+        function change(){
+            const btn = document.getElementById('btn');
+            const checkboxes = document.querySelectorAll('input[name="tags[]"]:checked');
+            if (checkboxes.length === 0) {
+                btn.disabled = true;
+            } else {
+                btn.disabled = false;
+            }
+        }
+        
     </script>
 </body>

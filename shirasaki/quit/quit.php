@@ -1,3 +1,8 @@
+<?php 
+require("../functions/userCtlFunc.php");
+require("../../db_open.php");
+login($dbh);
+?>
 <!DOCTYPE html>
 <html>
     <head>

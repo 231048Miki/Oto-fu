@@ -2,6 +2,8 @@
 session_start();
 include("../../db_open.php");
 include("resumeFunc.php");
+require("../functions/userCtlFunc.php");
+login($dbh);
 $id=$_SESSION['user_id'];
 $getSuccess = false;
 $reazon="";
@@ -42,7 +44,6 @@ if(isset($_POST['qual'])){
     header("Location:./resumeForm.php");
     exit(); 
 }
-
 if(isset($_POST['history'])){
     historyAdd($dbh,$_POST['history'],$_POST['timeH'],$id);
     header("Location:./resumeForm.php");
@@ -67,6 +68,7 @@ if(isset($_POST['hdl'])){
 <html>
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="resumeForm.css">
         <style>
             textarea{
                 vertical-align:top;
@@ -88,7 +90,7 @@ if(isset($_POST['hdl'])){
     <body>
     <div class="main">
     <div class="left">
-    <h1>履歴書コピペ保存場所</h1>
+    <div class='title'><h1>履歴書保存場所</h1></div>
     <button onclick="location.href='../mypage/mypage.php'">もどる</button>
     <form method="post"  action="" >
     <br>
@@ -128,7 +130,7 @@ if(isset($_POST['hdl'])){
     <input type="text" name="history"><br>
     <label for="qualH">年月:
     </label>
-    <input type="month" name="timehH">
+    <input type="month" name="timeH">
     <input type="submit" value="追加">
     </form>
     <?php getHistory($dbh,$id)?>
