@@ -27,18 +27,18 @@
 
                     <!-- レスポンシブが効いてるとき -->
                     <div id="nav-content">
-                        <a href="stu_mypage.php" class="header-nav">マイページ</a><br>
+                        <a href="../../shirasaki/mypage/mypage.php" class="header-nav">マイページ</a><br>
                         <a href="../../komatsu/browsing.php" class="header-nav">閲覧履歴</a><br>
                         <a onclick="history.back()" class="header-nav">戻る</a><br>
-                        <a href="logout.php" class="header-nav">ログアウト</a><br>
+                        <a href="../../fujii/login.php" class="header-nav">ログアウト</a><br>
                     </div>
 
                     <!-- 通常メニュー -->
                     <nav id="desktop-menu">
-                        <a href="stu_mypage.php" class="header-nav">マイページ</a>
+                        <a href="../../shirasaki/mypage/mypage.php" class="header-nav">マイページ</a>
                         <a href="../../komatsu/browsing.php" class="header-nav">閲覧履歴</a>
                         <a onclick="history.back()" class="header-nav">戻る</a>
-                        <a href="logout.php" class="header-nav" id="logout">ログアウト</a>
+                        <a href="../../fujii/login.php" class="header-nav" id="logout">ログアウト</a>
                     </nav>
                 </div>
             </div>
@@ -177,7 +177,6 @@
                 <input type="hidden" name="eventid" value="event1">
                 <p>$rec[event1]<input type="submit" name="submit" value = "$rec[eventdata1]"></p>
             </form>
-
          ___EOF;
         echo "</ul>";
     }

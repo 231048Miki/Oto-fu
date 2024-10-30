@@ -21,15 +21,11 @@ if (isset($_SESSION['tags'])) {
         <header>
 
             <div class="banner">
-                <button class="btn-gradient-3d-simple" onclick="location.href='../top/top.php'">job hunting</button>
-                <button class="btn-gradient-3d-simple" onclick="location.href='../mypage/mypage.php'">マイページ</button>
-                <button class="btn-gradient-3d-simple" onclick="location.href='../../komatsu/browsing.php'">閲覧履歴</button>
-                <button class="btn-gradient-3d-simple" onclick="history.back()">戻る</button>
-                <button class="btn-gradient-3d-simple" onclick="location.href='../../fujii/login.php'">ログアウト</button>
-            </div>
-
-            <div class="title">
-                <h2>タグ検索</h2>
+            <button class="btn-gradient-3d-simple" onclick="location.href='../top/top.php'">job hunting</button>
+            <button class="btn-gradient-3d-simple" onclick="location.href='../mypage/mypage.php'">マイページ</button>
+            <button class="btn-gradient-3d-simple" onclick="location.href='../../komatsu/browsing.php'">閲覧履歴</button>
+            <button class="btn-gradient-3d-simple" onclick="history.back()">戻る</button>
+            <button class="btn-gradient-3d-simple" onclick="location.href='../../fujii/login.php'">ログアウト</button>
             </div>
 
             <div class="hamburger">

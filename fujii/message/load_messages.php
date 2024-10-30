@@ -6,8 +6,8 @@ $user_id = $_SESSION['user_id'];
 // DB接続
 try {
     $dsn = 'mysql:dbname=otofu_mydb;host=localhost;charset=utf8';
-    $user = 'fujii231109_user';
-    $password = 'f21053879i';
+    $user = 'pojobot_user';
+    $password = 'Hirata317';
     $dbh = new PDO($dsn, $user, $password);
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 

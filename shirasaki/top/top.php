@@ -4,7 +4,6 @@ require("../functions/xssBlock.php");
 require("../../db_open.php");
 require("../functions/userCtlFunc.php");
 session_start();
-
 $login = login($dbh);
 ?>
 <html>

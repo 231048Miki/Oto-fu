@@ -1,6 +1,7 @@
 <?php 
 require("../functions/userCtlFunc.php");
 require("../../db_open.php");
+session_start();
 login($dbh);
 ?>
 <!DOCTYPE html>
