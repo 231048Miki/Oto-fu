@@ -1,3 +1,14 @@
+<?php 
+    require("../functions/userCtlFunc.php");
+    require("../../db_open.php");
+    session_start();
+    login($dbh);
+    $sql = $dbh->prepare('DELETE from student_table WHERE stu_id = :stu_id');
+    $sql->bindValue(':stu_id',$_SESSION['user_id'],PDO::PARAM_INT);
+    $sql->execute();
+    session_destroy();
+    //消すデータは後々バカみたいに増えるからその都度ってことで。
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,14 +25,4 @@
     </body>
 </html>
 
-<?php 
-    require("../functions/userCtlFunc.php");
-    require("../../db_open.php");
-    login($dbh);
-    session_start();
-    $sql = $dbh->prepare('DELETE from student_table WHERE stu_id = :stu_id');
-    $sql->bindValue(':stu_id',$_SESSION['user_id'],PDO::PARAM_INT);
-    $sql->execute();
-    session_destroy();
-    //消すデータは後々バカみたいに増えるからその都度ってことで。
-?>
+

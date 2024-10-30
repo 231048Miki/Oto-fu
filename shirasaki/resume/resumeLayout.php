@@ -11,8 +11,6 @@ $quals = [];
 $sikaku1Time = "2024年4月";
 $sikaku2Time = "2018年3月";//こいつらを外部から受け取るようにする。
 
-include("../../db_open.php");
-include("../functions/userCtlFunc.php");
 $user=getUser($id,$dbh);
 $name = $user['name'];
 $seinengappi = $user['birth'];

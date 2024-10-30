@@ -1,0 +1,8 @@
+{
+    "workbench.editor.decorations.colors": true,
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.editor.autoLockGroups": {
+        "default": true
+    },
+    "workbench.editor.customLabels.enabled": true
+}

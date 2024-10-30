@@ -3,15 +3,16 @@
   session_start();
   $stu_id = $_SESSION['stu_id'];
   $com_id = isset($_POST['com_id']) ? $_POST['com_id'] : '';
-  $event = isset($_POST['eventid']) ? $_POST['eventid'] : '';
-  $event = $event;
-  $com_id = $com_id;
+  $event = isset($_POST['eventid']) ? $_POST['eventid'] : '';//"event1","event2","event3"のどれか、判別に使用
   if($event == 'event1'){
     $content = 'event_content1';
+    $eventdata = 'eventdata1';
   }elseif($event == 'event2'){
     $content = 'event_content2';
+    $eventdata = 'eventdata2';
   }elseif($event == 'event3'){
     $content = 'event_content3';
+    $eventdata = 'eventdata3';
   }else{
     echo "なんかエラー";
   }
@@ -85,18 +86,9 @@ try {
   echo "</ul>";
   echo '</div>';
 
-      echo '<div class="company-details">';
-      echo "<h4>会社名</h4>";
-      echo "<ul>";
-      $company_name = '';
-      if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        echo "<li>" . htmlspecialchars($row['com_name'], ENT_QUOTES, 'UTF-8') . "</li>";
-        $company_name = $row['com_name'];
-      }
-      echo "</ul>";
-      echo '</div>';
 
-  $sql_events = "SELECT $event  FROM cominfo_table WHERE com_id = $com_id";
+
+  $sql_events = "SELECT $event,$eventdata  FROM cominfo_table WHERE com_id = $com_id";
   $stmt_events = $dbh->prepare($sql_events);
   $stmt_events->execute();
 
@@ -112,10 +104,13 @@ try {
   $content_details_value = '';
   while ($row_events = $stmt_events->fetch(PDO::FETCH_ASSOC)) {
     echo "<p>" . htmlspecialchars($row_events[$event], ENT_QUOTES, 'UTF-8') . "</p>";
-    $event_details_value = $row_events[$event] ;
+    // echo "<p>" . htmlspecialchars($row_events[$eventdata], ENT_QUOTES, 'UTF-8') . "</p>";
+    $event_details_value = $row_events[$event] ;//イベントの名前
+    $event_data_value = $row_events[$eventdata];//イベント開催日
+    // echo $event_data_value;
     while ($row_content = $stmt_content->fetch(PDO::FETCH_ASSOC)) {
       echo "<p>" . htmlspecialchars($row_content[$content], ENT_QUOTES, 'UTF-8') . "</p>";
-      $content_details_value = $row_content[$content] ;
+      $content_details_value = $row_content[$content] ;//イベント内容
     }
   }
   echo '</div>';
@@ -131,6 +126,9 @@ try {
     <input type="hidden" name="stu_id" value="<?php echo htmlspecialchars($stu_id, ENT_QUOTES, 'UTF-8'); ?>">
     <input type="hidden" name="com_id" value="<?php echo htmlspecialchars($com_id, ENT_QUOTES, 'UTF-8'); ?>">
     <input type="hidden" name="event" value="<?php echo htmlspecialchars($event, ENT_QUOTES, 'UTF-8'); ?>">
+    <input type="hidden" name="eventname" value="<?php echo htmlspecialchars($event_details_value, ENT_QUOTES, 'UTF-8'); ?>">
+    <input type="hidden" name="eventdata" value="<?php echo htmlspecialchars( $event_data_value , ENT_QUOTES, 'UTF-8'); ?>">
+    
     
     <button type="submit" name="booking" class="button">予約</button>
   </form>
