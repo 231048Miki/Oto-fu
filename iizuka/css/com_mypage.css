@@ -36,6 +36,10 @@
     #desktop-menu {
         display: flex; /* 要素を横並びにする */
     }
+
+    .alert{
+        color: red;
+    }
 /* } */
 @media screen and (max-width:600px) {
     .cmypage_button {

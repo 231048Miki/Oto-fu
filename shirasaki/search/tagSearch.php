@@ -48,7 +48,7 @@ if (isset($_SESSION['tags'])) {
                 <h3>・タグ一覧</h3>
                 <form method="post" action="tagSearchResult.php">
                     <?php makeTagForm($dbh); ?>
-                    <input type="submit" value="検索">
+                    <input type="submit" value="検索" id='btn' disabled>
                 </form>
             </div>
         </div>

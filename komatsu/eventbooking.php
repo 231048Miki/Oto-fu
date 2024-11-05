@@ -125,7 +125,6 @@ try {
   <form method="POST" action="bookingchaeck.php">
     <input type="hidden" name="stu_id" value="<?php echo htmlspecialchars($stu_id, ENT_QUOTES, 'UTF-8'); ?>">
     <input type="hidden" name="com_id" value="<?php echo htmlspecialchars($com_id, ENT_QUOTES, 'UTF-8'); ?>">
-    <input type="hidden" name="event" value="<?php echo htmlspecialchars($event, ENT_QUOTES, 'UTF-8'); ?>">
     <input type="hidden" name="eventname" value="<?php echo htmlspecialchars($event_details_value, ENT_QUOTES, 'UTF-8'); ?>">
     <input type="hidden" name="eventdata" value="<?php echo htmlspecialchars( $event_data_value , ENT_QUOTES, 'UTF-8'); ?>">
     

@@ -6,7 +6,7 @@ session_start();
 
 if((isset($_POST['tags']))){
    $_SESSION['tags'] = $_POST['tags'];
-   var_dump($_SESSION['tags']); 
+//    var_dump($_SESSION['tags']); 
 }
 $startNo = 0;
 if(isset($_GET['startNo'])){

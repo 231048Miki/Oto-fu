@@ -62,6 +62,13 @@
     
     include '../../db_open.php';
     
+    $eventalert = false;
+    $alert_handle = $dbh->query("SELECT flag FROM alert  WHERE alert_kind = 'event_alert' AND com_id = {$userid}");
+    $alert_handle->execute();
+    $alert=$alert_handle->fetch();
+    if($alert['flag']){
+        $eventalert=true;
+    }
 
     $sql = "SELECT * FROM company_table WHERE com_id = $_SESSION[com_id]";
     $sql_res = $dbh->query($sql);
@@ -72,7 +79,13 @@
     ___EOF;
     ?>
     <div class="mypage_boo">
-        <button class="cmypage_button" onclick="location.href='eventCheck.php'">イベント状況</button>
+        <button class="cmypage_button" onclick="location.href='eventCheck.php'">イベント状況
+        <?php 
+        if($eventalert){
+            echo "<div class='alert'>新規予約有</div>";
+        }
+        ?>
+        </button>
         <!-- <button class="cmypage_button" onclick="location.href='#'">イベント</button> -->
         <button class="cmypage_button" onclick="location.href='../../komatsu/companypage.php'">ページ編集</button>
         <button class="cmypage_button" onclick="location.href='com_info_update.php'">設定</button>
