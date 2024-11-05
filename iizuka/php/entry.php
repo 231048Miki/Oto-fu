@@ -43,43 +43,29 @@
 
     <h2>エントリー画面</h2>
 
-    <p>ダミーです</p>
-
     <?php
     session_start();
-
-    if (!isset($_SESSION['login']) && !isset($_SESSION['com_id'])) {
+    if (!isset($_SESSION['login'])) {
         header("Location:../../fujii/login.php");
         // セッション追加頼む
         exit();
     } else {
-        // $userid = $_SESSION['com_id'];
-        // echo $userid;  
+
     }
-    // $userid = $_SESSION["com_id"];
-    // echo $_SESSION["com_id"];
     include '../../db_open.php';
-
-    $sql = "SELECT * FROM resume_table where com_id = $_SESSION[com_id]";
-    // $sql = "SELECT * FROM resume_table where com_id = 11";
-    $sql_res = $dbh->query($sql);
-    $rec = $sql_res->fetch();
-
-    // null判定。tuleだと出力なし。
-    if (empty($rec['event1'])) {
-        echo "<p>履歴書を作成してください</p>";
-        echo <<<___EOF
-            <form action="../../shirasaki/resumeForm.php" method="post">
-                <input type="hidden" name="delete" value="$rec[com_id]">
-                <p><input type="submit" name="submit" value = "履歴書フォームはこちら！"></p>
-            </form>
-            ___EOF;
-    } else {
-        // falseだとform　日付クリックでイベント予約に遷移
-        echo "<ul>";
-        // echo "<p>‣$rec[event1]</p>";
-    }
+    $stu_id = $_SESSION['stu_id'];
+    $com_id = $_POST['entry_id'];
+    //一旦stu_idにstudent 2 と com_idでcompany 14
+    
+    $sql="INSERT  INTO eninfo_table (stu_id, com_id, entry_date) VALUES ( :stu_id , :com_id, CURRENT_TIMESTAMP)";
+    $stmt = $dbh->prepare($sql);
+    $stmt->bindParam(':stu_id', $stu_id, PDO::PARAM_INT);
+    $stmt->bindParam(':com_id', $com_id, PDO::PARAM_INT);
+    $stmt->execute();
     ?>
+
+    <h1>エントリーしました！</h1>
+    <a href="../../shirasaki/top/top.php">トップへ</a>
 
 </body>
 
