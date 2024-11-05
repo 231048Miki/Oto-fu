@@ -1,3 +1,9 @@
+<?php 
+require("../shirasaki/functions/userCtlFunc.php");
+require("../db_open.php");
+session_start();
+login($dbh);
+?>
 <!DOCTYPE html>
 <html>
 
@@ -15,39 +21,30 @@
 
   <!-- ヘッダー追加 -->
   <header>
-    <div class="header">
-      <h2>
-        <a href="../shirasaki/top/top.php" class="web-name">job hunting</a>
-      </h2>
-      <div class="menu">
-        <div id="nav-drawer">
-          <!-- ハンバーガーメニュー開いたときの挙動。これないと機能しません -->
-          <input id="nav-input" type="checkbox" class="nav-unshown">
-          <!-- 三本線 -->
-          <label id="nav-open" for="nav-input" class="nav-unshown"><span></span></label>
-          <label class="nav-unshown" id="nav-close" for="nav-input"></label>
+            <div class="banner">
+            <button class="btn-gradient-3d-simple" onclick="location.href='../shirasaki/top/top.php'">job hunting</button>
+            <button class="btn-gradient-3d-simple" onclick="history.back()">もどる</button>
+            <button class="btn-gradient-3d-simple" onclick="location.href='../fujii/login.php'">ログアウト</button>
+            <button class="btn-gradient-3d-simple" onclick="location.href=''">閲覧履歴</button>
+            <button class="btn-gradient-3d-simple" onclick="location.href='../shirasaki/quit/quit.php'">退会</button>
+            </div>
 
-          <!-- レスポンシブが効いてるとき -->
-          <div id="nav-content">
-            <a onclick="history.back()" class="header-nav">戻る</a><br>
-            <a href="../iizuka/logout.php" class="header-nav">ログアウト</a><br>
-            <a href="" class="header-nav">閲覧履歴</a><br>
-            <a href="../shirasaki/mypage/mypage.php" class="header-nav">マイページ</a><br>
-          </div>
+            <div class="title"><h2>閲覧履歴</h2></div>
+            <div class="hamburger">
+                <!-- ハンバーガーメニューの線 -->
+                <span></span>
+                <span></span>
+                <span></span>
+                <!-- /ハンバーガーメニューの線 -->
+            </div>
+            <ul class="slide-menu">
+                <li><a href="../top/top.php">top</a></li>
+                <li><a href="../../fujii/login.php">ログアウト</a></li>
+                <li><a href="../../komatsu/browsing.php">閲覧履歴</a></li>
+                <li><a href="../quit/quit.php">退会</a></li>
+            </ul>
+        </header>
 
-          <!-- 通常メニュー -->
-          <nav id="desktop-menu">
-            <a onclick="history.back()" class="header-nav">戻る</a>
-            <a href="../iizuka/logout.php" class="header-nav">ログアウト</a>
-            <a href="" class="header-nav">閲覧履歴</a>
-            <a href="../shirasaki/mypage/mypage.php" class="header-nav">マイページ</a>
-          </nav>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <h3 class="sub-header">閲覧履歴</h3>
   <div class="history-P">
     <div id="wrapper" class="histry-C">
       <?php
@@ -103,6 +100,14 @@ try {
       ?>
     </div>
   </div>
+  <script>
+            document.querySelector('.hamburger').addEventListener('click', function(){
+        this.classList.toggle('active');
+        document.querySelector('.slide-menu').classList.toggle('active');
+        });
+        
+ 
+  </script>
 </body>
 
 </html>

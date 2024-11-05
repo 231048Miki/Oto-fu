@@ -5,7 +5,8 @@ session_start();
 
 
 if((isset($_POST['tags']))){
-   $_SESSION['tags'] = $_POST['tags']; 
+   $_SESSION['tags'] = $_POST['tags'];
+   var_dump($_SESSION['tags']); 
 }
 $startNo = 0;
 if(isset($_GET['startNo'])){
@@ -30,7 +31,7 @@ if(isset($_GET['likeId'])){
         <header>
             <div class="title"><h1>タグ検索</h1></div>
             <div class="banner">
-            <button class="btn-gradient-3d-simple" onclick="location.href=''">就活アプリ</button>
+            <button class="btn-gradient-3d-simple" onclick="location.href='../top/top.php'">job hunting</button>
             <button class="btn-gradient-3d-simple" onclick="location.href='../mypage/mypage.php'">マイページ</button>
             <button class="btn-gradient-3d-simple" onclick="location.href='#'">閲覧履歴</button>
             <button class="btn-gradient-3d-simple" onclick="location.href='tagSearch.php'">戻る</button>
@@ -45,18 +46,10 @@ if(isset($_GET['likeId'])){
                 <!-- /ハンバーガーメニューの線 -->
             </div>
             <ul class="slide-menu">
-                <li><a href="">aaa</a></li>
-                <li><a href="">iii</a></li>
-                <li><a href="">uuu</a></li>
-                <li><a href="">eee</a></li>
-                <li><a href="">aaa</a></li>
-                <li><a href="">iii</a></li>
-                <li><a href="">uuu</a></li>
-                <li><a href="">eee</a></li>
-                <li><a href="">aaa</a></li>
-                <li><a href="">iii</a></li>
-                <li><a href="">uuu</a></li>
-                <li><a href="">eee</a></li>
+                <li><a href="../top/top.php">top</a></li>
+                <li><a href="../../fujii/login.php">ログアウト</a></li>
+                <li><a href="../../komatsu/browsing.php">閲覧履歴</a></li>
+                <li><a href="../quit/quit.php">退会</a></li>
             </ul>
         </header>
 
@@ -82,3 +75,5 @@ if(isset($_GET['likeId'])){
         });
     </script>
     </body>
+
+    

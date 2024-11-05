@@ -21,15 +21,11 @@ if (isset($_SESSION['tags'])) {
         <header>
 
             <div class="banner">
-                <button class="btn-gradient-3d-simple" onclick="location.href='../top/top.php'">job hunting</button>
-                <button class="btn-gradient-3d-simple" onclick="location.href='../mypage/mypage.php'">マイページ</button>
-                <button class="btn-gradient-3d-simple" onclick="location.href='../../komatsu/browsing.php'">閲覧履歴</button>
-                <button class="btn-gradient-3d-simple" onclick="history.back()">戻る</button>
-                <button class="btn-gradient-3d-simple" onclick="location.href='../../fujii/login.php'">ログアウト</button>
-            </div>
-
-            <div class="title">
-                <h2>タグ検索</h2>
+            <button class="btn-gradient-3d-simple" onclick="location.href='../top/top.php'">job hunting</button>
+            <button class="btn-gradient-3d-simple" onclick="location.href='../mypage/mypage.php'">マイページ</button>
+            <button class="btn-gradient-3d-simple" onclick="location.href='../../komatsu/browsing.php'">閲覧履歴</button>
+            <button class="btn-gradient-3d-simple" onclick="history.back()">戻る</button>
+            <button class="btn-gradient-3d-simple" onclick="location.href='../../fujii/login.php'">ログアウト</button>
             </div>
 
             <div class="hamburger">
@@ -40,18 +36,10 @@ if (isset($_SESSION['tags'])) {
                 <!-- /ハンバーガーメニューの線 -->
             </div>
             <ul class="slide-menu">
-                <li><a href="">aaa</a></li>
-                <li><a href="">iii</a></li>
-                <li><a href="">uuu</a></li>
-                <li><a href="">eee</a></li>
-                <li><a href="">aaa</a></li>
-                <li><a href="">iii</a></li>
-                <li><a href="">uuu</a></li>
-                <li><a href="">eee</a></li>
-                <li><a href="">aaa</a></li>
-                <li><a href="">iii</a></li>
-                <li><a href="">uuu</a></li>
-                <li><a href="">eee</a></li>
+                <li><a href="../top/top.php">top</a></li>
+                <li><a href="../../fujii/login.php">ログアウト</a></li>
+                <li><a href="../../komatsu/browsing.php">閲覧履歴</a></li>
+                <li><a href="../quit/quit.php">退会</a></li>
             </ul>
         </header>
 
@@ -70,5 +58,15 @@ if (isset($_SESSION['tags'])) {
             this.classList.toggle('active');
             document.querySelector('.slide-menu').classList.toggle('active');
         });
+        function change(){
+            const btn = document.getElementById('btn');
+            const checkboxes = document.querySelectorAll('input[name="tags[]"]:checked');
+            if (checkboxes.length === 0) {
+                btn.disabled = true;
+            } else {
+                btn.disabled = false;
+            }
+        }
+        
     </script>
 </body>

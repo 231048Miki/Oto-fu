@@ -14,8 +14,8 @@ function check_relation_message($user_id, $destination_user_id)
 {
     try {
         $dsn = 'mysql:dbname=otofu_mydb;host=localhost;charset=utf8';
-        $user = 'fujii231109_user';
-        $password = 'f21053879i';
+        $user = 'pojobot_user';
+        $password = 'Hirata317';
         $dbh = new PDO($dsn, $user, $password);
 
         $sql = "SELECT user_id, destination_user_id FROM message_relation 
@@ -36,8 +36,8 @@ function insert_message($user_id, $destination_user_id)
 {
     try {
         $dsn = 'mysql:dbname=otofu_mydb;host=localhost;charset=utf8';
-        $user = 'fujii231109_user';
-        $password = 'f21053879i';
+        $user = 'pojobot_user';
+        $password = 'Hirata317';
         $dbh = new PDO($dsn, $user, $password);
 
         $sql = 'INSERT INTO message_relation(user_id, destination_user_id) VALUES (?, ?)';
@@ -74,8 +74,8 @@ try {
 
     // DB接続と送られてきたデータを保存
     $dsn = 'mysql:dbname=otofu_mydb;host=localhost;charset=utf8';
-    $user = 'fujii231109_user';
-    $password = 'f21053879i';
+    $user = 'pojobot_user';
+    $password = 'Hirata317';
     $dbh = new PDO($dsn, $user, $password);
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 

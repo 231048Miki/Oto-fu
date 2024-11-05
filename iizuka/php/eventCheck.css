@@ -1,0 +1,14 @@
+.event{
+    width: 350px;
+    margin-left: 3px;
+    border: solid 3px black;
+}
+.flex{
+    display: flex;
+}
+.btn{
+    margin-top: 20px;
+    margin-left: 10px;
+    height: 30px;
+    width: 130px;
+}

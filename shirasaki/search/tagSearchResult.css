@@ -108,11 +108,14 @@ top: 45px;
     bottom: 90px;
     right: 10px; 
     transform: translateX(200%);
-    height: 300px;
     transition: .5s;
     margin-left: 78%;
     background-color: white;
     width: 100px;
+    border:  2px solid #CD853F;
+}
+.slide-menu li{
+    border-bottom: so 1px black;
 }
 
 .hamburger.active span:first-of-type{/* ハンバーガーメニューの1番目の線 */

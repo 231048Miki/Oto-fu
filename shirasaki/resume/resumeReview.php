@@ -1,7 +1,8 @@
 <?PHP
 session_start();
 include("../../db_open.php");    
-
+require("../functions/userCtlFunc.php");
+login($dbh);
 $getReview = $dbh->prepare('SELECT resume_review.*,company_table.com_name FROM resume_review join company_table ON resume_review.com_id = company_table.com_id  WHERE resume_id = (SELECT resume_id FROM student_table JOIN resume_table WHERE student_table.stu_id = resume_table.stu_id and student_table.stu_id = :stu_id)');
 $getReview->bindValue(':stu_id',$_SESSION['user_id'],PDO::PARAM_STR);//ユーザーIDを入れる、今はテストで１を入れている
 $getReview->execute();
@@ -17,9 +18,10 @@ while($get = $getReview->fetch(PDO::FETCH_ASSOC)){
 <html>
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="resumeReview.css">
     </head>
     <body>
-        <h1>履歴書のレビュー</h1>
+        <div class="title"><h1>履歴書のレビュー</h1></div>
         <button class="btn" onclick="location.href='../mypage/mypage.php'">戻る</button>
             <?php 
                 foreach($reviewArray as $review){
