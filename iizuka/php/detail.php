@@ -213,9 +213,11 @@
         echo "</ul>";
     }
 
+
     echo <<<___EOF
+    
     <form action="entry.php" method="post">
-                <input type="hidden" name="entry" value="$rec[com_id]">
+                <input type="hidden" name="entry_id" value="$rec[com_id]">
                 <p><input type="submit" name="entry" value = "エントリーする！"></p>
             </form>
     ___EOF;
